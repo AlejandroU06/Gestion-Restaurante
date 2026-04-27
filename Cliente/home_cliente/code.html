@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BistroFlow - Bienvenidos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-pattern {
+            background-image: radial-gradient(#dec0b5 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#171e00",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#c05621",
+                        "outline": "#8a7268",
+                        "on-surface": "#1e1b17",
+                        "background": "#fff8f3",
+                        "on-primary-fixed": "#360f00",
+                        "tertiary": "#5d5e55",
+                        "surface-dim": "#e0d9d3",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-variant": "#e8e1db",
+                        "secondary-fixed": "#dbe9a9",
+                        "primary-fixed": "#ffdbcd",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "primary": "#9f3e07",
+                        "on-secondary-fixed-variant": "#404b1b",
+                        "surface-tint": "#a14009",
+                        "outline-variant": "#dec0b5",
+                        "on-surface-variant": "#57423a",
+                        "surface-container-low": "#faf2ec",
+                        "surface-container": "#f4ede6",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#ffb596",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed": "#1b1c15",
+                        "on-secondary-container": "#5c6834",
+                        "surface-container-highest": "#e8e1db",
+                        "surface": "#fff8f3",
+                        "on-tertiary-fixed-variant": "#46473f",
+                        "inverse-surface": "#33302c",
+                        "tertiary-container": "#76766d",
+                        "secondary": "#586330",
+                        "tertiary-fixed-dim": "#c7c7bc",
+                        "primary-fixed-dim": "#ffb596",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#fff8f3",
+                        "secondary-container": "#d8e6a6",
+                        "on-tertiary-container": "#fffeff",
+                        "on-primary-fixed-variant": "#7d2d00",
+                        "on-primary-container": "#fffeff",
+                        "surface-container-high": "#eee7e1",
+                        "on-background": "#1e1b17",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#bfcd8f",
+                        "tertiary-fixed": "#e4e3d7",
+                        "inverse-on-surface": "#f7efe9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "lg": "24px",
+                        "margin": "32px",
+                        "xl": "40px",
+                        "xs": "4px",
+                        "gutter": "24px",
+                        "sm": "8px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Noto Serif"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-md": ["Noto Serif"],
+                        "headline-display": ["Noto Serif"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "headline-display": ["48px", {"lineHeight": "1.2", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed-variant">
+<!-- TopAppBar -->
+<header class="bg-[#FDFCF0] dark:bg-stone-950 flex justify-between items-center w-full px-8 py-3 sticky top-0 z-50 backdrop-blur-sm shadow-sm border-b border-stone-200 dark:border-stone-800">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold text-[#C05621] font-serif">BistroFlow</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-stone-600 dark:text-stone-400 hover:text-[#C05621] font-serif transition-colors" href="#">Menu</a>
+<a class="text-stone-600 dark:text-stone-400 hover:text-[#C05621] font-serif transition-colors" href="#">Reservations</a>
+<a class="text-stone-600 dark:text-stone-400 hover:text-[#C05621] font-serif transition-colors" href="#">History</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-stone-400" data-icon="search">search</span>
+<input class="bg-surface-container-low border-none rounded-full pl-10 pr-4 py-1.5 text-sm focus:ring-1 focus:ring-primary-container w-64" placeholder="Buscar en el menú..." type="text"/>
+</div>
+<button class="material-symbols-outlined p-2 text-stone-600 hover:bg-stone-100 rounded-full" data-icon="shopping_cart">shopping_cart</button>
+<button class="material-symbols-outlined p-2 text-stone-600 hover:bg-stone-100 rounded-full" data-icon="notifications">notifications</button>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="User profile" data-alt="professional headshot of a smiling man in a soft lit studio environment, neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEL2SzBcMKOX0pYFla2ik4Zxrt1h2vGC1pH-JjVOZsCGmzLNQAz8Qn8pEakW3ozNgB0Peuyt9r6Z3x1Iqpv9asgxS0GLeUqQ6oFxKsRtYvzNadQfGmgqi48uIYxdxGm1E24OOz5mHWWczvxLejjcsR_Mx_uP45RSZmdOwJ71cCSjPF-wrIemcX9bVwGJTyYpAXG4t6SKhzOBvtLmGT7ICGONd_S-4A9ZmfVKApe10kA22HxvsKojH86XX9qPIhbSC2wv_kt-mGaYM"/>
+</div>
+</div>
+</header>
+<main class="min-h-screen">
+<!-- Hero Section -->
+<section class="relative h-[600px] flex items-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover" data-alt="atmospheric photo of a moody bistro interior with warm pendant lighting, wooden tables, and elegant table settings at dusk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRT3FDqFxPZ6bQmIbTVIBWTuVlitT11nIsfHrtaIbmjxTlcHu7M6KamPsftXQKd9JBeH4FxBynOvaPBLIOgY_xc58PtIpoqxObZXr_Pfty5yd9vWcRVG-EYQ4zUh08nQnuFN1hyKFT_69moqeTwL6bck38Frsfc9qSv1jX_SpPAV9_tgcqyj1UULpRcx8i1UHKVgZCKWv20D_BEno1IeuyhvijQneKwDu1sg3f28B0ngB75qrdRAXmSddURhEvda2gEVkTMgr59a4"/>
+<div class="absolute inset-0 bg-black/40"></div>
+</div>
+<div class="container mx-auto px-8 relative z-10">
+<div class="max-w-2xl text-white">
+<h1 class="font-headline-display text-headline-display mb-lg">Bienvenido de nuevo, <br/><span class="text-primary-fixed">Saborea el momento</span></h1>
+<p class="font-body-lg text-body-lg mb-xl opacity-90">Descubre nuestra nueva carta artesanal, preparada con ingredientes locales y la pasión de siempre.</p>
+<div class="flex flex-wrap gap-md">
+<button class="bg-primary-container hover:bg-primary px-xl py-md rounded-lg font-label-md text-white transition-all transform hover:-translate-y-1 shadow-lg flex items-center gap-2">
+                            Ordenar Ahora
+                            <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<button class="bg-white/10 backdrop-blur-md hover:bg-white/20 border border-white/30 px-xl py-md rounded-lg font-label-md text-white transition-all">
+                            Ver Menú
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Categories Bento Grid -->
+<section class="py-xl bg-pattern">
+<div class="container mx-auto px-8">
+<h2 class="font-headline-lg text-headline-lg mb-lg text-on-surface">Explora por Categoría</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-gutter">
+<!-- Entradas -->
+<div class="group cursor-pointer bg-[#FDFCF0] p-lg rounded-xl border border-outline-variant hover:border-primary transition-all hover:shadow-xl flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-orange-50 flex items-center justify-center mb-md group-hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-primary group-hover:text-white" data-icon="restaurant">restaurant</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Entradas</h3>
+<p class="font-label-sm text-stone-500 mt-2">Para comenzar el viaje</p>
+</div>
+<!-- Platos Fuertes -->
+<div class="group cursor-pointer bg-[#FDFCF0] p-lg rounded-xl border border-outline-variant hover:border-primary transition-all hover:shadow-xl flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-orange-50 flex items-center justify-center mb-md group-hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-primary group-hover:text-white" data-icon="dinner_dining">dinner_dining</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Platos Fuertes</h3>
+<p class="font-label-sm text-stone-500 mt-2">Nuestras especialidades</p>
+</div>
+<!-- Bebidas -->
+<div class="group cursor-pointer bg-[#FDFCF0] p-lg rounded-xl border border-outline-variant hover:border-primary transition-all hover:shadow-xl flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-orange-50 flex items-center justify-center mb-md group-hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-primary group-hover:text-white" data-icon="local_bar">local_bar</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Bebidas</h3>
+<p class="font-label-sm text-stone-500 mt-2">Mixología y selección</p>
+</div>
+<!-- Postres -->
+<div class="group cursor-pointer bg-[#FDFCF0] p-lg rounded-xl border border-outline-variant hover:border-primary transition-all hover:shadow-xl flex flex-col items-center text-center">
+<div class="w-16 h-16 rounded-full bg-orange-50 flex items-center justify-center mb-md group-hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined text-primary group-hover:text-white" data-icon="icecream">icecream</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Postres</h3>
+<p class="font-label-sm text-stone-500 mt-2">El cierre perfecto</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Dishes -->
+<section class="py-xl">
+<div class="container mx-auto px-8">
+<div class="flex justify-between items-end mb-lg">
+<div>
+<span class="text-primary font-label-sm uppercase tracking-widest">Selección del Chef</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mt-2">Platos Destacados</h2>
+</div>
+<a class="text-primary font-label-md hover:underline flex items-center gap-1" href="#">
+                        Ver todo el menú
+                        <span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-xl">
+<!-- Dish 1 -->
+<div class="group bg-[#FDFCF0] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="relative h-64 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="close-up of gourmet beef short ribs with dark glaze, microgreens garnish, and creamy potato puree on a ceramic plate" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkDOc3X35nc9hwNrYwbUKfIazXgsjpiVjT_QmT3ea9awAPndlIt2AQcdax68K7a_dGcBrIeFQi6uWNlbyC5NVgWmhxrr7I5xMuZXP3X5IFfuFVcX9CAdpssgZ091MiH-v4Vpo24CHaECcApJv_yUr3yqr77g4l62m5IIZGOqdBG9rZUI9V8U7wbIExpMLoXiAjPNkYlwviEapZHVkaLbFO9IywqqRXb--pEWsVqO2QIPcu3mcFavn8p8QATqOQ1_dV-EOWl2PJz1U"/>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full">
+<span class="text-primary font-bold">$24.50</span>
+</div>
+</div>
+<div class="p-lg">
+<h4 class="font-headline-md text-headline-md mb-2">Costillar Glaseado</h4>
+<p class="text-stone-500 font-body-md mb-lg">Cocción lenta por 12 horas en reducción de vino tinto y especias locales.</p>
+<button class="w-full py-md border border-primary-container text-primary font-label-md rounded-lg hover:bg-primary-container hover:text-white transition-colors">Agregar al Pedido</button>
+</div>
+</div>
+<!-- Dish 2 -->
+<div class="group bg-[#FDFCF0] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="relative h-64 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="fresh linguine pasta with roasted cherry tomatoes, basil, and parmesan cheese in a rustic stoneware bowl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAC_aoTwzqwVsXIuJKOO6fmviOQnlgldYY9zC-EmbYeXxdve5yNW0U1k3v9CqCJ7f80G2CFS4dg0hcKGBuqXbHU17b88p5BNuiEZo6Z2WmJ_kEaDQ8YFElTvI6tV46n7WWKgDtfewylNzgXlSTD0PKvxrJW8ZuvsYEpZB2-sOhvK8beajCMouZbNkVUYqoHlBNLNHuZz4gWyh-S1HWVFKsOZ-NroluLL3dJjV33KhKKJqzFxbNtEU98_DS-HIKPCDbqNt8INoi9Bj8"/>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full">
+<span class="text-primary font-bold">$18.00</span>
+</div>
+</div>
+<div class="p-lg">
+<h4 class="font-headline-md text-headline-md mb-2">Linguine Pomodoro</h4>
+<p class="text-stone-500 font-body-md mb-lg">Pasta fresca hecha a mano con tomates cherry orgánicos y albahaca del huerto.</p>
+<button class="w-full py-md border border-primary-container text-primary font-label-md rounded-lg hover:bg-primary-container hover:text-white transition-colors">Agregar al Pedido</button>
+</div>
+</div>
+<!-- Dish 3 -->
+<div class="group bg-[#FDFCF0] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+<div class="relative h-64 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="artisan avocado toast on sourdough bread with poached eggs, chili flakes, and radish slices on a light marble surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQjXkkl_QeTSBWi4GvP5eeO_yWkp0fiwfLpBKxLKt1nqjBwt9ypEl-xQUGeGNTPcvunk1beybU3ZQfEtl0V0WlSHgWWXQ01nhvm5OQ1TDbU2qI0imnDHCM5zzg2uxGoBDoYiaOwIiIxHVwtscGSZa1DnVlvUQHW1YIfU2BvAw4SGE6UA_wWygiIwXmSWh-iFDPyRM8zR_cUUBXFarv2zBtCM2_0KVlRXctjVTlK5rBomQ58D8lsTEABhZXKTaI25WYiLCj-ByHWhM"/>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full">
+<span class="text-primary font-bold">$14.00</span>
+</div>
+</div>
+<div class="p-lg">
+<h4 class="font-headline-md text-headline-md mb-2">Tostada de Aguacate</h4>
+<p class="text-stone-500 font-body-md mb-lg">Pan de masa madre, aguacate hass y huevo poché con sal volcánica.</p>
+<button class="w-full py-md border border-primary-container text-primary font-label-md rounded-lg hover:bg-primary-container hover:text-white transition-colors">Agregar al Pedido</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Special Offers Banner -->
+<section class="py-xl bg-surface-container">
+<div class="container mx-auto px-8">
+<div class="bg-primary-container rounded-3xl p-xl flex flex-col md:flex-row items-center justify-between gap-xl relative overflow-hidden shadow-2xl">
+<!-- Abstract Shape Background -->
+<div class="absolute top-0 right-0 w-1/2 h-full bg-black/5 -skew-x-12 translate-x-1/4"></div>
+<div class="relative z-10 md:max-w-xl text-white">
+<div class="inline-block bg-white/20 backdrop-blur rounded-full px-4 py-1 mb-md">
+<span class="font-label-sm uppercase tracking-tighter">Oferta de Temporada</span>
+</div>
+<h2 class="font-headline-display text-headline-lg mb-md leading-tight">2x1 en Mixología de Autor</h2>
+<p class="font-body-lg opacity-90 mb-xl">Todos los jueves de 18:00 a 21:00 en nuestra terraza. Celebra el sabor con nuestra selección premium.</p>
+<button class="bg-white text-primary font-label-md px-xl py-md rounded-lg shadow-lg hover:bg-primary-fixed transition-colors">Reservar Mesa</button>
+</div>
+<div class="relative z-10 w-full md:w-80 h-80 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/20 transform rotate-3">
+<img class="w-full h-full object-cover" data-alt="vibrant tropical cocktails with fresh fruit garnishes, colorful layers, and condensation on the glass against a warm blurred background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPswChZFhmumFLIUMuXFtPt7gv6ISBYe1uYBREC41PUki_2xofbHFu2PCWVzHeSc0o4apq_vxN77riC29JZ93PVyaSMJ-dX2ZC9Fwnbszum5CYCbINQx158GX4XFfrAis27a33_DmUw7ZACiiOPnd3Q3y8yzqi9No2H1IexXHvG2E0O0h2O52NezHW49kKAwP-H7xcBqfLMd_LR8d5iQaUORwWpP6Bem5GTtkekyb3b4DAiBx1H7UGKINZwzZ5YKr2VzywaGSbvlM"/>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-stone-100 dark:bg-stone-950 w-full py-12 px-8 flex flex-col md:flex-row justify-between items-center gap-4 border-t border-stone-200 dark:border-stone-800">
+<div class="flex flex-col gap-2">
+<span class="font-serif font-bold text-stone-900 text-xl">BistroFlow</span>
+<p class="font-sans text-sm text-stone-500">© 2024 BistroFlow Hospitality Systems</p>
+</div>
+<nav class="flex flex-wrap justify-center gap-8">
+<a class="text-stone-500 dark:text-stone-400 hover:text-stone-700 font-sans text-sm transition-opacity duration-300" href="#">Privacy Policy</a>
+<a class="text-stone-500 dark:text-stone-400 hover:text-stone-700 font-sans text-sm transition-opacity duration-300" href="#">Terms of Service</a>
+<a class="text-stone-500 dark:text-stone-400 hover:text-stone-700 font-sans text-sm transition-opacity duration-300" href="#">Contact Us</a>
+<a class="text-stone-500 dark:text-stone-400 hover:text-stone-700 font-sans text-sm transition-opacity duration-300" href="#">Join the Team</a>
+</nav>
+<div class="flex gap-4">
+<button class="material-symbols-outlined text-stone-600" data-icon="language">language</button>
+<span class="font-sans text-sm text-stone-600">ES</span>
+</div>
+</footer>
+</body></html>

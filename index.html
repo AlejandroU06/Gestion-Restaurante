@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>BistroFlow - Página de Inicio</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#fff8f3",
+                        "primary": "#9f3e07",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#dec0b5",
+                        "error-container": "#ffdad6",
+                        "primary-fixed": "#ffdbcd",
+                        "surface-container-high": "#eee7e1",
+                        "outline": "#8a7268",
+                        "on-secondary-fixed": "#171e00",
+                        "error": "#ba1a1a",
+                        "surface-container": "#f4ede6",
+                        "on-tertiary-container": "#fffeff",
+                        "surface-bright": "#fff8f3",
+                        "on-primary-fixed-variant": "#7d2d00",
+                        "surface-dim": "#e0d9d3",
+                        "on-surface-variant": "#57423a",
+                        "surface-container-low": "#faf2ec",
+                        "surface-container-highest": "#e8e1db",
+                        "on-surface": "#1e1b17",
+                        "secondary-fixed": "#dbe9a9",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#f7efe9",
+                        "secondary-fixed-dim": "#bfcd8f",
+                        "on-primary-fixed": "#360f00",
+                        "on-secondary-fixed-variant": "#404b1b",
+                        "surface": "#fff8f3",
+                        "tertiary-fixed-dim": "#c7c7bc",
+                        "on-tertiary-fixed-variant": "#46473f",
+                        "tertiary-container": "#76766d",
+                        "secondary": "#586330",
+                        "tertiary-fixed": "#e4e3d7",
+                        "inverse-primary": "#ffb596",
+                        "on-primary-container": "#fffeff",
+                        "primary-container": "#c05621",
+                        "on-secondary-container": "#5c6834",
+                        "on-background": "#1e1b17",
+                        "surface-variant": "#e8e1db",
+                        "on-secondary-fixed-variant": "#404b1b",
+                        "secondary-container": "#d8e6a6",
+                        "inverse-surface": "#33302c",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#ffb596",
+                        "surface-tint": "#a14009",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#1b1c15"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "40px",
+                        "margin": "32px",
+                        "unit": "4px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "gutter": "24px",
+                        "sm": "8px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": [
+                            "Noto Serif"
+                        ],
+                        "label-sm": [
+                            "Plus Jakarta Sans"
+                        ],
+                        "headline-md": [
+                            "Noto Serif"
+                        ],
+                        "body-md": [
+                            "Plus Jakarta Sans"
+                        ],
+                        "headline-display": [
+                            "Noto Serif"
+                        ],
+                        "label-md": [
+                            "Plus Jakarta Sans"
+                        ],
+                        "body-lg": [
+                            "Plus Jakarta Sans"
+                        ]
+                    },
+                    "fontSize": {
+                        "headline-lg": [
+                            "32px",
+                            {
+                                "lineHeight": "1.3",
+                                "fontWeight": "600"
+                            }
+                        ],
+                        "label-sm": [
+                            "12px",
+                            {
+                                "lineHeight": "1.2",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "700"
+                            }
+                        ],
+                        "headline-md": [
+                            "24px",
+                            {
+                                "lineHeight": "1.4",
+                                "fontWeight": "600"
+                            }
+                        ],
+                        "body-md": [
+                            "16px",
+                            {
+                                "lineHeight": "1.6",
+                                "fontWeight": "400"
+                            }
+                        ],
+                        "headline-display": [
+                            "48px",
+                            {
+                                "lineHeight": "1.2",
+                                "fontWeight": "700"
+                            }
+                        ],
+                        "label-md": [
+                            "14px",
+                            {
+                                "lineHeight": "1.2",
+                                "letterSpacing": "0.02em",
+                                "fontWeight": "600"
+                            }
+                        ],
+                        "body-lg": [
+                            "18px",
+                            {
+                                "lineHeight": "1.6",
+                                "fontWeight": "400"
+                            }
+                        ]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+    <!-- TopAppBar -->
+    <header
+        class="flex justify-between items-center w-full px-8 py-3 sticky top-0 z-50 backdrop-blur-sm bg-[#FDFCF0] dark:bg-stone-950 font-serif text-stone-900 dark:text-stone-100 docked full-width top-0 border-b border-stone-200 dark:border-stone-800 shadow-sm">
+        <div class="flex items-center gap-lg">
+            <span class="text-2xl font-bold text-[#C05621] font-serif">BistroFlow</span>
+            <nav class="hidden md:flex gap-md">
+                <a class="text-stone-600 dark:text-stone-400 hover:text-[#C05621] hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors px-sm py-xs rounded"
+                    href="index.html">Inicio</a>
+                <a class="text-stone-600 dark:text-stone-400 hover:text-[#C05621] hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors px-sm py-xs rounded"
+                    href="#">Menú</a>
+                <a class="text-stone-600 dark:text-stone-400 hover:text-[#C05621] hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors px-sm py-xs rounded"
+                    href="login/login.html">Ingresar</a>
+            </nav>
+        </div>
+        <div class="flex items-center gap-md">
+            <div class="hidden md:flex gap-sm">
+                <span
+                    class="material-symbols-outlined text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors p-xs rounded cursor-pointer">shopping_cart</span>
+                <span
+                    class="material-symbols-outlined text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors p-xs rounded cursor-pointer">notifications</span>
+            </div>
+            <button onclick="window.location.href='login/login.html'"
+                class="text-[#C05621] dark:text-orange-400 font-label-md text-label-md hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors px-sm py-xs rounded">Ingresar</button>
+            <button onclick="window.location.href='login/registro.html'"
+                class="bg-[#C05621] text-white px-md py-sm rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity">Registrarse</button>
+            <img alt="User profile" class="w-8 h-8 rounded-full ml-sm object-cover hidden md:block"
+                data-alt="Close up portrait of a young professional woman with natural lighting and soft background focus"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzj2Cghna4wYGw1MmDaBc_24cYbSvtyEhR3YFRygzdFVv20HLL0YhppoGN7sVVx_wD4ClpLCN4bpkmpfC5M_cbM4B4d4dTn8XlfwkXsBdjX2YQDNAEaoTnukcAj0M1L2AI5IgUU8Qy23MlIvPF0hhqyuVighNV0XTVEjBhpyq4UwSM5FecjsP4Fw9ud_E52o8ms0ETfcOd8un1qJDGvH3jc45ZcG1oFXhJiW_zO1hQYJg1DC4SQqCF-5znu0DglJVBlcm7C3bxt3A" />
+        </div>
+    </header>
+    <!-- Main Content -->
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section class="relative w-full h-[819px] flex items-center justify-center overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <img alt="Hero Background" class="w-full h-full object-cover"
+                    data-alt="Elegant fine dining restaurant interior with warm ambient lighting, set tables, and a blurred background of a busy open kitchen"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLKP5f9mUOAEgV3-Y5Bta-vvM0V93WFiYxxpThEGjFsiWkI6YolBEz89uNSuvBGMizN7zWdsGY318WeS4n-BR0MH3w5PbdCNvqLD2yS7_m5hYpNcEEXZD3-fuwR0_kJzN19oZuiaPCPFs7uIqtOzjKp_87BnsPujXUUgh6wJvtTMc0H6BvsecGWdYRwAfK0PQIT69X6VPiWjUnrJP2yIezQMmpvWeITIXqEtCO7EkLYo_S-ZmXqvE4I721EL8oAsabmTkvByG-NlI" />
+                <div class="absolute inset-0 bg-gradient-to-r from-surface/90 to-surface/40"></div>
+            </div>
+            <div class="relative z-10 container mx-auto px-margin flex flex-col md:flex-row items-center gap-xl">
+                <div class="max-w-2xl">
+                    <h1 class="font-headline-display text-headline-display text-on-surface mb-md">Experimenta la
+                        Excelencia Culinaria con BistroFlow</h1>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant mb-lg">Te espera una experiencia
+                        gastronómica refinada. Reserva tu mesa, explora nuestro menú de temporada y descubre el arte de
+                        la hospitalidad.</p>
+                    <div class="flex gap-md">
+                        <button
+                            class="bg-primary text-on-primary px-lg py-sm rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity shadow-md">Reservar
+                            una Mesa</button>
+                        <button
+                            class="border border-secondary text-secondary px-lg py-sm rounded-lg font-label-md text-label-md hover:bg-secondary-container transition-colors">Explorar
+                            Menú</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Menu Preview Bento Grid -->
+        <section class="py-xl container mx-auto px-margin">
+            <h2 class="font-headline-lg text-headline-lg text-center text-on-surface mb-lg">Destacados de Temporada</h2>
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+                <!-- Large Item -->
+                <div
+                    class="md:col-span-8 bg-[#FDFCF0] rounded-xl p-md shadow-sm border border-surface-variant flex flex-col md:flex-row gap-md hover:shadow-md transition-shadow">
+                    <img alt="Signature Dish" class="w-full md:w-1/2 h-64 object-cover rounded-lg shadow-inner"
+                        data-alt="Plated gourmet steak with roasted vegetables and red wine reduction on a dark ceramic plate, warm spotlight lighting"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiXHr-sfnR7nEehFMZkKmk5GJTGDp4wIHJ4Lnq8Y4iyXhY5zFHeZyNvHNHrysq1K_51PPQ202bFNjBDHyFK1BPDIsRXplLW9DyItAV2XdaodkNJMaI-f2UxbF8LAwseQ5z51SAVlDvtKPu7P3fg0Bdcaywn6SoRphJc9DEMN3q7pyYso_h4_3HNwQYPcJ2rLV0bNtHfvlI1bTzQqT52w69i4OFT6ptlM9t7oXm9CvvPoP08yoXmYSkuy3sYVaI3lNG7kVZ4-M-oUQ" />
+                    <div class="flex flex-col justify-center">
+                        <div class="flex justify-between items-start mb-sm">
+                            <h3 class="font-headline-md text-headline-md text-on-surface">Ojo de Bife Wagyu</h3>
+                            <span class="font-label-md text-label-md text-primary">$85</span>
+                        </div>
+                        <p class="font-body-md text-body-md text-on-surface-variant mb-md">Añejado en seco durante 45
+                            días, servido con puré de papas trufado, espárragos asados y demi-glace de tuétano.</p>
+                        <div class="mt-auto flex gap-sm">
+                            <span
+                                class="bg-primary-container/15 text-primary px-sm py-xs rounded text-xs font-semibold">De
+                                Autor</span>
+                            <span
+                                class="bg-secondary-container/30 text-secondary px-sm py-xs rounded text-xs font-semibold">Sin
+                                Gluten</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Small Item 1 -->
+                <div
+                    class="md:col-span-4 bg-[#FDFCF0] rounded-xl p-md shadow-sm border border-surface-variant hover:shadow-md transition-shadow flex flex-col">
+                    <img alt="Appetizer" class="w-full h-40 object-cover rounded-lg shadow-inner mb-sm"
+                        data-alt="Fresh burrata salad with colorful heirloom tomatoes, basil leaves, and balsamic glaze drizzle on a rustic plate"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjI5txKFoodrdZDDbkrUuUgHlYbJ5dbAMxeRh2Kufd_F8WtGHo3fGXz-ePxQjR_iAackow83ijGlYyKg6_j-TMSygn2_2A_n58C2eHsAyZ9c-jbVCHkR0WPhi8Iy1EjFl56BczDzvBiUSHocfMtPloMqFY6jKNnptMlc7Es2ZMEstS6yllzL6JWnacx6cwU3XvtlFlnx_6mowwJ7U3thCUmJvkbO9dwzmZ4LkmMHr1kmvn0nooSu8TB57Js8rWHDGb-0LZgBnn9WU" />
+                    <div class="flex justify-between items-start mb-xs">
+                        <h3 class="font-headline-md text-headline-md text-on-surface text-lg">Burrata Heirloom</h3>
+                        <span class="font-label-md text-label-md text-primary">$22</span>
+                    </div>
+                    <p class="font-body-md text-body-md text-on-surface-variant text-sm mb-sm">Perlas balsámicas, micro
+                        albahaca, piñones tostados.</p>
+                </div>
+                <!-- Small Item 2 -->
+                <div
+                    class="md:col-span-4 bg-[#FDFCF0] rounded-xl p-md shadow-sm border border-surface-variant hover:shadow-md transition-shadow flex flex-col">
+                    <img alt="Seafood" class="w-full h-40 object-cover rounded-lg shadow-inner mb-sm"
+                        data-alt="Pan seared scallops with bright green pea puree and crispy pancetta bits, fine dining presentation"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiomrvQpxatRaJDBrvW__B7Yajt17ufMM6PVtaTLpHZ9O0WLBb-Cy8G2fcjWVPEYNu_WddO6XijWFdP8BVFq7FOsTJB157mlN3lyzmKWKpTAf9W9vFzUp1BSet404oWrunLHE-DJeZ_X4zHyI-sqaJ6qPUQAYyiJRpk9TexEka7Ur0jYf7HyfixIL3JzcbXEyw-r2FLrdk4ZaQIfM4_al16oOprfrv2bG7-xedyDYFBlQnSVSNR8IAUnJfyJJna1de2-OzCBJB72Y" />
+                    <div class="flex justify-between items-start mb-xs">
+                        <h3 class="font-headline-md text-headline-md text-on-surface text-lg">Vieiras</h3>
+                        <span class="font-label-md text-label-md text-primary">$34</span>
+                    </div>
+                    <p class="font-body-md text-body-md text-on-surface-variant text-sm mb-sm">Puré de maíz dulce, migas
+                        de chorizo, aceite de cilantro.</p>
+                </div>
+                <!-- Small Item 3 -->
+                <div
+                    class="md:col-span-4 bg-[#FDFCF0] rounded-xl p-md shadow-sm border border-surface-variant hover:shadow-md transition-shadow flex flex-col justify-center items-center text-center p-lg">
+                    <span class="material-symbols-outlined text-4xl text-primary mb-sm">restaurant_menu</span>
+                    <h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Menú Completo</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant text-sm mb-md">Explora nuestras ofertas
+                        completas, desde delicados entrantes hasta postres decadentes.</p>
+                    <button
+                        class="border border-secondary text-secondary px-md py-sm rounded-lg font-label-md text-label-md hover:bg-secondary-container transition-colors w-full">Ver
+                        Todo</button>
+                </div>
+            </div>
+        </section>
+        <!-- Register / Client Section -->
+        <section class="bg-surface-container-low py-xl border-y border-surface-variant">
+            <div class="container mx-auto px-margin max-w-4xl">
+                <div
+                    class="bg-[#FDFCF0] rounded-xl p-lg shadow-md border border-surface-variant flex flex-col md:flex-row items-center gap-lg">
+                    <div class="md:w-1/2">
+                        <h2 class="font-headline-lg text-headline-lg text-on-surface mb-sm">Únete a la Familia
+                            BistroFlow</h2>
+                        <p class="font-body-lg text-body-lg text-on-surface-variant mb-md">Regístrate como Cliente para
+                            desbloquear reservas sin problemas, recomendaciones de menú personalizadas y acceso
+                            exclusivo a eventos en la mesa del chef.</p>
+                        <ul class="space-y-sm mb-lg">
+                            <li class="flex items-center gap-sm font-body-md text-on-surface"><span
+                                    class="material-symbols-outlined text-primary text-sm">check_circle</span> Reserva
+                                Prioritaria</li>
+                            <li class="flex items-center gap-sm font-body-md text-on-surface"><span
+                                    class="material-symbols-outlined text-primary text-sm">check_circle</span>
+                                Seguimiento de Preferencias Dietéticas</li>
+                            <li class="flex items-center gap-sm font-body-md text-on-surface"><span
+                                    class="material-symbols-outlined text-primary text-sm">check_circle</span>
+                                Invitaciones a Eventos</li>
+                        </ul>
+                    </div>
+                    <div class="md:w-1/2 w-full">
+                        <form class="flex flex-col gap-md">
+                            <div>
+                                <label
+                                    class="block font-label-sm text-label-sm text-on-surface-variant mb-xs uppercase tracking-wider">Nombre
+                                    Completo</label>
+                                <input
+                                    class="w-full border-b border-surface-variant bg-transparent pb-xs focus:outline-none focus:border-primary text-on-surface font-body-md"
+                                    placeholder="ej. Juan Pérez" type="text" />
+                            </div>
+                            <div>
+                                <label
+                                    class="block font-label-sm text-label-sm text-on-surface-variant mb-xs uppercase tracking-wider">Correo
+                                    Electrónico</label>
+                                <input
+                                    class="w-full border-b border-surface-variant bg-transparent pb-xs focus:outline-none focus:border-primary text-on-surface font-body-md"
+                                    placeholder="juan@ejemplo.com" type="email" />
+                            </div>
+                            <button onclick="window.location.href='login/registro.html'"
+                                class="bg-primary text-on-primary px-md py-sm rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity mt-sm shadow-sm w-full"
+                                type="button">Crear Cuenta</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer
+        class="w-full py-12 px-8 flex flex-col md:flex-row justify-between items-center gap-4 bg-stone-100 dark:bg-stone-950 font-sans text-sm border-t border-stone-200 dark:border-stone-800 text-stone-800 dark:text-stone-200">
+        <div class="font-serif font-bold text-stone-900 dark:text-stone-100 text-lg">
+            BistroFlow
+        </div>
+        <div class="flex gap-md flex-wrap justify-center">
+            <a class="text-stone-500 dark:text-stone-400 hover:text-stone-700 hover:underline transition-opacity duration-300"
+                href="#">Política de Privacidad</a>
+            <a class="text-stone-500 dark:text-stone-400 hover:text-stone-700 hover:underline transition-opacity duration-300"
+                href="#">Términos de Servicio</a>
+            <a class="text-stone-500 dark:text-stone-400 hover:text-stone-700 hover:underline transition-opacity duration-300"
+                href="#">Contáctanos</a>
+            <a class="text-stone-500 dark:text-stone-400 hover:text-stone-700 hover:underline transition-opacity duration-300"
+                href="#">Únete al Equipo</a>
+        </div>
+        <div class="text-stone-500 dark:text-stone-400 text-xs">
+            © 2024 Sistemas de Hospitalidad BistroFlow
+        </div>
+    </footer>
+</body>
+
+</html>

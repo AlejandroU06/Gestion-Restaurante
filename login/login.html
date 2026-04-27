@@ -273,6 +273,45 @@
                         </div>
                 </section>
         </main>
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+        <script>
+                const SUPABASE_URL = 'https://mfylvijpbibacmpfwynv.supabase.co';
+                const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1meWx2aWpwYmliYWNtcGZ3eW52Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcyODk2ODgsImV4cCI6MjA5Mjg2NTY4OH0.KqXfisr_OATVcnwnPBcJFNR9jFm3MUDLQOYKC1puHNI';
+                const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+                document.querySelector('form').addEventListener('submit', async (e) => {
+                        e.preventDefault();
+
+                        const email = document.getElementById('email').value;
+                        const password = document.getElementById('password').value;
+
+                        try {
+                                const { data, error } = await _supabase
+                                        .from('cliente')
+                                        .select('*')
+                                        .eq('email', email)
+                                        .eq('contraseña', password)
+                                        .maybeSingle();
+
+                                if (error) throw error;
+
+                                if (!data) {
+                                        alert('Correo o contraseña incorrectos');
+                                        return;
+                                }
+
+                                // Guardar sesión básica en localStorage
+                                localStorage.setItem('user', JSON.stringify(data));
+
+                                alert('¡Bienvenido, ' + data.nombre + '!');
+                                // Redirigir a la página de home_cliente
+                                window.location.href = '../Cliente/home_cliente/code.html';
+                        } catch (error) {
+                                console.error('Error:', error.message);
+                                alert('Error al iniciar sesión: ' + error.message);
+                        }
+                });
+        </script>
 </body>
 
 </html>

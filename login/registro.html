@@ -209,6 +209,18 @@
                                 class="material-symbols-outlined absolute left-0 top-1/2 -translate-y-1/2 text-outline text-[20px]">call</span>
                         </div>
                     </div>
+                    <!-- Password -->
+                    <div class="flex flex-col space-y-xs">
+                        <label class="font-label-md text-label-md text-on-surface-variant"
+                            for="password">Contraseña</label>
+                        <div class="relative">
+                            <input
+                                class="w-full py-sm px-0 border-b-2 border-outline-variant bg-transparent focus:border-primary focus:ring-0 transition-colors placeholder:text-surface-dim font-body-md pl-8"
+                                id="password" placeholder="••••••••" type="password" required />
+                            <span
+                                class="material-symbols-outlined absolute left-0 top-1/2 -translate-y-1/2 text-outline text-[20px]">lock</span>
+                        </div>
+                    </div>
                     <!-- Submit Button -->
                     <div class="pt-md">
                         <button
@@ -274,6 +286,44 @@
         <div class="text-xl font-bold font-serif text-[#C05621]">BistroReserve</div>
         <div class="text-stone-500 font-serif">Help</div>
     </header>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const SUPABASE_URL = 'https://mfylvijpbibacmpfwynv.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1meWx2aWpwYmliYWNtcGZ3eW52Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcyODk2ODgsImV4cCI6MjA5Mjg2NTY4OH0.KqXfisr_OATVcnwnPBcJFNR9jFm3MUDLQOYKC1puHNI';
+        const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        document.querySelector('form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const firstName = document.getElementById('first-name').value;
+            const lastName = document.getElementById('last-name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const { data, error } = await _supabase
+                    .from('cliente')
+                    .insert([
+                        {
+                            nombre: firstName,
+                            apellido: lastName,
+                            email: email,
+                            telefono: phone,
+                            contraseña: password
+                        }
+                    ]);
+
+                if (error) throw error;
+
+                alert('¡Registro exitoso!');
+                window.location.href = 'login.html';
+            } catch (error) {
+                console.error('Error:', error.message);
+                alert('Error al registrar: ' + error.message);
+            }
+        });
+    </script>
 </body>
 
 </html>
