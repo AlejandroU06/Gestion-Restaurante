@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BistroFlow - Punto de Venta</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#fff8f3",
+                        "primary": "#9f3e07",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#dec0b5",
+                        "error-container": "#ffdad6",
+                        "primary-fixed": "#ffdbcd",
+                        "surface-container-high": "#eee7e1",
+                        "outline": "#8a7268",
+                        "on-secondary-fixed": "#171e00",
+                        "error": "#ba1a1a",
+                        "surface-container": "#f4ede6",
+                        "on-tertiary-container": "#fffeff",
+                        "surface-bright": "#fff8f3",
+                        "on-primary-fixed-variant": "#7d2d00",
+                        "tertiary": "#5d5e55",
+                        "on-error-container": "#93000a",
+                        "on-surface-variant": "#57423a",
+                        "surface-container-low": "#faf2ec",
+                        "surface-container-highest": "#e8e1db",
+                        "on-surface": "#1e1b17",
+                        "secondary-fixed": "#dbe9a9",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#f7efe9",
+                        "secondary-fixed-dim": "#bfcd8f",
+                        "on-primary-fixed": "#360f00",
+                        "on-secondary-fixed-variant": "#404b1b",
+                        "surface": "#fff8f3",
+                        "tertiary-fixed-dim": "#c7c7bc",
+                        "on-tertiary-fixed-variant": "#46473f",
+                        "tertiary-container": "#76766d",
+                        "secondary": "#586330",
+                        "tertiary-fixed": "#e4e3d7",
+                        "inverse-primary": "#ffb596",
+                        "on-primary-container": "#fffeff",
+                        "primary-container": "#c05621",
+                        "on-secondary-container": "#5c6834",
+                        "on-background": "#1e1b17",
+                        "surface-variant": "#e8e1db",
+                        "surface-dim": "#e0d9d3",
+                        "secondary-container": "#d8e6a6",
+                        "inverse-surface": "#33302c",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#ffb596",
+                        "surface-tint": "#a14009",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#1b1c15"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "40px",
+                        "margin": "32px",
+                        "unit": "4px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "gutter": "24px",
+                        "sm": "8px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Noto Serif"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-md": ["Noto Serif"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-display": ["Noto Serif"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-display": ["48px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .shadow-level-1 { box-shadow: 0 4px 20px rgba(45, 42, 38, 0.05); }
+        .shadow-level-2 { box-shadow: 0 12px 40px rgba(45, 42, 38, 0.12); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md antialiased flex">
+<!-- SideNavBar (Shared Component) -->
+<nav class="flex flex-col h-full fixed left-0 top-0 py-6 h-screen w-64 border-r border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-900 font-serif font-medium z-50">
+<!-- Header -->
+<div class="px-6 mb-8 flex flex-col gap-2">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-stone-200 flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-stone-500" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+</div>
+<div class="flex flex-col">
+<span class="text-lg font-bold text-stone-800 dark:text-stone-200 leading-tight">Gestión de Bistro</span>
+<span class="text-sm text-stone-500">Portal de Administración</span>
+</div>
+</div>
+<button class="mt-4 w-full bg-[#C05621] text-white py-2 px-4 rounded-lg flex items-center justify-center gap-2 hover:bg-opacity-90 transition-opacity shadow-sm">
+<span class="material-symbols-outlined">add</span>
+<span class="font-sans text-sm font-semibold">Nuevo Pedido</span>
+</button>
+</div>
+<!-- Main Navigation Tabs -->
+<ul class="flex flex-col flex-1 px-3 gap-1">
+<!-- Ventas (Active Tab) -->
+<li>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#C05621] bg-orange-50 dark:bg-orange-900/20 font-bold border-r-4 border-[#C05621] translate-x-1 group" href="#">
+<span class="material-symbols-outlined text-[#C05621]" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<span class="font-sans text-sm">Ventas</span>
+</a>
+</li>
+<!-- Facturación -->
+<li>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-[#C05621] transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:text-[#C05621] transition-colors">description</span>
+<span class="font-sans text-sm">Facturación</span>
+</a>
+</li>
+<!-- Historial -->
+<li>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-[#C05621] transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:text-[#C05621] transition-colors">history</span>
+<span class="font-sans text-sm">Historial</span>
+</a>
+</li>
+</ul>
+<!-- Footer Tabs -->
+<div class="px-3 mt-auto flex flex-col gap-1 border-t border-stone-200 dark:border-stone-800 pt-4">
+<li>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-[#C05621] transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:text-[#C05621] transition-colors">settings</span>
+<span class="font-sans text-sm">Configuración</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-[#C05621] transition-all duration-200 group" href="#">
+<span class="material-symbols-outlined group-hover:text-[#C05621] transition-colors">help_outline</span>
+<span class="font-sans text-sm">Soporte</span>
+</a>
+</li>
+</div>
+</nav>
+<!-- Main Canvas -->
+<main class="ml-64 flex-1 flex flex-col min-h-screen bg-background">
+<!-- POS Header Tool Bar -->
+<header class="px-lg py-md flex items-center justify-between border-b border-surface-variant bg-surface-bright sticky top-0 z-40 shadow-sm">
+<div class="flex items-center gap-6">
+<h1 class="font-headline-md text-headline-md text-on-background">Consola de Ventas</h1>
+<div class="flex bg-surface-container-low rounded-lg p-1 border border-outline-variant">
+<button class="px-4 py-1.5 rounded-md bg-surface-container-lowest text-primary font-label-md text-label-md shadow-sm">Ventas</button>
+<button class="px-4 py-1.5 rounded-md text-on-surface-variant hover:text-primary font-label-md text-label-md transition-colors">Facturación</button>
+<button class="px-4 py-1.5 rounded-md text-on-surface-variant hover:text-primary font-label-md text-label-md transition-colors">Historial</button>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="pl-10 pr-4 py-2 rounded-lg bg-surface-container border-none focus:ring-2 focus:ring-primary-container text-body-md font-body-md w-64 placeholder-outline" placeholder="Buscar menú o # de pedido..." type="text"/>
+</div>
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-outline-variant text-on-surface">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">wifi</span>
+<span class="font-label-sm text-label-sm uppercase text-secondary">En línea</span>
+</div>
+</div>
+</header>
+<!-- POS Interface Container -->
+<div class="flex-1 p-lg grid grid-cols-12 gap-gutter overflow-hidden h-[calc(100vh-80px)]">
+<!-- Left Pane: Menu Quick Select -->
+<section class="col-span-8 flex flex-col h-full bg-surface-container-lowest rounded-xl shadow-level-1 border border-surface-variant overflow-hidden">
+<!-- Category Tabs -->
+<div class="flex items-center gap-2 p-md border-b border-surface-variant bg-surface-container-low overflow-x-auto no-scrollbar">
+<button class="px-4 py-2 rounded-lg bg-primary text-on-primary font-label-md text-label-md whitespace-nowrap shadow-sm">Todos</button>
+<button class="px-4 py-2 rounded-lg bg-surface-container text-on-surface hover:bg-primary-container hover:text-on-primary-container transition-colors font-label-md text-label-md border border-outline-variant whitespace-nowrap">Entradas</button>
+<button class="px-4 py-2 rounded-lg bg-surface-container text-on-surface hover:bg-primary-container hover:text-on-primary-container transition-colors font-label-md text-label-md border border-outline-variant whitespace-nowrap">Platos Principales</button>
+<button class="px-4 py-2 rounded-lg bg-surface-container text-on-surface hover:bg-primary-container hover:text-on-primary-container transition-colors font-label-md text-label-md border border-outline-variant whitespace-nowrap">Postres</button>
+<button class="px-4 py-2 rounded-lg bg-surface-container text-on-surface hover:bg-primary-container hover:text-on-primary-container transition-colors font-label-md text-label-md border border-outline-variant whitespace-nowrap">Bebidas</button>
+<button class="px-4 py-2 rounded-lg bg-surface-container text-on-surface hover:bg-primary-container hover:text-on-primary-container transition-colors font-label-md text-label-md border border-outline-variant whitespace-nowrap">Lista de Vinos</button>
+</div>
+<!-- Product Grid -->
+<div class="flex-1 p-md overflow-y-auto grid grid-cols-3 gap-md content-start bg-[#FDFCF0]">
+<!-- Product Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl border border-surface-variant p-2 cursor-pointer hover:border-primary hover:shadow-md transition-all group flex flex-col gap-2">
+<div class="aspect-[4/3] rounded-lg overflow-hidden bg-surface-container shadow-inner">
+<img alt="Rustic sourdough bread slices on dark slate with small bowl of olive oil" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Rustic sourdough bread slices on dark slate with small bowl of olive oil in warm bistro lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAe34lIOIO0nTdhXQD6hyjcwUdMZyinxNQCtLb_KH4Wh624-Cbcg8fPDA-WCANKaSNcWHNBx_J7j4cMMf4XaqH7RSv3wP8iocTWl6R2NLopof9WLlXu3NIObfPP4g89EpTFRofxzwo6dFU6g0Lerz4Ch2xjWQM2sFGOZqMp4P9W93Wvh0_q6qBNIvkvMipsy1l7LkLdaHQtTgz8NEwpUdJFOUDzFe8xf9Gc_KCJd9bW6e6R3pDvM4qqSOlEreKdJq6BRyqZRNPn5AE"/>
+</div>
+<div class="px-1 flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface line-clamp-2 leading-tight">Masa Madre Artesanal</span>
+<span class="font-label-md text-label-md text-primary">$8.00</span>
+</div>
+</div>
+<!-- Product Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl border border-surface-variant p-2 cursor-pointer hover:border-primary hover:shadow-md transition-all group flex flex-col gap-2">
+<div class="aspect-[4/3] rounded-lg overflow-hidden bg-surface-container shadow-inner">
+<img alt="Pan-seared scallops on vibrant green pea purée with crispy pancetta" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Pan-seared scallops on vibrant green pea purée with crispy pancetta top-down elegant plating" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCs2r_KzWKIRNKB8Hs3z39iNSSquaGBgIMnd3gNc8PigyXC2Mve-ShlcqtJI_MyLSGcilAfSj2uG_TxiblaNVP4IEEolDsSuhm3oZNzU4TSn3sSVMI6XXbuL2dtIBYIW8I6Zsx5Tte0WY-epckfPk5pN7g22CQs8CsZTnWUddgav-pWJErpFTH1MoDKv8HDF-2vO3kjwQBhyf4GU-7QK3aVzRHgm8ymMx1JGAqmGWHUP_6eKvekfAIOBgv4AtRWD3N0b00ar_nciuo"/>
+</div>
+<div class="px-1 flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface line-clamp-2 leading-tight">Vieiras Selladas</span>
+<span class="font-label-md text-label-md text-primary">$24.00</span>
+</div>
+</div>
+<!-- Product Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl border border-surface-variant p-2 cursor-pointer hover:border-primary hover:shadow-md transition-all group flex flex-col gap-2 relative">
+<div class="absolute top-4 left-4 bg-primary-container text-on-primary-container px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider z-10 opacity-90">Popular</div>
+<div class="aspect-[4/3] rounded-lg overflow-hidden bg-surface-container shadow-inner">
+<img alt="Thick cut ribeye steak grilled medium rare with roasted fingerling potatoes" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Thick cut ribeye steak grilled medium rare with roasted fingerling potatoes warm rustic restaurant setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBosTaf3Jwti0Ic3jU7q1CYeq5JxgKoY1g_qkOG0ErRiIRKz7D0TVDMq4_9R1iPg68ecUBp2ZtFUjNh3MZIXlRGtVafTd_ohfX6IhMs2KxM3Al8NtBKjOsScC0awglci6wOyXJ2q_LLvdCrwAhTNQP13B_Nk0tmDv3VUMBzDeCEsiz8nRdh-yrb0tMfhl1UZpQ8G0nRqwqLytnB69mdA8mYb93NbZSC-NUTsI4tq9wQlLk-qmWjyczBQsSudun1eQDxvmT4eUoE3vM"/>
+</div>
+<div class="px-1 flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface line-clamp-2 leading-tight">Steak Frites</span>
+<span class="font-label-md text-label-md text-primary">$42.00</span>
+</div>
+</div>
+<!-- Product Card 4 -->
+<div class="bg-surface-container-lowest rounded-xl border border-surface-variant p-2 cursor-pointer hover:border-primary hover:shadow-md transition-all group flex flex-col gap-2">
+<div class="aspect-[4/3] rounded-lg overflow-hidden bg-surface-container shadow-inner flex items-center justify-center bg-surface-container-low">
+<!-- Placeholder for item without image -->
+<span class="material-symbols-outlined text-4xl text-outline-variant">local_bar</span>
+</div>
+<div class="px-1 flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface line-clamp-2 leading-tight">Copa de Vino Tinto</span>
+<span class="font-label-md text-label-md text-primary">$12.00</span>
+</div>
+</div>
+<!-- Product Card 5 -->
+<div class="bg-surface-container-lowest rounded-xl border border-surface-variant p-2 cursor-pointer hover:border-primary hover:shadow-md transition-all group flex flex-col gap-2">
+<div class="aspect-[4/3] rounded-lg overflow-hidden bg-surface-container shadow-inner">
+<img alt="Classic espresso martini in coupe glass with three coffee beans" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Classic espresso martini in coupe glass with three coffee beans dark moody lighting bar top" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6ME6OMbA136ua6kGzO-xAuj9Kyxpa9EXAZeWQOKb26STOqwn3EZV88Y1quRzQy5AsBwGocht-_SG2-ekB12-JTRbD9VgvUO4nk9LtIBIagcqI_c8Cuwih5QO5bWyXycSi9Tdzs3-x2gb4VjmaWUm1XQmtc-G6wh5pKdRqXSdE9p4ABhmQUeN2KghkOY5FoyQt43WzfTxrMIk_efIN4amQNM3tHQfz2kLIXVimR3L7O-h8C8P8itK00as0abRM60_NMP62NmozidY"/>
+</div>
+<div class="px-1 flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface line-clamp-2 leading-tight">Espresso Martini</span>
+<span class="font-label-md text-label-md text-primary">$16.00</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Pane: Active Ticket / Invoice -->
+<section class="col-span-4 flex flex-col h-full bg-surface-container-lowest rounded-xl shadow-level-1 border border-surface-variant relative">
+<!-- Ticket Header -->
+<div class="p-md border-b border-surface-variant flex justify-between items-start bg-surface-container-low rounded-t-xl">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<h2 class="font-headline-md text-headline-md text-on-surface">Mesa 12</h2>
+<span class="bg-primary-container text-on-primary-container px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-widest opacity-80">En Restaurante</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline mt-1">Pedido #8492 • Mesera: Anna</span>
+</div>
+<button class="text-outline hover:text-error transition-colors p-1 rounded-full hover:bg-error-container">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<!-- Ticket Items List -->
+<div class="flex-1 overflow-y-auto p-md flex flex-col gap-3 bg-[#FDFCF0]">
+<!-- Item 1 -->
+<div class="flex justify-between items-start group">
+<div class="flex gap-3">
+<div class="flex flex-col items-center gap-1 border border-outline-variant rounded-md px-1 py-0.5 bg-surface-container-lowest h-fit">
+<span class="font-label-md text-label-md text-on-surface leading-none py-1">2</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-medium">Masa Madre Artesanal</span>
+<span class="font-label-sm text-label-sm text-outline mt-0.5">Opción sin gluten</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-body-md text-body-md text-on-surface font-medium">$16.00</span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex justify-between items-start group border-t border-surface-variant pt-3">
+<div class="flex gap-3">
+<div class="flex flex-col items-center gap-1 border border-outline-variant rounded-md px-1 py-0.5 bg-surface-container-lowest h-fit">
+<span class="font-label-md text-label-md text-on-surface leading-none py-1">1</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-body-md text-on-surface font-medium">Steak Frites</span>
+<span class="font-label-sm text-label-sm text-outline mt-0.5">Término Medio</span>
+<span class="font-label-sm text-label-sm text-outline">Cambio: Papas Trufadas (+$3)</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-body-md text-body-md text-on-surface font-medium">$45.00</span>
+</div>
+</div>
+</div>
+<!-- Totals & Actions Bottom Section -->
+<div class="border-t border-surface-variant bg-surface-container-lowest rounded-b-xl flex flex-col">
+<!-- Quick Numpad / Actions (Collapsible in real app, visible here for POS feel) -->
+<div class="grid grid-cols-4 gap-2 p-3 border-b border-surface-variant bg-surface-container-low">
+<button class="bg-surface-container-lowest border border-outline-variant rounded py-2 font-label-md text-on-surface hover:bg-surface-container transition-colors">Desc %</button>
+<button class="bg-surface-container-lowest border border-outline-variant rounded py-2 font-label-md text-on-surface hover:bg-surface-container transition-colors">Anular</button>
+<button class="bg-surface-container-lowest border border-outline-variant rounded py-2 font-label-md text-on-surface hover:bg-surface-container transition-colors">Dividir</button>
+<button class="bg-surface-container-lowest border border-outline-variant rounded py-2 font-label-md text-on-surface hover:bg-surface-container transition-colors">Nota</button>
+</div>
+<!-- Summary -->
+<div class="p-4 flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<span class="font-body-md text-body-md text-on-surface-variant">Subtotal</span>
+<span class="font-body-md text-body-md text-on-surface font-medium">$61.00</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body-md text-body-md text-on-surface-variant">Impuesto (8.5%)</span>
+<span class="font-body-md text-body-md text-on-surface font-medium">$5.19</span>
+</div>
+<div class="flex justify-between items-center mt-2 pt-2 border-t border-outline-variant border-dashed">
+<span class="font-headline-md text-headline-md text-on-surface">Total</span>
+<span class="font-headline-md text-headline-md text-primary">$66.19</span>
+</div>
+</div>
+<!-- Main Action -->
+<div class="p-4 pt-0">
+<button class="w-full bg-primary text-on-primary py-4 rounded-xl font-headline-md text-headline-md text-lg hover:bg-surface-tint shadow-md transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">receipt</span>
+                            Generar Factura
+                        </button>
+</div>
+</div>
+</section>
+</div>
+</main>
+</body></html>

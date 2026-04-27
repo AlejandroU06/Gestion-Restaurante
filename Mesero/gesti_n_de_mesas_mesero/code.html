@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BistroFlow - Mesas</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#fff8f3",
+                        "primary": "#9f3e07",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#dec0b5",
+                        "error-container": "#ffdad6",
+                        "primary-fixed": "#ffdbcd",
+                        "surface-container-high": "#eee7e1",
+                        "outline": "#8a7268",
+                        "on-secondary-fixed": "#171e00",
+                        "error": "#ba1a1a",
+                        "surface-container": "#f4ede6",
+                        "on-tertiary-container": "#fffeff",
+                        "surface-bright": "#fff8f3",
+                        "on-primary-fixed-variant": "#7d2d00",
+                        "tertiary": "#5d5e55",
+                        "on-error-container": "#93000a",
+                        "on-surface-variant": "#57423a",
+                        "surface-container-low": "#faf2ec",
+                        "surface-container-highest": "#e8e1db",
+                        "on-surface": "#1e1b17",
+                        "secondary-fixed": "#dbe9a9",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#f7efe9",
+                        "secondary-fixed-dim": "#bfcd8f",
+                        "on-primary-fixed": "#360f00",
+                        "on-secondary-fixed-variant": "#404b1b",
+                        "surface": "#fff8f3",
+                        "tertiary-fixed-dim": "#c7c7bc",
+                        "on-tertiary-fixed-variant": "#46473f",
+                        "tertiary-container": "#76766d",
+                        "secondary": "#586330",
+                        "tertiary-fixed": "#e4e3d7",
+                        "inverse-primary": "#ffb596",
+                        "on-primary-container": "#fffeff",
+                        "primary-container": "#c05621",
+                        "on-secondary-container": "#5c6834",
+                        "on-background": "#1e1b17",
+                        "surface-variant": "#e8e1db",
+                        "surface-dim": "#e0d9d3",
+                        "secondary-container": "#d8e6a6",
+                        "inverse-surface": "#33302c",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#ffb596",
+                        "surface-tint": "#a14009",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#1b1c15"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "40px",
+                        "margin": "32px",
+                        "unit": "4px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "gutter": "24px",
+                        "sm": "8px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Noto Serif"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-md": ["Noto Serif"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-display": ["Noto Serif"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-display": ["48px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .table-available { border: 2px solid theme('colors.secondary'); box-shadow: 0 0 10px rgba(88, 99, 48, 0.2); }
+        .table-occupied { border: 2px solid theme('colors.primary'); }
+        .table-reserved { border: 2px dashed theme('colors.outline'); }
+        .table-attention { border: 2px solid theme('colors.primary'); animation: pulse-shadow 2s infinite; }
+        @keyframes pulse-shadow {
+            0% { box-shadow: 0 0 0 0 rgba(159, 62, 7, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(159, 62, 7, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(159, 62, 7, 0); }
+        }
+        .modal-shadow { box-shadow: 0 12px 40px rgba(45, 42, 38, 0.12); }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen font-body-md text-body-md flex antialiased">
+<!-- SideNavBar (Shared Component) -->
+<aside class="bg-surface-container-lowest text-primary font-headline-md h-screen w-64 border-r border-outline-variant flex flex-col fixed left-0 top-0 py-6 z-40 hidden md:flex">
+<div class="px-lg pb-md">
+<h1 class="text-lg font-bold text-on-surface font-headline-lg">Gestión del Bistro</h1>
+<p class="text-sm text-on-surface-variant font-label-md">Portal de Administración</p>
+</div>
+<div class="px-md pb-md">
+<button class="w-full bg-primary text-on-primary py-sm px-md rounded-lg font-label-md hover:opacity-90 transition-opacity flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                Nuevo Pedido
+            </button>
+</div>
+<nav class="flex-1 px-sm space-y-xs overflow-y-auto">
+<!-- ACTIVE STATE -->
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-primary bg-primary-container/10 font-bold border-l-4 border-primary transition-all translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="table_restaurant" data-weight="fill" style="font-variation-settings: 'FILL' 1;">table_restaurant</span>
+<span class="font-label-md">Mesas</span>
+</a>
+</nav>
+<div class="px-sm mt-auto border-t border-outline-variant pt-md">
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md">Configuración</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-primary transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+<span class="font-label-md">Soporte</span>
+</a>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="flex-1 flex flex-col md:ml-64 w-full h-screen overflow-hidden">
+<!-- TopAppBar (Mobile Only - Simplified for Context) -->
+<header class="md:hidden flex justify-between items-center w-full px-lg py-sm sticky top-0 z-50 backdrop-blur-sm bg-surface-container-lowest border-b border-outline-variant">
+<h1 class="text-lg font-bold text-primary font-headline-lg">BistroFlow</h1>
+<button class="p-xs text-on-surface-variant">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</header>
+<!-- Floor Plan Header Area -->
+<div class="px-lg py-md border-b border-outline-variant bg-surface-container-lowest shrink-0 flex items-center justify-between">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Comedor Principal</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Capacidad Actual: 42/80</p>
+</div>
+<div class="flex gap-md font-label-sm text-label-sm">
+<div class="flex items-center gap-xs"><div class="w-3 h-3 rounded-full border-2 border-secondary bg-surface-container-lowest"></div> Disponible</div>
+<div class="flex items-center gap-xs"><div class="w-3 h-3 rounded-full border-2 border-primary bg-surface-container-lowest"></div> Ocupada</div>
+<div class="flex items-center gap-xs"><div class="w-3 h-3 rounded-full border-2 border-outline border-dashed bg-surface-container-lowest"></div> Reservada</div>
+</div>
+</div>
+<!-- Floor Plan Interactive Map -->
+<div class="flex-1 overflow-auto bg-surface-container-low p-lg relative">
+<!-- Simulated Grid/Map Area - Using absolute positioning within a relative container for a 'map' feel -->
+<div class="w-[800px] h-[600px] bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant p-lg relative mx-auto my-xl">
+<!-- Table 1 (Available) -->
+<div class="absolute top-12 left-12 w-24 h-24 bg-surface-container-lowest rounded-full table-available flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container-high transition-colors">
+<span class="font-headline-md text-headline-md text-secondary">1</span>
+<span class="font-label-sm text-label-sm text-secondary">4 Asientos</span>
+</div>
+<!-- Table 2 (Occupied) -->
+<div class="absolute top-12 left-48 w-32 h-24 bg-surface-container-lowest rounded-lg table-occupied flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container-high transition-colors">
+<span class="font-headline-md text-headline-md text-primary">2</span>
+<span class="font-label-sm text-label-sm text-primary">6 Asientos</span>
+<div class="mt-1 px-2 py-0.5 rounded-full bg-primary-container/20 text-primary font-label-sm text-[10px]">En preparación</div>
+</div>
+<!-- Table 3 (Reserved) -->
+<div class="absolute top-12 right-24 w-24 h-24 bg-surface-container-lowest rounded-full table-reserved flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container-high transition-colors">
+<span class="font-headline-md text-headline-md text-outline">3</span>
+<span class="font-label-sm text-label-sm text-outline">2 Asientos</span>
+<span class="material-symbols-outlined text-[16px] text-outline mt-1">schedule</span>
+</div>
+<!-- Table 4 (Attention Needed - e.g., Bill requested) -->
+<div class="absolute top-48 left-12 w-24 h-24 bg-surface-container-lowest rounded-full table-attention flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container-high transition-colors">
+<span class="font-headline-md text-headline-md text-primary">4</span>
+<span class="font-label-sm text-label-sm text-primary">2 Asientos</span>
+<div class="mt-1 px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-[10px]">Cuenta req.</div>
+</div>
+<!-- Table 5 (Occupied - Ready) -->
+<div class="absolute bottom-24 right-48 w-40 h-24 bg-surface-container-lowest rounded-lg table-occupied flex flex-col items-center justify-center cursor-pointer hover:bg-surface-container-high transition-colors">
+<span class="font-headline-md text-headline-md text-primary">5</span>
+<span class="font-label-sm text-label-sm text-primary">8 Asientos</span>
+<div class="mt-1 px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-[10px]">Listo</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Overlay/Modal (Active state for Occupied Table) -->
+<!-- Wrapped in a full-screen absolute div to simulate the modal backdrop -->
+<div class="fixed inset-0 bg-surface/80 backdrop-blur-[4px] z-50 flex items-center justify-center p-md">
+<div class="bg-surface-container-lowest rounded-xl w-full max-w-md modal-shadow overflow-hidden flex flex-col">
+<!-- Modal Header -->
+<div class="p-lg border-b border-outline-variant flex justify-between items-start">
+<div>
+<div class="flex items-center gap-sm mb-xs">
+<span class="font-headline-lg text-headline-lg text-on-surface">Mesa 2</span>
+<span class="px-sm py-xs rounded-full bg-primary-container/20 text-primary font-label-sm">Ocupada</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Mesero: Sarah Jenkins • Sentados hace 45m</p>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface p-xs">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Current Order Snippet -->
+<div class="p-lg bg-surface-container-low border-b border-outline-variant">
+<div class="flex justify-between items-center mb-sm">
+<h3 class="font-label-md text-label-md text-on-surface">Estado actual del pedido</h3>
+<span class="font-label-sm text-label-sm text-primary">En preparación</span>
+</div>
+<div class="space-y-xs">
+<div class="flex justify-between font-body-md text-body-md text-on-surface-variant text-sm">
+<span>2x Hamburguesa Wagyu</span>
+<span>$48.00</span>
+</div>
+<div class="flex justify-between font-body-md text-body-md text-on-surface-variant text-sm">
+<span>1x Papas fritas con trufa</span>
+<span>$12.00</span>
+</div>
+</div>
+</div>
+<!-- Action Buttons Grid -->
+<div class="p-lg grid grid-cols-2 gap-md">
+<button class="bg-surface-container-lowest border border-outline-variant text-on-surface py-sm px-md rounded-lg font-label-md hover:bg-surface-container transition-colors flex flex-col items-center justify-center gap-xs h-24">
+<span class="material-symbols-outlined text-[24px] text-on-surface-variant">add_shopping_cart</span>
+                    Agregar al pedido
+                </button>
+<button class="bg-surface-container-lowest border border-outline-variant text-on-surface py-sm px-md rounded-lg font-label-md hover:bg-surface-container transition-colors flex flex-col items-center justify-center gap-xs h-24">
+<span class="material-symbols-outlined text-[24px] text-on-surface-variant">receipt_long</span>
+                    Ver pedido
+                </button>
+<button class="bg-surface-container-lowest border border-outline-variant text-on-surface py-sm px-md rounded-lg font-label-md hover:bg-surface-container transition-colors flex flex-col items-center justify-center gap-xs h-24">
+<span class="material-symbols-outlined text-[24px] text-on-surface-variant">payments</span>
+                    Solicitar cuenta
+                </button>
+<button class="bg-primary text-on-primary py-sm px-md rounded-lg font-label-md hover:opacity-90 transition-opacity flex flex-col items-center justify-center gap-xs h-24">
+<span class="material-symbols-outlined text-[24px]">update</span>
+                    Estado de órdenes
+                </button>
+</div>
+</div>
+</div>
+</body></html>

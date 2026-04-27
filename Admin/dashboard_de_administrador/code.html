@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BistroFlow - Panel de Administración</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#fff8f3",
+                        "primary": "#9f3e07",
+                        "on-primary": "#ffffff",
+                        "outline-variant": "#dec0b5",
+                        "error-container": "#ffdad6",
+                        "primary-fixed": "#ffdbcd",
+                        "surface-container-high": "#eee7e1",
+                        "outline": "#8a7268",
+                        "on-secondary-fixed": "#171e00",
+                        "error": "#ba1a1a",
+                        "surface-container": "#f4ede6",
+                        "on-tertiary-container": "#fffeff",
+                        "surface-bright": "#fff8f3",
+                        "on-primary-fixed-variant": "#7d2d00",
+                        "tertiary": "#5d5e55",
+                        "on-error-container": "#93000a",
+                        "on-surface-variant": "#57423a",
+                        "surface-container-low": "#faf2ec",
+                        "surface-container-highest": "#e8e1db",
+                        "on-surface": "#1e1b17",
+                        "secondary-fixed": "#dbe9a9",
+                        "on-error": "#ffffff",
+                        "inverse-on-surface": "#f7efe9",
+                        "secondary-fixed-dim": "#bfcd8f",
+                        "on-primary-fixed": "#360f00",
+                        "on-secondary-fixed-variant": "#404b1b",
+                        "surface": "#fff8f3",
+                        "tertiary-fixed-dim": "#c7c7bc",
+                        "on-tertiary-fixed-variant": "#46473f",
+                        "tertiary-container": "#76766d",
+                        "secondary": "#586330",
+                        "tertiary-fixed": "#e4e3d7",
+                        "inverse-primary": "#ffb596",
+                        "on-primary-container": "#fffeff",
+                        "primary-container": "#c05621",
+                        "on-secondary-container": "#5c6834",
+                        "on-background": "#1e1b17",
+                        "surface-variant": "#e8e1db",
+                        "surface-dim": "#e0d9d3",
+                        "secondary-container": "#d8e6a6",
+                        "inverse-surface": "#33302c",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#ffb596",
+                        "surface-tint": "#a14009",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#1b1c15"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "40px",
+                        "margin": "32px",
+                        "unit": "4px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "gutter": "24px",
+                        "sm": "8px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Noto Serif"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-md": ["Noto Serif"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-display": ["Noto Serif"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-display": ["48px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md h-screen flex overflow-hidden">
+<!-- SideNavBar from JSON -->
+<nav class="hidden md:flex flex-col h-screen w-64 border-r border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-900 py-6">
+<div class="px-6 mb-8 flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg overflow-hidden shrink-0">
+<img alt="Restaurant Logo" class="w-full h-full object-cover" data-alt="a warm, rustic logo mark for a modern bistro on a cream background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcDmLsuwqaKjks8NeisEWNQTMIF7iFumcnMWaqgNfo75DDH_DGP8l6IJXtR3cJ_5glNzzttiyTjg4CcseYRLEZBmp8PNVD4Xtyit_wtw0f0zTq_8tC4kWyqc-69bQyTjI0K8g9laYxLCeOrVC8yDa6IkejYZfTXUOteABA7DCoI59j9WabXm5F98x0-dZXCxfrtW59dLuosNqKNRZsS-Z6fEedVpQYEhJxiRz8hb4r-ILT_HRNb5RFTzO4dZosRlCBgOa-sfOt76s"/>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md text-stone-800 dark:text-stone-200">Gestión de Bistro</h1>
+<p class="font-label-sm text-label-sm text-stone-500">Portal de Administración</p>
+</div>
+</div>
+<div class="px-4 mb-6">
+<button class="w-full bg-primary-container text-on-primary-container rounded-lg py-3 px-4 font-label-md text-label-md flex items-center justify-center gap-2 hover:bg-opacity-90 transition-opacity">
+<span class="material-symbols-outlined" data-icon="add" style="font-variation-settings: 'FILL' 0;">add</span>
+                Nuevo Pedido
+            </button>
+</div>
+<div class="flex-1 overflow-y-auto px-4 space-y-2 font-serif font-medium">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-[#C05621] bg-orange-50 dark:bg-orange-900/20 font-bold border-r-4 border-[#C05621] translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-[#C05621] transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2" style="font-variation-settings: 'FILL' 0;">inventory_2</span>
+                Productos
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-[#C05621] transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="category" style="font-variation-settings: 'FILL' 0;">category</span>
+                Categorías
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-[#C05621] transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="badge" style="font-variation-settings: 'FILL' 0;">badge</span>
+                Usuarios
+            </a>
+</div>
+<div class="mt-auto px-4 pt-6 border-t border-stone-200 dark:border-stone-800 space-y-2 font-serif font-medium">
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-[#C05621] transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings" style="font-variation-settings: 'FILL' 0;">settings</span>
+                Configuración
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-lg text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-[#C05621] transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline" style="font-variation-settings: 'FILL' 0;">help_outline</span>
+                Soporte
+            </a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto bg-background p-lg lg:p-xl">
+<header class="mb-lg flex justify-between items-end">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-background mb-unit">Resumen del Dashboard</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Métricas y análisis operativos de hoy.</p>
+</div>
+<div class="flex gap-md items-center">
+<button class="bg-surface-container rounded-full p-sm text-on-surface-variant hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="calendar_today" style="font-variation-settings: 'FILL' 0;">calendar_today</span>
+</button>
+<div class="font-label-md text-label-md bg-secondary-container text-on-secondary-container px-md py-sm rounded-lg">
+                    24 Oct, 2024
+                </div>
+</div>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Key Metric: Daily Sales (Spans 8 columns) -->
+<div class="md:col-span-8 bg-[#FDFCF0] rounded-xl p-lg shadow-[0_4px_20px_rgba(45,42,38,0.05)] border border-surface-variant/50 relative overflow-hidden">
+<div class="flex justify-between items-start mb-lg">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Ingresos Diarios</h3>
+<p class="font-label-sm text-label-sm text-primary uppercase tracking-wider">Meta: $12k / Día</p>
+</div>
+<div class="bg-surface-container-high rounded-lg p-md text-right">
+<div class="font-headline-lg text-headline-lg text-primary-container leading-none">$8,450</div>
+<div class="font-label-sm text-label-sm text-secondary mt-xs flex items-center justify-end gap-xs">
+<span class="material-symbols-outlined text-[14px]" data-icon="trending_up">trending_up</span>
+                            +12% vs Ayer
+                        </div>
+</div>
+</div>
+<!-- Abstract Chart Representation using standard elements -->
+<div class="h-48 flex items-end gap-2 mt-md">
+<div class="w-1/6 bg-surface-variant rounded-t-sm h-[40%] hover:bg-primary/20 transition-colors relative group">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 bg-inverse-surface text-inverse-on-surface text-xs py-1 px-2 rounded transition-opacity">8AM</div>
+</div>
+<div class="w-1/6 bg-surface-variant rounded-t-sm h-[60%] hover:bg-primary/20 transition-colors relative group">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 bg-inverse-surface text-inverse-on-surface text-xs py-1 px-2 rounded transition-opacity">10AM</div>
+</div>
+<div class="w-1/6 bg-primary-container rounded-t-sm h-[90%] opacity-90 relative group">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 bg-inverse-surface text-inverse-on-surface text-xs py-1 px-2 rounded transition-opacity">12PM</div>
+</div>
+<div class="w-1/6 bg-surface-variant rounded-t-sm h-[50%] hover:bg-primary/20 transition-colors relative group">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 bg-inverse-surface text-inverse-on-surface text-xs py-1 px-2 rounded transition-opacity">2PM</div>
+</div>
+<div class="w-1/6 bg-surface-variant rounded-t-sm h-[30%] hover:bg-primary/20 transition-colors relative group">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 bg-inverse-surface text-inverse-on-surface text-xs py-1 px-2 rounded transition-opacity">4PM</div>
+</div>
+<div class="w-1/6 bg-primary-fixed-dim rounded-t-sm h-[75%] relative group">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 bg-inverse-surface text-inverse-on-surface text-xs py-1 px-2 rounded transition-opacity">6PM</div>
+</div>
+</div>
+</div>
+<!-- Staff Performance (Spans 4 columns) -->
+<div class="md:col-span-4 bg-[#FDFCF0] rounded-xl p-lg shadow-[0_4px_20px_rgba(45,42,38,0.05)] border border-surface-variant/50 flex flex-col">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-md">Líderes de Turno</h3>
+<div class="space-y-md flex-1">
+<div class="flex items-center gap-md p-md rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors">
+<div class="w-12 h-12 rounded-full overflow-hidden shrink-0">
+<img alt="Sarah J." class="w-full h-full object-cover" data-alt="portrait of a confident female restaurant manager in a white blouse, softly lit" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClwros97o0vjE9N071y8RfSOxUDPJ44YAmADBQ5DhOsBddn4hX7wECGIEVxlCGcpcowtDQwa77v16EDj1FEURjitjtN5kZlwy4KwbzmktaNriUlzo81BGIgol-oLylplHB9mwaFzCi6M1QVemousSU79iuSlhJ6DrnD65Ndf3K37iRpHtQxRqF_ImqaVUaWmeyRcOLgtmPIkG3qO8HxrU6eh60HyZCFjF4htVBqphc6N5xJhR30b09cjh509IS7Ys5x2n51eFaOQk"/>
+</div>
+<div class="flex-1">
+<h4 class="font-label-md text-label-md text-on-surface">Sarah J.</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Gerente de Sala</p>
+</div>
+<div class="text-right">
+<div class="font-label-md text-label-md text-secondary">98%</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Calificación</div>
+</div>
+</div>
+<div class="flex items-center gap-md p-md rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors">
+<div class="w-12 h-12 rounded-full overflow-hidden shrink-0">
+<img alt="Marcus T." class="w-full h-full object-cover" data-alt="portrait of a male chef in a pristine white coat, professional kitchen background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDk83ElC3Rhu6MucAkovMB_OgT0yb_5ekQkqjh2KyUf9ZiuMrHvwDT2wOtpcEPo6OOS87inaboqKbyzbJgzEyA_YRwaTt9uww5sagdIdx7rUtGeJ3hogxzY4lGDnvIDizW9OhBFdYWt0sHGKq2csacZ7evcHYS3M1ZaaQv2XMbbvb9-_8iCZ9EQR4m7zSJcrlYtDIk1gRYfs_MoLdaNX1ronehPzK_9-QTP0ID8CYR4W-TsCEAA9lyQCmLLcBi_GdGaCjWkTF75w2k"/>
+</div>
+<div class="flex-1">
+<h4 class="font-label-md text-label-md text-on-surface">Marcus T.</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Chef Ejecutivo</p>
+</div>
+<div class="text-right">
+<div class="font-label-md text-label-md text-secondary">95%</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Calificación</div>
+</div>
+</div>
+</div>
+<button class="mt-md w-full py-2 border border-outline-variant rounded-lg font-label-md text-label-md text-primary hover:bg-surface-container-high transition-colors">Ver Todo el Personal</button>
+</div>
+<!-- Popular Items (Spans 6 columns) -->
+<div class="md:col-span-6 bg-[#FDFCF0] rounded-xl p-lg shadow-[0_4px_20px_rgba(45,42,38,0.05)] border border-surface-variant/50">
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-headline-md text-headline-md text-on-surface">Análisis del Menú</h3>
+<span class="bg-secondary-container/30 text-secondary px-3 py-1 rounded-full font-label-sm text-label-sm">Más Vendidos</span>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-lg overflow-hidden shrink-0 shadow-inner">
+<img alt="Truffle Pasta" class="w-full h-full object-cover" data-alt="close up of creamy truffle pasta in a shallow rustic bowl, warm moody lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUJ-v5WNZaVv8CB8Wxyr3rXU0fc9lLdQqKtZ9vBCcsL7QjOEOpmj-vr_nm38wBevUUIysQmK8Oi6GdNakluhzD4KMntQWocvYd2rpAXZx-SJVsTmDRRuo7GlQeYqoDgiTimj7Qv5x44yJtiafDgzHFARG1U6CawlKE6Zr79zm2Lx799DfmSoHmKmcp0vUc8XerZSfyiP8zJclyqF0sTAm1lCTSrAT57huqKA4_-sx1ArO--MJ19lZCfcjZNFQ23WVVQUrnmTFkjA8"/>
+</div>
+<div class="flex-1">
+<h4 class="font-label-md text-label-md text-on-surface">Wild Mushroom Tagliatelle</h4>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm line-clamp-1">Pasta casera, aceite de trufa negra, crujiente de parmesano</p>
+</div>
+<div class="text-right pl-4">
+<div class="font-label-md text-label-md text-on-surface">42 Pedidos</div>
+<div class="font-label-sm text-label-sm text-secondary">+5 hoy</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-lg overflow-hidden shrink-0 shadow-inner">
+<img alt="Steak Frites" class="w-full h-full object-cover" data-alt="perfectly seared steak with golden fries on a dark slate board, warm restaurant ambiance" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeb5m1WnV-79YP0G9bkuZB05CONrssRNZFFmdFLb65TJzcyBJO3Df4yJR6mEIhyhaEWh0fw4eHEkJEa5V_grbv7KAVSvkCIocb-M0hXhI_XoxBwFVFSA7yphEn_NcQZjyBQbL2e2tltqDtEQPbO5mpjdtZwRMYZMM1OAFzO1DElfVuschU7EGBUcahsj0TQvZTPiPgHkwOeDP-4yFQlh6P7wqSg3cskZJPkdUxzevfwnTWtAi54DN2oRW8yY-S2Is4jiZI3bxIkpY"/>
+</div>
+<div class="flex-1">
+<h4 class="font-label-md text-label-md text-on-surface">Bistro Steak Frites</h4>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm line-clamp-1">Filete de 8oz, mantequilla de hierbas, papas fritas a mano</p>
+</div>
+<div class="text-right pl-4">
+<div class="font-label-md text-label-md text-on-surface">38 Pedidos</div>
+<div class="font-label-sm text-label-sm text-secondary">+2 hoy</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Actions / Table Status Mini (Spans 6 columns) -->
+<div class="md:col-span-6 bg-[#FDFCF0] rounded-xl p-lg shadow-[0_4px_20px_rgba(45,42,38,0.05)] border border-surface-variant/50">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-md">Estado del Piso</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-sm mb-md">
+<div class="bg-surface-container-high rounded-lg p-md text-center border-2 border-secondary/50">
+<div class="font-headline-md text-headline-md text-secondary">12</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Disponible</div>
+</div>
+<div class="bg-surface-container-high rounded-lg p-md text-center border-2 border-primary">
+<div class="font-headline-md text-headline-md text-primary">8</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Ocupado</div>
+</div>
+<div class="bg-surface-container-high rounded-lg p-md text-center border-2 border-outline border-dashed">
+<div class="font-headline-md text-headline-md text-on-surface">4</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Reservado</div>
+</div>
+<div class="bg-error-container/30 rounded-lg p-md text-center border-2 border-error shadow-[0_0_10px_rgba(186,26,26,0.2)]">
+<div class="font-headline-md text-headline-md text-error">2</div>
+<div class="font-label-sm text-label-sm text-error">Atención</div>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-lg p-md flex items-start gap-md mt-auto">
+<span class="material-symbols-outlined text-error mt-1" data-icon="warning" style="font-variation-settings: 'FILL' 1;">warning</span>
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">Mesas 44 y 12 necesitan atención</h4>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mt-1">Clientes esperando cuenta &gt; 10 mins.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>
