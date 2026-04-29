@@ -303,14 +303,15 @@
 
             try {
                 const { data, error } = await _supabase
-                    .from('cliente')
+                    .from('usuario')
                     .insert([
                         {
                             nombre: firstName,
                             apellido: lastName,
                             email: email,
                             telefono: phone,
-                            contraseña: password
+                            contraseña: password,
+                            rol: 'Cliente'
                         }
                     ]);
 
