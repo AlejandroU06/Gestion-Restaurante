@@ -300,7 +300,8 @@
             const email = document.getElementById('email').value;
             const phone = document.getElementById('phone').value;
             const password = document.getElementById('password').value;
-
+            const fecha = new Date();
+            const localISO = new Date(fecha.getTime() - (fecha.getTimezoneOffset() * 60000)).toISOString().slice(0, -1);
             try {
                 const { data, error } = await _supabase
                     .from('usuario')
@@ -311,7 +312,8 @@
                             email: email,
                             telefono: phone,
                             contraseña: password,
-                            rol: 'Cliente'
+                            rol: 'Cliente',
+                            fecha_registro: localISO
                         }
                     ]);
 

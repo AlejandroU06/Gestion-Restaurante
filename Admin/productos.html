@@ -1,349 +1,161 @@
 <!DOCTYPE html>
-
 <html class="light" lang="es">
 
 <head>
-        <meta charset="utf-8" />
-        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-        <title>BistroFlow - Gestión de Productos</title>
-        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-                rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400..700;1,400..700&amp;family=Plus+Jakarta+Sans:wght@400..700&amp;display=swap"
-                rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-                rel="stylesheet" />
-        <link rel="stylesheet" href="css/productos.css" />
-        <script src="js/productos.js"></script>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>BistroFlow - Gestión de Productos</title>
+    <script src="js/tailwind-config.js"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/productos.css" />
+    <script src="js/main.js"></script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
 </head>
 
-<body class="bg-background text-on-background font-body-md text-body-md flex h-screen overflow-hidden">
-        <!-- SideNavBar from JSON -->
-        <nav
-                class="bg-stone-50 dark:bg-stone-900 font-serif font-medium h-screen w-64 border-r border-stone-200 dark:border-stone-800 flat no shadows flex flex-col fixed left-0 top-0 py-6 hidden md:flex z-50">
-                <div class="px-lg pb-lg border-b border-stone-200 dark:border-stone-800 mb-lg flex items-center gap-md">
-                        <div
-                                class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center overflow-hidden">
-                                <img alt="Restaurant Logo" class="w-full h-full object-cover"
-                                        data-alt="Elegant minimalist line art logo of a wine glass and fork on off-white background"
-                                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAe244DLIQw7JTcvcwi5GPTnql6uxMBEj76NydhjLp5HwiGxaC-uTSUNctY9VjRtqaprhRtmJKwrPeTYY6ourVDtd7SAFf2aDpvIxbBaUJcAFmT-4SX8FuEMnZWr7UJC5rvvkLPyWJvjn62IvJD6h8KgffVgyRl7yqLSm5l7GlpVpmWzZlIq4AyEF-_jOISp86hKYvzG_KbfXren6kTRo_1JNlO9Jv9uuSPpm9gKvpb9J9mbVSVVkjdfOIGXw_3JF3hzk3qi28RPcs" />
-                        </div>
-                        <div>
-                                <h1 class="text-lg font-bold text-stone-800 dark:text-stone-200">Gestión de Bistro</h1>
-                                <p class="font-label-sm text-label-sm text-on-surface-variant">Portal de Administrador
-                                </p>
-                        </div>
+<body class="bg-background text-on-background font-sans antialiased flex h-screen overflow-hidden">
+    
+    <div id="sidebar-container"></div>
+    
+    <!-- Main Content Area -->
+    <main class="flex-1 ml-0 md:ml-64 bg-[#fdfbf7] h-screen overflow-y-auto relative mt-[64px] md:mt-0 px-10 py-10">
+        
+        <div class="max-w-[1400px] mx-auto space-y-6">
+            <!-- Page Header -->
+            <div class="flex justify-between items-end mb-8 border-b border-[#e6e2de] pb-6">
+                <div>
+                    <h2 class="font-serif text-[32px] font-bold text-[#2d2a26] mb-1 leading-none">Gestión de Productos</h2>
+                    <p class="font-sans text-[14px] text-[#6b625b]">Administre sus elementos del menú, precios y disponibilidad.</p>
                 </div>
-                <div class="px-md mb-lg">
-                        <button
-                                class="w-full bg-[#C05621] text-white rounded-lg py-sm px-md flex items-center justify-center gap-sm shadow-sm hover:opacity-90 transition-opacity">
-                                <span class="material-symbols-outlined"
-                                        style="font-variation-settings: 'FILL' 1;">add</span>
-                                <span class="font-label-md text-label-md">Nuevo Pedido</span>
-                        </button>
+                <div class="flex items-center gap-4">
+                    <div class="relative w-72 bg-white rounded-md border border-[#e6e2de] shadow-sm">
+                        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#8c827a] text-[18px]">search</span>
+                        <input id="search-product" class="w-full pl-10 pr-4 py-2 bg-transparent focus:outline-none text-[13px] text-[#2d2a26] placeholder:text-[#8c827a]" placeholder="Buscar productos..." type="text" />
+                    </div>
+                    <button id="btn-add-product" class="px-5 py-2 bg-[#b84a1e] text-white rounded-md text-[13px] font-bold shadow-sm hover:bg-[#a64018] transition-opacity flex items-center gap-2">
+                        <span class="material-symbols-outlined text-[18px] font-bold">add</span> Agregar Producto
+                    </button>
                 </div>
-                <ul class="flex-1 overflow-y-auto px-md space-y-xs">
-                        <li>
-                                <a class="flex items-center gap-md px-md py-sm rounded-lg text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-[#C05621] transition-all duration-200 group"
-                                        href="#">
-                                        <span
-                                                class="material-symbols-outlined group-hover:text-[#C05621]">dashboard</span>
-                                        <span>Dashboard</span>
-                                </a>
-                        </li>
-                        <li>
-                                <!-- Active Item: Inventory -->
-                                <a class="flex items-center gap-md px-md py-sm rounded-lg text-[#C05621] bg-orange-50 dark:bg-orange-900/20 font-bold border-r-4 border-[#C05621] Active: translate-x-1 group"
-                                        href="#">
-                                        <span class="material-symbols-outlined"
-                                                style="font-variation-settings: 'FILL' 1;">inventory_2</span>
-                                        <span>Productos</span>
-                                </a>
-                        </li>
-                        <li>
-                                <a class="flex items-center gap-md px-md py-sm rounded-lg text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-[#C05621] transition-all duration-200 group"
-                                        href="#">
-                                        <span
-                                                class="material-symbols-outlined group-hover:text-[#C05621]">category</span>
-                                        <span>Categorías</span>
-                                </a>
-                        </li>
-                        <li>
-                                <a class="flex items-center gap-md px-md py-sm rounded-lg text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-[#C05621] transition-all duration-200 group"
-                                        href="#">
-                                        <span class="material-symbols-outlined group-hover:text-[#C05621]">group</span>
-                                        <span>Usuarios</span>
-                                </a>
-                        </li>
-                </ul>
-                <div class="mt-auto px-md border-t border-stone-200 dark:border-stone-800 pt-md">
-                        <ul class="space-y-xs">
-                                <li>
-                                        <a class="flex items-center gap-md px-md py-sm rounded-lg text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-[#C05621] transition-all duration-200 group"
-                                                href="#">
-                                                <span
-                                                        class="material-symbols-outlined group-hover:text-[#C05621]">settings</span>
-                                                <span>Configuración</span>
-                                        </a>
-                                </li>
-                                <li>
-                                        <a class="flex items-center gap-md px-md py-sm rounded-lg text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-[#C05621] transition-all duration-200 group"
-                                                href="#">
-                                                <span
-                                                        class="material-symbols-outlined group-hover:text-[#C05621]">help_outline</span>
-                                                <span>Soporte</span>
-                                        </a>
-                                </li>
-                        </ul>
-                </div>
-        </nav>
-        <!-- Main Content Area -->
-        <main class="flex-1 ml-0 md:ml-64 bg-background overflow-y-auto flex flex-col h-full relative">
-                <!-- Mobile Header (Visible only on mobile to replace TopAppBar if needed, but per instructions we just need the sidebar and content area, assuming mobile menu is handled elsewhere if complex, adding simple top bar for mobile context) -->
-                <header
-                        class="md:hidden flex justify-between items-center p-md bg-[#FDFCF0] border-b border-surface-variant sticky top-0 z-40">
-                        <span class="text-xl font-headline-md font-bold text-primary">BistroFlow</span>
-                        <button class="text-on-surface">
-                                <span class="material-symbols-outlined">menu</span>
-                        </button>
-                </header>
-                <!-- Page Header -->
-                <div
-                        class="px-lg py-lg flex flex-col md:flex-row justify-between items-start md:items-center gap-md border-b border-surface-variant bg-surface-container-low/50 sticky top-0 z-30 backdrop-blur-md">
-                        <div>
-                                <h2 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Gestión de Productos
-                                </h2>
-                                <p class="font-body-md text-body-md text-on-surface-variant">Administre sus elementos
-                                        del menú, precios y disponibilidad.</p>
-                        </div>
-                        <div class="flex items-center gap-md w-full md:w-auto">
-                                <div class="relative w-full md:w-64">
-                                        <span
-                                                class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
-                                        <input class="w-full pl-10 pr-4 py-2 bg-surface rounded-lg border-b-2 border-surface-variant focus:border-primary focus:ring-0 text-on-surface placeholder:text-on-surface-variant transition-colors outline-none font-body-md text-body-md"
-                                                placeholder="Buscar productos..." type="text" />
-                                </div>
-                                <button
-                                        class="bg-primary text-on-primary font-label-md text-label-md px-md py-sm rounded-lg flex items-center gap-xs shadow-sm hover:bg-surface-tint transition-all whitespace-nowrap">
-                                        <span class="material-symbols-outlined text-[20px]">add</span> Agregar Producto
-                                </button>
-                        </div>
-                </div>
-                <!-- Filters Section -->
-                <div
-                        class="px-lg py-md flex flex-wrap gap-md items-center border-b border-surface-variant bg-surface-bright z-20">
-                        <span
-                                class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Filtros:</span>
-                        <select class="bg-surface border-b-2 border-surface-variant rounded-t-sm px-3 py-1.5 focus:border-primary focus:ring-0 outline-none font-body-md text-body-md text-on-surface appearance-none pr-8 relative bg-no-repeat bg-[right_0.5rem_center] bg-[length:1.2em_1.2em]"
-                                style="background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%2357423a%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpolyline points=%226 9 12 15 18 9%22%3E%3C/polyline%3E%3C/svg%3E');">
-                                <option value="all">Todas las categorías</option>
-                                <option value="starters">Entrantes</option>
-                                <option value="mains">Platos Principales</option>
-                                <option value="desserts">Postres</option>
-                                <option value="drinks">Bebidas</option>
-                        </select>
-                        <select class="bg-surface border-b-2 border-surface-variant rounded-t-sm px-3 py-1.5 focus:border-primary focus:ring-0 outline-none font-body-md text-body-md text-on-surface appearance-none pr-8 bg-no-repeat bg-[right_0.5rem_center] bg-[length:1.2em_1.2em]"
-                                style="background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%2357423a%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpolyline points=%226 9 12 15 18 9%22%3E%3C/polyline%3E%3C/svg%3E');">
-                                <option value="all">Todos los estados</option>
-                                <option value="active">Activo</option>
-                                <option value="draft">Borrador</option>
-                                <option value="out_of_stock">Agotado</option>
-                        </select>
-                        <select class="bg-surface border-b-2 border-surface-variant rounded-t-sm px-3 py-1.5 focus:border-primary focus:ring-0 outline-none font-body-md text-body-md text-on-surface appearance-none pr-8 bg-no-repeat bg-[right_0.5rem_center] bg-[length:1.2em_1.2em]"
-                                style="background-image: url('data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%2357423a%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22%3E%3Cpolyline points=%226 9 12 15 18 9%22%3E%3C/polyline%3E%3C/svg%3E');">
-                                <option value="price_asc">Precio: de menor a mayor</option>
-                                <option value="price_desc">Precio: de mayor a menor</option>
-                                <option value="name_asc">Nombre: A-Z</option>
-                        </select>
-                        <div class="ml-auto flex gap-sm">
-                                <button
-                                        class="p-2 rounded bg-surface-container text-primary hover:bg-primary-container hover:text-on-primary-container transition-colors">
-                                        <span class="material-symbols-outlined text-[20px]"
-                                                style="font-variation-settings: 'FILL' 1;">grid_view</span>
-                                </button>
-                                <button
-                                        class="p-2 rounded bg-surface text-on-surface-variant hover:bg-surface-container transition-colors">
-                                        <span class="material-symbols-outlined text-[20px]">view_list</span>
-                                </button>
-                        </div>
-                </div>
-                <!-- Content Grid (Compact spacing for admin) -->
-                <div
-                        class="p-lg grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-gutter overflow-y-auto">
-                        <!-- Product Card 1 -->
-                        <div class="bg-[#FDFCF0] rounded-xl overflow-hidden flex flex-col"
-                                style="box-shadow: 0 4px 20px rgba(45, 42, 38, 0.05);">
-                                <div class="relative h-48 p-sm">
-                                        <img alt="Risotto de Trufa" class="w-full h-full object-cover rounded-lg"
-                                                data-alt="Close up of creamy truffle risotto in a rustic ceramic bowl on a dark wooden table"
-                                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiBFYJYEugkDTh74u1jB_l8-kpTJSEUTBvPRqtXahzV-J1Syi-U6PU4U_KhHlPMugaCBi8BN8eYCYQOF7__kj9Hx1EJYcV1qfiGwADJjUydlAg4UFT64o_cvmaMq9nSBGb2ckMOr_VXIgp21E_WNIhv3ibBqz6j24CV_oTameb5tG9GiTSga4q_eXEsRWyqwxoz-ICZpexPU6s969cBy8NVNTkTqa3V08GeeLiW3zMeTQuI-RCQuMA5xK45Tj9Aw4yxIU1o3LeuQM"
-                                                style="box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);" />
-                                        <div class="absolute top-md right-md flex gap-xs">
-                                                <span
-                                                        class="px-2 py-1 rounded-sm bg-primary-container/15 text-primary font-label-sm text-[10px] uppercase backdrop-blur-sm">Activo</span>
-                                        </div>
-                                </div>
-                                <div class="p-md flex-1 flex flex-col">
-                                        <div class="flex justify-between items-start mb-xs">
-                                                <h3 class="font-headline-md text-[18px] font-bold text-on-surface">
-                                                        Risotto de Trufa</h3>
-                                                <span
-                                                        class="font-label-md text-label-md font-bold text-primary">$28.00</span>
-                                        </div>
-                                        <p class="font-body-md text-[14px] text-on-surface-variant line-clamp-2 mb-md">
-                                                Arroz Arborio, setas silvestres, aceite de trufa negra, parmesano
-                                                curado, hierbas frescas.</p>
-                                        <div
-                                                class="mt-auto flex justify-between items-center border-t border-surface-variant pt-sm">
-                                                <span class="font-label-sm text-label-sm text-on-surface-variant">Platos
-                                                        Principales</span>
-                                                <div class="flex gap-sm">
-                                                        <button class="text-on-surface-variant hover:text-primary transition-colors p-1"
-                                                                title="Editar">
-                                                                <span
-                                                                        class="material-symbols-outlined text-[18px]">edit</span>
-                                                        </button>
-                                                        <button class="text-on-surface-variant hover:text-error transition-colors p-1"
-                                                                title="Eliminar">
-                                                                <span
-                                                                        class="material-symbols-outlined text-[18px]">delete</span>
-                                                        </button>
-                                                </div>
-                                        </div>
-                                </div>
-                        </div>
-                        <!-- Product Card 2 -->
-                        <div class="bg-[#FDFCF0] rounded-xl overflow-hidden flex flex-col"
-                                style="box-shadow: 0 4px 20px rgba(45, 42, 38, 0.05);">
-                                <div class="relative h-48 p-sm">
-                                        <img alt="Tartar de Ternera" class="w-full h-full object-cover rounded-lg"
-                                                data-alt="Elegant presentation of beef tartare with a quail egg yolk on a white plate with fine dining garnish"
-                                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUmGHXajtxKElrFfxJ0m1V9SesrTgMXeqPUHVPMMj6HKGgvKuxvrieSwcaYUuDffoGw2zsS0cR7fdjrF0DYOhnJMQCGIba0JlzXy7b1f10OemOis3lC9LsjlBoudmIp2QDBNmDOnzc5kFHSdo1EYAPrbUmDYgT8ODPtwE0As8ae4Km2g6pL_o5ncWP_sd4KT5hhPWFiXTuHb7MH5m_06-fatw8WKX8L_rWXfd_LOLjE8ga_9Igze9FvM7SWijwV6R2EzXSnFx4UDA"
-                                                style="box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);" />
-                                        <div class="absolute top-md right-md flex gap-xs">
-                                                <span
-                                                        class="px-2 py-1 rounded-sm bg-secondary-container/30 text-on-secondary-container font-label-sm text-[10px] uppercase backdrop-blur-sm">Activo</span>
-                                        </div>
-                                </div>
-                                <div class="p-md flex-1 flex flex-col">
-                                        <div class="flex justify-between items-start mb-xs">
-                                                <h3 class="font-headline-md text-[18px] font-bold text-on-surface">
-                                                        Tartar de Ternera</h3>
-                                                <span
-                                                        class="font-label-md text-label-md font-bold text-primary">$22.00</span>
-                                        </div>
-                                        <p class="font-body-md text-[14px] text-on-surface-variant line-clamp-2 mb-md">
-                                                Carne de ternera de primera cortada a mano, alcaparras, chalotas,
-                                                mostaza de Dijon, huevo de codorniz, crostini casero.</p>
-                                        <div
-                                                class="mt-auto flex justify-between items-center border-t border-surface-variant pt-sm">
-                                                <span
-                                                        class="font-label-sm text-label-sm text-on-surface-variant">Entrantes</span>
-                                                <div class="flex gap-sm">
-                                                        <button class="text-on-surface-variant hover:text-primary transition-colors p-1"
-                                                                title="Editar">
-                                                                <span
-                                                                        class="material-symbols-outlined text-[18px]">edit</span>
-                                                        </button>
-                                                        <button class="text-on-surface-variant hover:text-error transition-colors p-1"
-                                                                title="Eliminar">
-                                                                <span
-                                                                        class="material-symbols-outlined text-[18px]">delete</span>
-                                                        </button>
-                                                </div>
-                                        </div>
-                                </div>
-                        </div>
-                        <!-- Product Card 3 (Draft Status) -->
-                        <div class="bg-[#FDFCF0] rounded-xl overflow-hidden flex flex-col"
-                                style="box-shadow: 0 4px 20px rgba(45, 42, 38, 0.05);">
-                                <div class="relative h-48 p-sm">
-                                        <div
-                                                class="w-full h-full bg-surface-container rounded-lg flex items-center justify-center border-2 border-dashed border-surface-variant">
-                                                <span
-                                                        class="material-symbols-outlined text-[40px] text-on-surface-variant/50">image</span>
-                                        </div>
-                                        <div class="absolute top-md right-md flex gap-xs">
-                                                <span
-                                                        class="px-2 py-1 rounded-sm bg-surface-variant text-on-surface-variant font-label-sm text-[10px] uppercase backdrop-blur-sm">Borrador</span>
-                                        </div>
-                                </div>
-                                <div class="p-md flex-1 flex flex-col opacity-70 hover:opacity-100 transition-opacity">
-                                        <div class="flex justify-between items-start mb-xs">
-                                                <h3
-                                                        class="font-headline-md text-[18px] font-bold text-on-surface italic">
-                                                        Ensalada de Temporada</h3>
-                                                <span
-                                                        class="font-label-md text-label-md font-bold text-on-surface-variant">--</span>
-                                        </div>
-                                        <p class="font-body-md text-[14px] text-on-surface-variant line-clamp-2 mb-md">
-                                                Lista final de ingredientes y precios pendientes para el menú de
-                                                primavera.</p>
-                                        <div
-                                                class="mt-auto flex justify-between items-center border-t border-surface-variant pt-sm">
-                                                <span
-                                                        class="font-label-sm text-label-sm text-on-surface-variant">Entrantes</span>
-                                                <div class="flex gap-sm">
-                                                        <button class="text-on-surface-variant hover:text-primary transition-colors p-1"
-                                                                title="Editar">
-                                                                <span
-                                                                        class="material-symbols-outlined text-[18px]">edit</span>
-                                                        </button>
-                                                        <button class="text-on-surface-variant hover:text-error transition-colors p-1"
-                                                                title="Eliminar">
-                                                                <span
-                                                                        class="material-symbols-outlined text-[18px]">delete</span>
-                                                        </button>
-                                                </div>
-                                        </div>
-                                </div>
-                        </div>
-                        <!-- Product Card 4 (Out of Stock) -->
-                        <div class="bg-[#FDFCF0] rounded-xl overflow-hidden flex flex-col"
-                                style="box-shadow: 0 4px 20px rgba(45, 42, 38, 0.05);">
-                                <div class="relative h-48 p-sm">
-                                        <img alt="Bistro Sunset"
-                                                class="w-full h-full object-cover rounded-lg grayscale-[50%]"
-                                                data-alt="Two vibrant craft cocktails in elegant glasses on a dark bar counter with moody lighting"
-                                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLsnFUaBiuzRnh7jcD7VsbR1Y7VK__sIx3XVpZNfgauhabKVTPXrmdZ1_zU1T8GnshTcJnQoFAO9q1RaRyOfYSHVPg3--_zmSSkNyM-bpLL09mN3NGAsvUV7gisR1HTwBYZNC3u07NtsUc5095vcda2qqYuvuesMtbtVD_xnjCZ0_7Sys0kW4ySWowOTn85y3w3OnHssnUCcMiF_2NUJqk-dy_UyT6dll_44ypYktQI2fqMPPKf-wF8XRfhLhWeG5-ZBuHp9oJBCU"
-                                                style="box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);" />
-                                        <div class="absolute inset-0 bg-surface-container/40 rounded-lg m-sm"></div>
-                                        <div class="absolute top-md right-md flex gap-xs">
-                                                <span
-                                                        class="px-2 py-1 rounded-sm bg-error-container/80 text-on-error-container font-label-sm text-[10px] uppercase backdrop-blur-sm">Agotado</span>
-                                        </div>
-                                </div>
-                                <div class="p-md flex-1 flex flex-col">
-                                        <div class="flex justify-between items-start mb-xs">
-                                                <h3 class="font-headline-md text-[18px] font-bold text-on-surface">
-                                                        Bistro Sunset</h3>
-                                                <span
-                                                        class="font-label-md text-label-md font-bold text-primary">$16.00</span>
-                                        </div>
-                                        <p class="font-body-md text-[14px] text-on-surface-variant line-clamp-2 mb-md">
-                                                Ginebra, puré de naranja sanguina, licor de flor de saúco, un toque de
-                                                vino espumoso.</p>
-                                        <div
-                                                class="mt-auto flex justify-between items-center border-t border-surface-variant pt-sm">
-                                                <span
-                                                        class="font-label-sm text-label-sm text-on-surface-variant">Bebidas</span>
-                                                <div class="flex gap-sm">
-                                                        <button class="text-on-surface-variant hover:text-primary transition-colors p-1"
-                                                                title="Editar">
-                                                                <span
-                                                                        class="material-symbols-outlined text-[18px]">edit</span>
-                                                        </button>
-                                                        <button class="text-on-surface-variant hover:text-error transition-colors p-1"
-                                                                title="Eliminar">
-                                                                <span
-                                                                        class="material-symbols-outlined text-[18px]">delete</span>
-                                                        </button>
-                                                </div>
-                                        </div>
-                                </div>
-                        </div>
-                </div>
-        </main>
-</body>
+            </div>
 
+            <!-- Filters Area -->
+            <div class="flex justify-between items-center py-2 mb-6">
+                <div class="flex items-center gap-4 text-[13px]">
+                    <span class="font-sans font-bold text-[#6b625b] uppercase tracking-wider text-[10px] mr-1">Filtros:</span>
+                    
+                    <div class="relative shadow-sm rounded-md border border-[#e6e2de]">
+                        <select id="filter-category" class="pl-3 pr-8 py-1.5 bg-white rounded-md focus:outline-none text-[#2d2a26] text-[13px] font-medium appearance-none min-w-[170px]">
+                            <option value="all">Todas las categorías</option>
+                            <option value="Entrantes">Entrantes</option>
+                            <option value="Platos Principales">Platos Principales</option>
+                            <option value="Postres">Postres</option>
+                            <option value="Bebidas">Bebidas</option>
+                        </select>
+                        <span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-[#8c827a] text-[16px] pointer-events-none">expand_more</span>
+                    </div>
+
+                    <div class="relative shadow-sm rounded-md border border-[#e6e2de]">
+                        <select id="filter-status" class="pl-3 pr-8 py-1.5 bg-white rounded-md focus:outline-none text-[#2d2a26] text-[13px] font-medium appearance-none min-w-[150px]">
+                            <option value="all">Todos los estados</option>
+                            <option value="activo">Activo</option>
+                            <option value="borrador">Borrador</option>
+                            <option value="agotado">Agotado</option>
+                        </select>
+                        <span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-[#8c827a] text-[16px] pointer-events-none">expand_more</span>
+                    </div>
+
+                    <div class="relative shadow-sm rounded-md border border-[#e6e2de]">
+                        <select id="filter-price" class="pl-3 pr-8 py-1.5 bg-white rounded-md focus:outline-none text-[#2d2a26] text-[13px] font-medium appearance-none min-w-[180px]">
+                            <option value="default">Precio: de menor a mayor</option>
+                            <option value="desc">Precio: de mayor a menor</option>
+                        </select>
+                        <span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-[#8c827a] text-[16px] pointer-events-none">expand_more</span>
+                    </div>
+                </div>
+
+                <div class="flex shadow-sm rounded-md bg-white border border-[#e6e2de] overflow-hidden">
+                    <button class="w-9 h-8 flex items-center justify-center bg-[#fdf0e6] text-[#b84a1e]">
+                        <span class="material-symbols-outlined text-[16px]">grid_view</span>
+                    </button>
+                    <button class="w-9 h-8 flex items-center justify-center text-[#8c827a] hover:bg-[#fdfbf7] border-l border-[#e6e2de]">
+                        <span class="material-symbols-outlined text-[16px]">view_list</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Content Grid -->
+            <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pb-12">
+                <!-- Dynamically populated via JS -->
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Product Modal (Hidden) -->
+    <div id="product-modal" class="fixed inset-0 bg-black/40 hidden z-50 flex items-center justify-center backdrop-blur-sm p-4">
+        <div class="bg-white rounded-2xl shadow-xl w-full max-w-lg flex flex-col overflow-hidden">
+            <div class="p-6 border-b border-divider flex justify-between items-center">
+                <h3 id="modal-title" class="font-serif text-xl font-bold text-on-surface">Agregar Producto</h3>
+                <button id="close-modal" class="text-on-surface-variant hover:text-red-500 transition-colors">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            
+            <form id="product-form" class="p-6 flex flex-col gap-5 max-h-[70vh] overflow-y-auto">
+                <input type="hidden" id="product-id">
+                
+                <div>
+                    <label class="block text-sm font-semibold text-on-surface mb-1.5">Nombre del Producto</label>
+                    <input type="text" id="product-name" required class="w-full bg-surface border border-outline rounded-lg py-2.5 px-3 focus:border-primary outline-none transition-colors">
+                </div>
+
+                <div class="flex gap-4">
+                    <div class="flex-1">
+                        <label class="block text-sm font-semibold text-on-surface mb-1.5">Precio ($)</label>
+                        <input type="number" id="product-price" step="0.01" required class="w-full bg-surface border border-outline rounded-lg py-2.5 px-3 focus:border-primary outline-none transition-colors">
+                    </div>
+                    <div class="flex-1">
+                        <label class="block text-sm font-semibold text-on-surface mb-1.5">Categoría</label>
+                        <select id="product-category" required class="w-full bg-surface border border-outline rounded-lg py-2.5 px-3 focus:border-primary outline-none bg-white">
+                            <option value="Entrantes">Entrantes</option>
+                            <option value="Platos Principales">Platos Principales</option>
+                            <option value="Postres">Postres</option>
+                            <option value="Bebidas">Bebidas</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="flex gap-4">
+                    <div class="flex-1">
+                        <label class="block text-sm font-semibold text-on-surface mb-1.5">Estado</label>
+                        <select id="product-status" required class="w-full bg-surface border border-outline rounded-lg py-2.5 px-3 focus:border-primary outline-none bg-white">
+                            <option value="activo">Activo</option>
+                            <option value="borrador">Borrador</option>
+                            <option value="agotado">Agotado</option>
+                        </select>
+                    </div>
+                    <div class="flex-1">
+                        <label class="block text-sm font-semibold text-on-surface mb-1.5">URL de Imagen</label>
+                        <input type="url" id="product-image" placeholder="https://..." class="w-full bg-surface border border-outline rounded-lg py-2.5 px-3 focus:border-primary outline-none transition-colors">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold text-on-surface mb-1.5">Descripción</label>
+                    <textarea id="product-desc" required rows="3" class="w-full bg-surface border border-outline rounded-lg py-2.5 px-3 focus:border-primary outline-none transition-colors resize-none"></textarea>
+                </div>
+            </form>
+
+            <div class="p-5 border-t border-divider flex justify-end gap-3 bg-background">
+                <button type="button" id="cancel-modal" class="px-5 py-2 text-sm font-semibold text-on-surface-variant border border-transparent hover:border-outline rounded-xl hover:bg-surface-variant transition-colors">Cancelar</button>
+                <button type="submit" form="product-form" class="px-5 py-2 bg-primary text-on-primary rounded-xl text-sm font-semibold shadow-btn hover:opacity-90 transition-opacity">Guardar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/productos.js"></script>
+</body>
 </html>

@@ -287,7 +287,7 @@
 
                         try {
                                 const { data, error } = await _supabase
-                                        .from('cliente')
+                                        .from('usuario')
                                         .select('*')
                                         .eq('email', email)
                                         .eq('contraseña', password)
@@ -304,8 +304,13 @@
                                 localStorage.setItem('user', JSON.stringify(data));
 
                                 alert('¡Bienvenido, ' + data.nombre + '!');
-                                // Redirigir a la página de home_cliente
-                                window.location.href = '../Cliente/home_cliente/code.html';
+
+                                // Redirigir basado en rol
+                                if (data.rol === 'Administrativo' || data.role === 'Administrativo') {
+                                        window.location.href = '../Admin/dashboard.html';
+                                } else {
+                                        window.location.href = '../Cliente/home_cliente/code.html';
+                                }
                         } catch (error) {
                                 console.error('Error:', error.message);
                                 alert('Error al iniciar sesión: ' + error.message);

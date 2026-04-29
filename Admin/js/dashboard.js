@@ -1,90 +1,97 @@
-tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "background": "#fff8f3",
-                        "primary": "#9f3e07",
-                        "on-primary": "#ffffff",
-                        "outline-variant": "#dec0b5",
-                        "error-container": "#ffdad6",
-                        "primary-fixed": "#ffdbcd",
-                        "surface-container-high": "#eee7e1",
-                        "outline": "#8a7268",
-                        "on-secondary-fixed": "#171e00",
-                        "error": "#ba1a1a",
-                        "surface-container": "#f4ede6",
-                        "on-tertiary-container": "#fffeff",
-                        "surface-bright": "#fff8f3",
-                        "on-primary-fixed-variant": "#7d2d00",
-                        "tertiary": "#5d5e55",
-                        "on-error-container": "#93000a",
-                        "on-surface-variant": "#57423a",
-                        "surface-container-low": "#faf2ec",
-                        "surface-container-highest": "#e8e1db",
-                        "on-surface": "#1e1b17",
-                        "secondary-fixed": "#dbe9a9",
-                        "on-error": "#ffffff",
-                        "inverse-on-surface": "#f7efe9",
-                        "secondary-fixed-dim": "#bfcd8f",
-                        "on-primary-fixed": "#360f00",
-                        "on-secondary-fixed-variant": "#404b1b",
-                        "surface": "#fff8f3",
-                        "tertiary-fixed-dim": "#c7c7bc",
-                        "on-tertiary-fixed-variant": "#46473f",
-                        "tertiary-container": "#76766d",
-                        "secondary": "#586330",
-                        "tertiary-fixed": "#e4e3d7",
-                        "inverse-primary": "#ffb596",
-                        "on-primary-container": "#fffeff",
-                        "primary-container": "#c05621",
-                        "on-secondary-container": "#5c6834",
-                        "on-background": "#1e1b17",
-                        "surface-variant": "#e8e1db",
-                        "surface-dim": "#e0d9d3",
-                        "secondary-container": "#d8e6a6",
-                        "inverse-surface": "#33302c",
-                        "on-tertiary": "#ffffff",
-                        "primary-fixed-dim": "#ffb596",
-                        "surface-tint": "#a14009",
-                        "surface-container-lowest": "#ffffff",
-                        "on-secondary": "#ffffff",
-                        "on-tertiary-fixed": "#1b1c15"
+// Chart.js Default Configs for Tailwind integration
+Chart.defaults.color = '#57423a';
+Chart.defaults.font.family = "'Plus Jakarta Sans', sans-serif";
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Set Current Date
+    const dateDisplay = document.getElementById('current-date-display');
+    if (dateDisplay) {
+        const today = new Date();
+        const options = { year: 'numeric', month: 'short', day: 'numeric' };
+        dateDisplay.textContent = today.toLocaleDateString('es-ES', options);
+    }
+
+    initCharts();
+});
+
+function initCharts() {
+    // Bar Chart: Ventas Semanales
+    const ctxWeekly = document.getElementById('weekly-sales-chart');
+    if (ctxWeekly) {
+        new Chart(ctxWeekly, {
+            type: 'bar',
+            data: {
+                labels: ['L', 'M', 'M', 'J', 'V', 'S'],
+                datasets: [{
+                    label: 'Ventas ($)',
+                    data: [3200, 4100, 7800, 4600, 2450, 6200],
+                    backgroundColor: [
+                        '#e8e4df', // Light gray
+                        '#e8e4df',
+                        '#c05621', // Orange main
+                        '#e8e4df',
+                        '#e8e4df',
+                        '#ffb596'  // Light orange 
+                    ],
+                    borderWidth: 0,
+                    borderRadius: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
                     },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
+                    tooltip: {
+                        enabled: false // simple clean design in screenshot
+                    }
+                },
+                scales: {
+                    y: {
+                        display: false // no axis
                     },
-                    "spacing": {
-                        "xl": "40px",
-                        "margin": "32px",
-                        "unit": "4px",
-                        "md": "16px",
-                        "xs": "4px",
-                        "gutter": "24px",
-                        "sm": "8px",
-                        "lg": "24px"
-                    },
-                    "fontFamily": {
-                        "headline-lg": ["Noto Serif"],
-                        "label-sm": ["Plus Jakarta Sans"],
-                        "headline-md": ["Noto Serif"],
-                        "body-md": ["Plus Jakarta Sans"],
-                        "headline-display": ["Noto Serif"],
-                        "label-md": ["Plus Jakarta Sans"],
-                        "body-lg": ["Plus Jakarta Sans"]
-                    },
-                    "fontSize": {
-                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
-                        "label-sm": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700" }],
-                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
-                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
-                        "headline-display": ["48px", { "lineHeight": "1.2", "fontWeight": "700" }],
-                        "label-md": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }],
-                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    x: {
+                        display: false // no axis labels shown in image? actually the image shows no labels at all inside the bar, just the bars. I will hide axes to match perfectly.
                     }
                 }
             }
-        }
+        });
+    }
+
+    // Pie Chart: Distribución por Categoría
+    const ctxCategory = document.getElementById('category-sales-chart');
+    if (ctxCategory) {
+        new Chart(ctxCategory, {
+            type: 'pie',
+            data: {
+                labels: ['Platos Principales', 'Entrantes', 'Bebidas', 'Postres'],
+                datasets: [{
+                    data: [45, 20, 25, 10],
+                    backgroundColor: [
+                        '#c05621', // primary-container
+                        '#d8e6a6', // secondary-container
+                        '#dec0b5', // outline-variant
+                        '#76766d'  // tertiary-container
+                    ],
+                    borderWidth: 2,
+                    borderColor: '#fff8f3'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: {
+                            usePointStyle: true,
+                            padding: 20
+                        }
+                    }
+                }
+            }
+        });
+    }
+}

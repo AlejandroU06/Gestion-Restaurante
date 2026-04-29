@@ -1,166 +1,89 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en">
+<html class="light" lang="es">
 
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>BistroFlow - Gestión de Usuarios</title>
+    <script src="js/tailwind-config.js"></script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/usuarios.css" />
-    <script src="js/usuarios.js"></script>
+    <script src="js/main.js"></script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
 </head>
 
-<body class="bg-background text-on-background font-body-md text-body-md antialiased flex h-screen overflow-hidden">
-    <!-- SideNavBar -->
-    <nav
-        class="bg-stone-50 dark:bg-stone-900 font-serif font-medium h-screen w-64 border-r border-stone-200 dark:border-stone-800 flat no shadows flex flex-col h-full fixed left-0 top-0 py-6 z-40 hidden md:flex">
-        <!-- Brand Header -->
-        <div class="px-lg pb-lg mb-sm border-b border-stone-200">
-            <div class="flex items-center gap-sm">
-                <div
-                    class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center overflow-hidden border border-outline-variant">
-                    <img alt="Restaurant Logo" class="w-full h-full object-cover"
-                        data-alt="warm minimal elegant bistro interior snippet with warm tones and soft light"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBa8thVq7tg8wjgn5LeHHGOPxf-VHCsun924juh775Fgu2fqh2pHPUQOna780wU6y8V4HQyQIwZQrX5jdCtNMmADeFqzgPOmVLFR5FYY1-Y242qTGhCO-hbMysoSNrFDcG41EVvUv4JQDqup42In-SYKONIr-m9ZzwtLeEocLU_irKfNuja7FW7wB6-dpoWcRak7llaR0PUGiJWVfDSwZjYFmOZQTNihBmjTyURHFV51PsuxpUVQiC7FEu76op-TRpsNybkFMjyi_A" />
-                </div>
-                <div>
-                    <h1 class="text-lg font-bold text-stone-800 dark:text-stone-200 leading-tight">BistroFlow</h1>
-                    <span class="text-stone-500 font-label-sm text-label-sm block mt-xs">Gestión de Bistro</span>
-                </div>
-            </div>
-            <button
-                class="w-full mt-md bg-primary text-on-primary font-label-md text-label-md py-sm px-md rounded-lg hover:-translate-y-0.5 transition-transform duration-200 shadow-[0_4px_14px_rgba(159,62,7,0.25)] flex items-center justify-center gap-xs">
-                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
-                Nuevo Pedido
-            </button>
-        </div>
-        <!-- Main Links -->
-        <div class="flex-1 overflow-y-auto py-sm px-sm space-y-xs">
-            <a class="flex items-center gap-sm px-md py-sm rounded-lg text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-[#C05621] transition-all duration-200 group"
-                href="#">
-                <span class="material-symbols-outlined group-hover:scale-110 transition-transform">dashboard</span>
-                Dashboard
-            </a>
-            <a class="flex items-center gap-sm px-md py-sm rounded-lg text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-[#C05621] transition-all duration-200 group"
-                href="#">
-                <span class="material-symbols-outlined group-hover:scale-110 transition-transform">inventory_2</span>
-                Productos
-            </a>
-            <a class="flex items-center gap-sm px-md py-sm rounded-lg text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-[#C05621] transition-all duration-200 group"
-                href="#">
-                <span class="material-symbols-outlined group-hover:scale-110 transition-transform">category</span>
-                Categorías
-            </a>
-            <a class="flex items-center gap-sm px-md py-sm rounded-lg text-[#C05621] bg-orange-50 dark:bg-orange-900/20 font-bold border-r-4 border-[#C05621] Active: translate-x-1 group"
-                href="#">
-                <span class="material-symbols-outlined group-hover:scale-110 transition-transform"
-                    style="font-variation-settings: 'FILL' 1;">badge</span>
-                Usuarios
-            </a>
-        </div>
-        <!-- Footer Links -->
-        <div class="px-sm pt-sm border-t border-stone-200 mt-auto">
-            <a class="flex items-center gap-sm px-md py-sm rounded-lg text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-[#C05621] transition-all duration-200 group"
-                href="#">
-                <span class="material-symbols-outlined group-hover:scale-110 transition-transform">settings</span>
-                Configuración
-            </a>
-            <a class="flex items-center gap-sm px-md py-sm rounded-lg text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 hover:text-[#C05621] transition-all duration-200 group"
-                href="#">
-                <span class="material-symbols-outlined group-hover:scale-110 transition-transform">help_outline</span>
-                Soporte
-            </a>
-        </div>
-    </nav>
+<body class="bg-[#fdfbf7] text-[#2d2a26] font-sans antialiased flex h-screen overflow-hidden">
+    
+    <div id="sidebar-container"></div>
+    
     <!-- Main Content Area -->
-    <main class="flex-1 md:ml-64 bg-background h-screen overflow-y-auto">
-        <!-- Mobile Top Nav (visible only on mobile) -->
-        <header
-            class="md:hidden bg-surface flex items-center justify-between p-md border-b border-surface-variant sticky top-0 z-30">
-            <h1 class="font-headline-md text-headline-md text-on-surface">Usuarios</h1>
-            <button class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center">
-                <span class="material-symbols-outlined">menu</span>
-            </button>
-        </header>
-        <div class="p-lg md:p-xl max-w-7xl mx-auto space-y-lg">
+    <main class="flex-1 ml-0 md:ml-64 bg-[#fdfbf7] h-screen overflow-y-auto relative mt-[64px] md:mt-0 px-10 py-10">
+        
+        <div class="max-w-[1200px] mx-auto space-y-8">
             <!-- Header Section -->
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-lg">
+            <div class="flex justify-between items-start">
                 <div>
-                    <h2 class="font-headline-display text-headline-display text-on-surface mb-xs">Gestión de Usuarios
-                    </h2>
-                    <p class="text-on-surface-variant font-body-lg text-body-lg">Gestione el acceso, roles y permisos
-                        para su equipo.</p>
+                    <h2 class="font-serif text-[32px] font-bold text-[#2d2a26] mb-1 leading-none">Gestión de Usuarios</h2>
+                    <p class="font-sans text-[14px] text-[#6b625b]">Gestione el acceso, roles y permisos para su equipo.</p>
                 </div>
-                <div class="flex gap-sm">
-                    <button
-                        class="px-md py-sm rounded-lg border border-outline-variant text-on-surface font-label-md text-label-md hover:bg-surface-container transition-colors flex items-center gap-xs">
-                        <span class="material-symbols-outlined text-xl">filter_list</span>
-                        Filtrar
+                <div class="flex gap-4 mt-2">
+                    <button class="px-5 py-2 bg-white border border-[#e6e2de] rounded-md text-[13px] font-bold text-[#6b625b] hover:bg-[#fffcf8] transition-colors flex items-center gap-2 shadow-sm">
+                        <span class="material-symbols-outlined text-[17px]">filter_list</span> Filtrar
                     </button>
-                    <button
-                        class="px-md py-sm rounded-lg bg-primary text-on-primary font-label-md text-label-md shadow-[0_4px_14px_rgba(159,62,7,0.25)] hover:-translate-y-0.5 transition-transform flex items-center gap-xs">
-                        <span class="material-symbols-outlined text-xl">person_add</span>
-                        Agregar Usuario
+                    <button id="btn-add-user" class="px-5 py-2 bg-[#b84a1e] text-white rounded-md text-[13px] font-bold shadow-sm hover:bg-[#a64018] transition-opacity flex items-center gap-2">
+                        <span class="material-symbols-outlined text-[18px]">person_add</span> Agregar Usuario
                     </button>
                 </div>
             </div>
-            <!-- Stats/Overview Bento Box -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-lg">
-                <div
-                    class="bg-[#FDFCF0] p-md rounded-xl shadow-[0_4px_20px_rgba(45,42,38,0.05)] border border-surface-variant/50 relative overflow-hidden">
-                    <div class="absolute -right-4 -top-4 text-surface-variant opacity-30">
-                        <span class="material-symbols-outlined text-7xl">groups</span>
+
+            <!-- Stats/Overview Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-white p-5 rounded-[12px] border border-[#e6e2de] shadow-[0_2px_12px_rgba(45,42,38,0.02)] relative overflow-hidden flex flex-col justify-between min-h-[110px]">
+                    <div class="absolute -right-2 top-3 text-[#f0ebe1] opacity-70">
+                        <span class="material-symbols-outlined text-6xl">groups</span>
                     </div>
-                    <p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-xs">Total
-                        Usuarios Activos</p>
-                    <p class="font-headline-lg text-headline-lg text-on-surface">24</p>
-                    <div class="mt-sm flex items-center gap-xs text-secondary text-sm">
-                        <span class="material-symbols-outlined text-sm">trending_up</span>
-                        <span>+2 este mes</span>
+                    <p class="text-[10px] font-bold text-[#6b625b] tracking-wider uppercase z-10">Total Usuarios Activos</p>
+                    <div class="mt-1 z-10">
+                        <p id="stat-total" class="font-sans text-[28px] font-medium text-[#2d2a26] leading-none mb-1">24</p>
+                        <p class="text-[11px] text-[#6b625b] font-medium flex items-center gap-1">
+                            <span class="material-symbols-outlined text-[13px] text-[#556926]">trending_up</span> +2 este mes
+                        </p>
                     </div>
                 </div>
-                <div
-                    class="bg-[#FDFCF0] p-md rounded-xl shadow-[0_4px_20px_rgba(45,42,38,0.05)] border border-surface-variant/50">
-                    <p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-xs">
-                        Camareros</p>
-                    <p class="font-headline-lg text-headline-lg text-on-surface">16</p>
-                    <p class="mt-sm text-on-surface-variant text-sm">En turno ahora mismo: 8</p>
+                <!-- Card 2 -->
+                <div class="bg-white p-5 rounded-[12px] border border-[#e6e2de] shadow-[0_2px_12px_rgba(45,42,38,0.02)] flex flex-col justify-between min-h-[110px]">
+                    <p class="text-[10px] font-bold text-[#6b625b] tracking-wider uppercase">Camareros</p>
+                    <div class="mt-1">
+                        <p id="stat-meseros" class="font-sans text-[28px] font-medium text-[#2d2a26] leading-none mb-1">16</p>
+                        <p class="text-[11px] text-[#6b625b] font-medium">En turno ahora mismo: 8</p>
+                    </div>
                 </div>
-                <div
-                    class="bg-[#FDFCF0] p-md rounded-xl shadow-[0_4px_20px_rgba(45,42,38,0.05)] border border-surface-variant/50">
-                    <p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-xs">
-                        Cajeros / Anfitriones</p>
-                    <p class="font-headline-lg text-headline-lg text-on-surface">8</p>
-                    <p class="mt-sm text-on-surface-variant text-sm">En turno ahora mismo: 3</p>
+                <!-- Card 3 -->
+                <div class="bg-white p-5 rounded-[12px] border border-[#e6e2de] shadow-[0_2px_12px_rgba(45,42,38,0.02)] flex flex-col justify-between min-h-[110px]">
+                    <p class="text-[10px] font-bold text-[#6b625b] tracking-wider uppercase">Cajeros / Anfitriones</p>
+                    <div class="mt-1">
+                        <p id="stat-cajeros" class="font-sans text-[28px] font-medium text-[#2d2a26] leading-none mb-1">8</p>
+                        <p class="text-[11px] text-[#6b625b] font-medium">En turno ahora mismo: 3</p>
+                    </div>
                 </div>
             </div>
-            <!-- Main Table Card -->
-            <div
-                class="bg-[#FDFCF0] rounded-xl shadow-[0_4px_20px_rgba(45,42,38,0.05)] border border-surface-variant/50 overflow-hidden">
-                <!-- Table Controls -->
-                <div
-                    class="p-md border-b border-surface-variant/50 flex flex-col sm:flex-row justify-between items-center gap-md">
-                    <div class="relative w-full sm:w-64">
-                        <span
-                            class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
-                        <input
-                            class="w-full pl-10 pr-4 py-2 bg-surface border-b-2 border-surface-variant focus:border-primary outline-none transition-colors font-body-md text-on-surface placeholder:text-on-surface-variant/60"
-                            placeholder="Buscar usuarios..." type="text" />
+
+            <!-- Main Table Container -->
+            <div class="bg-white rounded-[12px] border border-[#e6e2de] shadow-[0_2px_12px_rgba(45,42,38,0.02)] overflow-hidden">
+                <!-- Search & Filters -->
+                <div class="p-4 flex justify-between items-center bg-white border-b border-[#e6e2de]">
+                    <div class="relative w-72">
+                        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#8c827a] text-[18px]">search</span>
+                        <input id="search-user" class="w-full pl-10 pr-4 py-1.5 bg-[#fdfbf7] border border-[#e6e2de] rounded-md focus:outline-none focus:border-[#b84a1e] transition-colors text-[13px] text-[#2d2a26] placeholder:text-[#8c827a]" placeholder="Buscar usuarios..." type="text" />
                     </div>
-                    <div class="flex items-center gap-sm self-start sm:self-auto">
-                        <span class="font-label-sm text-label-sm text-on-surface-variant">Rol:</span>
-                        <select
-                            class="bg-surface border-b-2 border-surface-variant focus:border-primary outline-none py-1 pr-6 font-body-md text-on-surface cursor-pointer">
+                    <div class="flex items-center gap-2 text-[12px] text-[#6b625b] font-bold">
+                        Rol:
+                        <select class="border border-[#e6e2de] rounded-md py-1.5 pl-3 pr-8 focus:outline-none bg-white cursor-pointer appearance-none text-[13px] font-medium">
                             <option>Todos los Roles</option>
                             <option>Camarero</option>
                             <option>Cajero</option>
@@ -168,198 +91,87 @@
                         </select>
                     </div>
                 </div>
-                <!-- Table -->
+
                 <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse">
+                    <table class="w-full text-left border-collapse min-w-max">
                         <thead>
-                            <tr class="bg-surface-container-low border-b border-surface-variant/50">
-                                <th
-                                    class="py-sm px-md font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">
-                                    Nombre y Contacto</th>
-                                <th
-                                    class="py-sm px-md font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">
-                                    Rol</th>
-                                <th
-                                    class="py-sm px-md font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">
-                                    Estado</th>
-                                <th
-                                    class="py-sm px-md font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">
-                                    Último Turno</th>
-                                <th
-                                    class="py-sm px-md font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold text-right">
-                                    Acciones</th>
+                            <tr class="bg-[#fcfaf8] border-b border-[#e6e2de]">
+                                <th class="py-3 px-6 text-[10px] font-bold text-[#8c827a] tracking-wider uppercase w-2/5">Nombre y Contacto</th>
+                                <th class="py-3 px-6 text-[10px] font-bold text-[#8c827a] tracking-wider uppercase">Rol</th>
+                                <th class="py-3 px-6 text-[10px] font-bold text-[#8c827a] tracking-wider uppercase">Estado</th>
+                                <th class="py-3 px-6 text-[10px] font-bold text-[#8c827a] tracking-wider uppercase">Último Turno</th>
+                                <th class="py-3 px-6 text-[10px] font-bold text-[#8c827a] tracking-wider uppercase text-right">Acciones</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-surface-variant/50 font-body-md">
-                            <!-- Row 1 -->
-                            <tr class="hover:bg-surface-container-lowest transition-colors group">
-                                <td class="py-md px-md">
-                                    <div class="flex items-center gap-sm">
-                                        <div class="w-10 h-10 rounded-full bg-surface-variant overflow-hidden">
-                                            <img alt="Staff Portrait" class="w-full h-full object-cover"
-                                                data-alt="portrait of smiling female hospitality worker in warm indoor lighting"
-                                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1Ld3_oUtygSw1FWxZv_Hh_YFZ3TrDniK9ZRG2SSPukCtGopDbjaTqE2NISiLti9f0XuniKOtsYpFUypgzPvKz4DnWTYTdYwkbL1WofORtpYcwqvpaph5ueD9P2M_LN0vJ7IeIGDjrTM2mUX_qd83QR6flDn-5a9hsRPla1WSiOeOFshhrr9Vm4Pu305kRaOmVbRA4u2-h6IIGLawSxtjkoED_JDUW_xvZ_AyQhyj9N5v3Z6gfLhI15x0TCW6_zKQbIv9Hq7-PqCo" />
-                                        </div>
-                                        <div>
-                                            <p class="font-headline-md text-lg text-on-surface m-0 leading-tight">Sarah
-                                                Jenkins</p>
-                                            <p class="text-sm text-on-surface-variant m-0">sarah.j@bistroflow.com</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="py-md px-md">
-                                    <span
-                                        class="inline-flex items-center px-2 py-1 rounded-md bg-secondary-container/30 text-on-secondary-container font-label-sm text-label-sm">
-                                        Gerente
-                                    </span>
-                                </td>
-                                <td class="py-md px-md">
-                                    <div class="flex items-center gap-xs text-secondary font-label-md">
-                                        <span class="w-2 h-2 rounded-full bg-secondary"></span>
-                                        Activo
-                                    </div>
-                                </td>
-                                <td class="py-md px-md text-on-surface-variant text-sm">
-                                    Hoy, 08:00 AM
-                                </td>
-                                <td class="py-md px-md text-right">
-                                    <div
-                                        class="flex items-center justify-end gap-xs opacity-0 group-hover:opacity-100 transition-opacity">
-                                        <button
-                                            class="p-1 rounded text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"
-                                            title="Editar">
-                                            <span class="material-symbols-outlined text-[20px]">edit</span>
-                                        </button>
-                                        <button
-                                            class="p-1 rounded text-on-surface-variant hover:text-error hover:bg-error-container/20 transition-colors"
-                                            title="Eliminar">
-                                            <span class="material-symbols-outlined text-[20px]">delete</span>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <!-- Row 2 -->
-                            <tr class="hover:bg-surface-container-lowest transition-colors group">
-                                <td class="py-md px-md">
-                                    <div class="flex items-center gap-sm">
-                                        <div
-                                            class="w-10 h-10 rounded-full bg-surface-variant overflow-hidden flex items-center justify-center text-on-surface-variant font-headline-md">
-                                            MC
-                                        </div>
-                                        <div>
-                                            <p class="font-headline-md text-lg text-on-surface m-0 leading-tight">Marcus
-                                                Chen</p>
-                                            <p class="text-sm text-on-surface-variant m-0">marcus.c@bistroflow.com</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="py-md px-md">
-                                    <span
-                                        class="inline-flex items-center px-2 py-1 rounded-md bg-surface-container text-on-surface-variant font-label-sm text-label-sm border border-outline-variant/30">
-                                        Camarero
-                                    </span>
-                                </td>
-                                <td class="py-md px-md">
-                                    <div class="flex items-center gap-xs text-secondary font-label-md">
-                                        <span class="w-2 h-2 rounded-full bg-secondary"></span>
-                                        Activo
-                                    </div>
-                                </td>
-                                <td class="py-md px-md text-on-surface-variant text-sm">
-                                    Ayer, 16:00
-                                </td>
-                                <td class="py-md px-md text-right">
-                                    <div
-                                        class="flex items-center justify-end gap-xs opacity-0 group-hover:opacity-100 transition-opacity">
-                                        <button
-                                            class="p-1 rounded text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"
-                                            title="Editar">
-                                            <span class="material-symbols-outlined text-[20px]">edit</span>
-                                        </button>
-                                        <button
-                                            class="p-1 rounded text-on-surface-variant hover:text-error hover:bg-error-container/20 transition-colors"
-                                            title="Eliminar">
-                                            <span class="material-symbols-outlined text-[20px]">delete</span>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <!-- Row 3 -->
-                            <tr class="hover:bg-surface-container-lowest transition-colors group">
-                                <td class="py-md px-md">
-                                    <div class="flex items-center gap-sm">
-                                        <div class="w-10 h-10 rounded-full bg-surface-variant overflow-hidden">
-                                            <img alt="Staff Portrait" class="w-full h-full object-cover"
-                                                data-alt="portrait of serious male hospitality worker in warm indoor lighting"
-                                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwf80xrWnJS-gefhD9liZkPDeIvfaYXp3PBLPG98z2FGuk2Bvwif64B8Au09-xb4zXYbFkCOKRymMOqgeUR4QTEiP56xFfomBloasMXEx7Pzs5i2oV5_zyOrtyU8jnBcX0DUJs6kbC6_hGn7Jw1nBx68yiRyudq8-HWNLszGWjGBxfzbMCyJThvMR7HPk2ZCTaRCN17dk9LRfvnaBKZIzK-pksfYZJeNA4g7iI70KqGQvMSBEOMI6Qs9aLEnHbPWMchPmascHsOCg" />
-                                        </div>
-                                        <div>
-                                            <p class="font-headline-md text-lg text-on-surface m-0 leading-tight">David
-                                                Rossi</p>
-                                            <p class="text-sm text-on-surface-variant m-0">david.r@bistroflow.com</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="py-md px-md">
-                                    <span
-                                        class="inline-flex items-center px-2 py-1 rounded-md bg-surface-container text-on-surface-variant font-label-sm text-label-sm border border-outline-variant/30">
-                                        Cajero
-                                    </span>
-                                </td>
-                                <td class="py-md px-md">
-                                    <div class="flex items-center gap-xs text-outline font-label-md">
-                                        <span class="w-2 h-2 rounded-full bg-outline"></span>
-                                        De Permiso
-                                    </div>
-                                </td>
-                                <td class="py-md px-md text-on-surface-variant text-sm">
-                                    12 Oct, 2023
-                                </td>
-                                <td class="py-md px-md text-right">
-                                    <div
-                                        class="flex items-center justify-end gap-xs opacity-0 group-hover:opacity-100 transition-opacity">
-                                        <button
-                                            class="p-1 rounded text-on-surface-variant hover:text-primary hover:bg-surface-container transition-colors"
-                                            title="Editar">
-                                            <span class="material-symbols-outlined text-[20px]">edit</span>
-                                        </button>
-                                        <button
-                                            class="p-1 rounded text-on-surface-variant hover:text-error hover:bg-error-container/20 transition-colors"
-                                            title="Eliminar">
-                                            <span class="material-symbols-outlined text-[20px]">delete</span>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
+                        <tbody id="users-tbody" class="divide-y divide-[#f0ebe1] bg-white">
+                            <!-- JS injected rows -->
                         </tbody>
                     </table>
                 </div>
+                
                 <!-- Pagination -->
-                <div
-                    class="p-md border-t border-surface-variant/50 flex items-center justify-between bg-surface-container-lowest">
-                    <span class="text-sm text-on-surface-variant">Mostrando 1 a 3 de 24 entradas</span>
-                    <div class="flex items-center gap-xs">
-                        <button
-                            class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface-variant hover:bg-surface-container disabled:opacity-50"
-                            disabled="">
-                            <span class="material-symbols-outlined text-sm">chevron_left</span>
-                        </button>
-                        <button
-                            class="w-8 h-8 flex items-center justify-center rounded bg-primary text-on-primary font-label-md">1</button>
-                        <button
-                            class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface hover:bg-surface-container font-label-md">2</button>
-                        <button
-                            class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface hover:bg-surface-container font-label-md">3</button>
-                        <span class="px-1 text-on-surface-variant">...</span>
-                        <button
-                            class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant text-on-surface-variant hover:bg-surface-container">
-                            <span class="material-symbols-outlined text-sm">chevron_right</span>
-                        </button>
+                <div class="p-4 border-t border-[#e6e2de] flex justify-between items-center text-[12px] text-[#6b625b] bg-white">
+                    <span id="entries-info">Mostrando 1 a 3 de 24 entradas</span>
+                    <div class="flex gap-1.5" id="pagination-controls">
+                        <button class="w-7 h-7 rounded border border-[#e6e2de] flex items-center justify-center hover:bg-[#fcfaf8] transition text-[#8c827a]">&lsaquo;</button>
+                        <button class="w-7 h-7 rounded bg-[#b84a1e] text-white flex items-center justify-center font-bold shadow-sm">1</button>
+                        <button class="w-7 h-7 rounded border border-[#e6e2de] flex items-center justify-center hover:bg-[#fcfaf8] transition">2</button>
+                        <button class="w-7 h-7 rounded border border-[#e6e2de] flex items-center justify-center hover:bg-[#fcfaf8] transition">3</button>
+                        <span class="w-7 h-7 flex items-center justify-center">...</span>
+                        <button class="w-7 h-7 rounded border border-[#e6e2de] flex items-center justify-center hover:bg-[#fcfaf8] transition text-[#8c827a]">&rsaquo;</button>
                     </div>
                 </div>
             </div>
+            
         </div>
     </main>
-</body>
 
+    <!-- Modal left exactly unchanged functionally -->
+    <div id="user-modal" class="fixed inset-0 bg-black/40 hidden z-50 flex items-center justify-center backdrop-blur-sm p-4">
+        <div class="bg-white rounded-xl shadow-xl w-full max-w-md flex flex-col overflow-hidden">
+            <div class="p-5 border-b border-[#e6e2de] flex justify-between items-center">
+                <h3 class="font-serif text-[18px] font-bold text-[#2d2a26]">Alta de Empleado</h3>
+                <button id="close-user-modal" class="text-[#8c827a] hover:text-red-500 transition-colors">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            
+            <form id="user-form" class="p-6 flex flex-col gap-4">
+                <div id="form-error" class="hidden bg-red-50 text-red-600 text-[13px] p-3 rounded-md border border-red-200"></div>
+
+                <div>
+                    <label class="block text-[12px] font-bold text-[#2d2a26] mb-1">Nombre Completo</label>
+                    <input type="text" id="user-name" required class="w-full bg-[#fdfbf7] border border-[#e6e2de] rounded-md py-2 px-3 focus:outline-none transition-colors text-[13px]">
+                </div>
+
+                <div>
+                    <label class="block text-[12px] font-bold text-[#2d2a26] mb-1">Correo Electrónico</label>
+                    <input type="email" id="user-email" required class="w-full bg-[#fdfbf7] border border-[#e6e2de] rounded-md py-2 px-3 focus:outline-none transition-colors text-[13px]">
+                </div>
+
+                <div>
+                    <label class="block text-[12px] font-bold text-[#2d2a26] mb-1">Contraseña Temporal</label>
+                    <input type="password" id="user-password" required minlength="6" class="w-full bg-[#fdfbf7] border border-[#e6e2de] rounded-md py-2 px-3 focus:outline-none transition-colors text-[13px]">
+                </div>
+
+                <div>
+                    <label class="block text-[12px] font-bold text-[#2d2a26] mb-1">Rol</label>
+                    <select id="user-role" required class="w-full bg-[#fdfbf7] border border-[#e6e2de] rounded-md py-2 px-3 focus:outline-none transition-colors text-[13px]">
+                        <option value="">Seleccione un rol...</option>
+                        <option value="Gerente">Gerente</option>
+                        <option value="Cajero">Cajero</option>
+                        <option value="Camarero">Camarero</option>
+                    </select>
+                </div>
+            </form>
+
+            <div class="p-5 border-t border-[#e6e2de] flex justify-end gap-3 bg-[#fdfbf7]">
+                <button type="button" id="cancel-user-modal" class="px-4 py-2 text-[13px] font-bold text-[#6b625b] hover:bg-[#e6e2de] rounded-md transition-colors">Cancelar</button>
+                <button type="submit" form="user-form" class="px-4 py-2 bg-[#b84a1e] text-white rounded-md text-[13px] font-bold shadow-sm hover:opacity-90 transition-opacity">Registrar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/usuarios.js"></script>
+</body>
 </html>
