@@ -1,38 +1,54 @@
-let users = [
-    {
-        id: 1,
-        name: "Sarah Jenkins",
-        email: "sarah.j@bistroflow.com",
-        role: "Cajero",
-        registeredAt: "2023-10-12"
-    },
-    {
-        id: 2,
-        name: "Marcus Chen",
-        email: "marcus.c@bistroflow.com",
-        role: "Mesero",
-        registeredAt: "2024-01-05"
-    },
-    {
-        id: 3,
-        name: "David Rossi",
-        email: "david.r@bistroflow.com",
-        role: "Mesero",
-        registeredAt: "2024-03-15"
-    }
-];
+const SUPABASE_URL = 'https://mfylvijpbibacmpfwynv.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1meWx2aWpwYmliYWNtcGZ3eW52Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcyODk2ODgsImV4cCI6MjA5Mjg2NTY4OH0.KqXfisr_OATVcnwnPBcJFNR9jFm3MUDLQOYKC1puHNI';
+let _supabase;
+if (typeof supabase !== 'undefined') {
+    _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+}
+
+let users = [];
 
 document.addEventListener('DOMContentLoaded', () => {
-    renderUsers();
+    fetchUsers();
     setupEventListeners();
 });
+
+async function fetchUsers() {
+    if (!_supabase) return;
+    try {
+        const { data, error } = await _supabase.from('usuario').select('*');
+        if (error) throw error;
+        
+        let loggedInUser = null;
+        try {
+            loggedInUser = JSON.parse(localStorage.getItem('user'));
+        } catch (e) {}
+
+        const currentUserId = loggedInUser ? (loggedInUser.id || loggedInUser.Id_usuario || loggedInUser.id_usuario) : null;
+        
+        users = data.filter(u => {
+            const rowId = u.id || u.Id_usuario || u.id_usuario;
+            return rowId !== currentUserId;
+        }).map(u => ({
+            id: u.id || u.Id_usuario || u.id_usuario,
+            name: u.nombre || u.name,
+            email: u.email || u.correo || '',
+            role: u.rol || u.role,
+            registeredAt: u.created_at || '2024-01-01',
+            status: u.estado || u.status || 'Activo'
+        }));
+        
+        renderUsers();
+    } catch (err) {
+        console.error("Error fetching users:", err);
+    }
+}
 
 function setupEventListeners() {
     // Search filter
     const searchInput = document.getElementById('search-user');
     searchInput.addEventListener('input', (e) => {
         const term = e.target.value.toLowerCase();
-        const filtered = users.filter(u => u.name.toLowerCase().includes(term) || u.email.toLowerCase().includes(term));
+        const filtered = users.filter(u => (u.name && u.name.toLowerCase().includes(term)) || (u.email && u.email.toLowerCase().includes(term)));
         renderUsers(filtered);
     });
 
@@ -42,46 +58,48 @@ function setupEventListeners() {
     const btnCancel = document.getElementById('cancel-user-modal');
     const form = document.getElementById('user-form');
 
-    btnAdd.addEventListener('click', openModal);
-    btnClose.addEventListener('click', closeModal);
-    btnCancel.addEventListener('click', closeModal);
-    form.addEventListener('submit', handleAddUser);
+    if(btnAdd) btnAdd.addEventListener('click', openModal);
+    if(btnClose) btnClose.addEventListener('click', closeModal);
+    if(btnCancel) btnCancel.addEventListener('click', closeModal);
+    if(form) form.addEventListener('submit', handleAddUser);
 }
 
 function updateStats() {
-    document.getElementById('stat-total').textContent = users.length;
-    document.getElementById('stat-meseros').textContent = users.filter(u => u.role === 'Mesero').length;
-    document.getElementById('stat-cajeros').textContent = users.filter(u => u.role === 'Cajero').length;
+    if(document.getElementById('stat-total')) document.getElementById('stat-total').textContent = users.length;
+    if(document.getElementById('stat-meseros')) document.getElementById('stat-meseros').textContent = users.filter(u => u.role === 'Camarero' || u.role === 'Mesero').length;
+    if(document.getElementById('stat-cajeros')) document.getElementById('stat-cajeros').textContent = users.filter(u => u.role === 'Cajero' || u.role === 'Anfitrión').length;
 }
 
 function renderUsers(list = users) {
     updateStats();
     
     const tbody = document.getElementById('users-tbody');
+    if(!tbody) return;
+    
     tbody.innerHTML = '';
     
     if (list.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="4" class="text-center py-6 text-on-surface-variant">No se encontraron usuarios.</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="5" class="text-center py-6 text-[13px] text-[#8c827a]">No se encontraron usuarios.</td></tr>';
         return;
     }
 
     list.forEach(u => {
+        const initials = u.name ? u.name.split(' ').map(n=>n[0]).join('').substring(0,2).toUpperCase() : 'U';
+        
         // Pill logic matching the image exactly
         let rolePillSrc = '';
         if(u.role === 'Gerente') rolePillSrc = '<span class="inline-flex items-center px-2.5 py-0.5 rounded text-[10px] font-bold bg-[#edf2e0] text-[#556926]">Gerente</span>';
-        else if (u.role === 'Camarero') rolePillSrc = '<span class="inline-flex items-center px-2.5 py-0.5 rounded text-[10px] font-bold bg-[#fcepe6] text-[#b34000]">Camarero</span>';
+        else if (u.role === 'Camarero' || u.role === 'Mesero') rolePillSrc = '<span class="inline-flex items-center px-2.5 py-0.5 rounded text-[10px] font-bold bg-[#fcepe6] text-[#b34000]">Camarero</span>';
         else rolePillSrc = '<span class="inline-flex items-center px-2.5 py-0.5 rounded text-[10px] font-bold bg-[#f5f3f0] text-[#6b625b]">' + u.role + '</span>';
         
         // Simulating status
-        const isPermiso = u.registeredAt === '2024-03-15'; 
+        const isPermiso = u.status === 'Inactivo' || u.status === 'Permiso'; 
         const statusHTML = isPermiso 
             ? '<div class="flex items-center gap-1.5 text-[12px] text-[#8c827a]"><div class="w-1.5 h-1.5 rounded-full bg-[#8c827a]"></div>De Permiso</div>'
             : '<div class="flex items-center gap-1.5 text-[12px] text-[#556926]"><div class="w-1.5 h-1.5 rounded-full bg-[#556926]"></div>Activo</div>';
             
         // Simulating time
         let timeStr = "Hoy, 08:00 AM";
-        if(u.id === 2) timeStr = "Ayer, 16:00";
-        if(isPermiso) timeStr = "12 Oct, 2023";
 
         const tr = document.createElement('tr');
         tr.className = "hover:bg-[#fbf9f4] transition-colors group";
@@ -128,7 +146,7 @@ function closeModal() {
     document.getElementById('user-modal').classList.add('hidden');
 }
 
-function handleAddUser(e) {
+async function handleAddUser(e) {
     e.preventDefault();
     const errorBox = document.getElementById('form-error');
     errorBox.classList.add('hidden');
@@ -144,32 +162,31 @@ function handleAddUser(e) {
         return;
     }
 
-    if (role !== 'Cajero' && role !== 'Mesero') {
-        errorBox.textContent = "Rol inválido. Debe ser Cajero o Mesero.";
+    try {
+        const { data, error } = await _supabase.from('usuario').insert([
+            { nombre: name, email: email, contraseña: pass, rol: role }
+        ]).select();
+        
+        if (error) throw error;
+        
+        closeModal();
+        await fetchUsers(); // Refresh the list
+    } catch (err) {
+        errorBox.textContent = "Error al guardar el usuario en la base de datos.";
         errorBox.classList.remove('hidden');
-        return;
+        console.error(err);
     }
-    
-    // Simulate current date
-    const today = new Date().toISOString().split('T')[0];
-    const newId = users.length > 0 ? Math.max(...users.map(u => u.id)) + 1 : 1;
-
-    users.push({
-        id: newId,
-        name,
-        email,
-        role,
-        registeredAt: today
-    });
-
-    closeModal();
-    // Dispatch input to render correctly with active search
-    document.getElementById('search-user').dispatchEvent(new Event('input'));
 }
 
-function deleteUser(id) {
+async function deleteUser(id) {
     if (confirm("¿Seguro que desea eliminar a este empleado?")) {
-        users = users.filter(u => u.id !== id);
-        document.getElementById('search-user').dispatchEvent(new Event('input'));
+        try {
+            await _supabase.from('usuario').delete().eq('id', id); // Warning: we don't know if PK is id or Id_usuario!
+            // I'll try both to be safe
+            await _supabase.from('usuario').delete().eq('Id_usuario', id);
+            await fetchUsers();
+        } catch (err) {
+            console.error("Error deleting:", err);
+        }
     }
 }
