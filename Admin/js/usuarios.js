@@ -17,14 +17,14 @@ async function fetchUsers() {
     try {
         const { data, error } = await _supabase.from('usuario').select('*');
         if (error) throw error;
-        
+
         let loggedInUser = null;
         try {
             loggedInUser = JSON.parse(localStorage.getItem('user'));
-        } catch (e) {}
+        } catch (e) { }
 
         const currentUserId = loggedInUser ? (loggedInUser.id || loggedInUser.Id_usuario || loggedInUser.id_usuario) : null;
-        
+
         users = data.filter(u => {
             const rowId = u.id || u.Id_usuario || u.id_usuario;
             return rowId !== currentUserId;
@@ -36,7 +36,7 @@ async function fetchUsers() {
             registeredAt: u.created_at || '2024-01-01',
             status: u.estado || u.status || 'Activo'
         }));
-        
+
         renderUsers();
     } catch (err) {
         console.error("Error fetching users:", err);
@@ -58,46 +58,46 @@ function setupEventListeners() {
     const btnCancel = document.getElementById('cancel-user-modal');
     const form = document.getElementById('user-form');
 
-    if(btnAdd) btnAdd.addEventListener('click', openModal);
-    if(btnClose) btnClose.addEventListener('click', closeModal);
-    if(btnCancel) btnCancel.addEventListener('click', closeModal);
-    if(form) form.addEventListener('submit', handleAddUser);
+    if (btnAdd) btnAdd.addEventListener('click', openModal);
+    if (btnClose) btnClose.addEventListener('click', closeModal);
+    if (btnCancel) btnCancel.addEventListener('click', closeModal);
+    if (form) form.addEventListener('submit', handleAddUser);
 }
 
 function updateStats() {
-    if(document.getElementById('stat-total')) document.getElementById('stat-total').textContent = users.length;
-    if(document.getElementById('stat-meseros')) document.getElementById('stat-meseros').textContent = users.filter(u => u.role === 'Camarero' || u.role === 'Mesero').length;
-    if(document.getElementById('stat-cajeros')) document.getElementById('stat-cajeros').textContent = users.filter(u => u.role === 'Cajero' || u.role === 'Anfitrión').length;
+    if (document.getElementById('stat-total')) document.getElementById('stat-total').textContent = users.length;
+    if (document.getElementById('stat-meseros')) document.getElementById('stat-meseros').textContent = users.filter(u => u.role === 'Camarero' || u.role === 'Mesero').length;
+    if (document.getElementById('stat-cajeros')) document.getElementById('stat-cajeros').textContent = users.filter(u => u.role === 'Cajero' || u.role === 'Anfitrión').length;
 }
 
 function renderUsers(list = users) {
     updateStats();
-    
+
     const tbody = document.getElementById('users-tbody');
-    if(!tbody) return;
-    
+    if (!tbody) return;
+
     tbody.innerHTML = '';
-    
+
     if (list.length === 0) {
         tbody.innerHTML = '<tr><td colspan="5" class="text-center py-6 text-[13px] text-[#8c827a]">No se encontraron usuarios.</td></tr>';
         return;
     }
 
     list.forEach(u => {
-        const initials = u.name ? u.name.split(' ').map(n=>n[0]).join('').substring(0,2).toUpperCase() : 'U';
-        
+        const initials = u.name ? u.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() : 'U';
+
         // Pill logic matching the image exactly
         let rolePillSrc = '';
-        if(u.role === 'Gerente') rolePillSrc = '<span class="inline-flex items-center px-2.5 py-0.5 rounded text-[10px] font-bold bg-[#edf2e0] text-[#556926]">Gerente</span>';
-        else if (u.role === 'Camarero' || u.role === 'Mesero') rolePillSrc = '<span class="inline-flex items-center px-2.5 py-0.5 rounded text-[10px] font-bold bg-[#fcepe6] text-[#b34000]">Camarero</span>';
+        if (u.role === 'Administrador') rolePillSrc = '<span class="inline-flex items-center px-2.5 py-0.5 rounded text-[10px] font-bold bg-[#edf2e0] text-[#556926]">Administrador</span>';
+        else if (u.role === 'Mesero') rolePillSrc = '<span class="inline-flex items-center px-2.5 py-0.5 rounded text-[10px] font-bold bg-[#fcepe6] text-[#b34000]">Mesero</span>';
         else rolePillSrc = '<span class="inline-flex items-center px-2.5 py-0.5 rounded text-[10px] font-bold bg-[#f5f3f0] text-[#6b625b]">' + u.role + '</span>';
-        
+
         // Simulating status
-        const isPermiso = u.status === 'Inactivo' || u.status === 'Permiso'; 
-        const statusHTML = isPermiso 
+        const isPermiso = u.status === 'Inactivo' || u.status === 'Permiso';
+        const statusHTML = isPermiso
             ? '<div class="flex items-center gap-1.5 text-[12px] text-[#8c827a]"><div class="w-1.5 h-1.5 rounded-full bg-[#8c827a]"></div>De Permiso</div>'
             : '<div class="flex items-center gap-1.5 text-[12px] text-[#556926]"><div class="w-1.5 h-1.5 rounded-full bg-[#556926]"></div>Activo</div>';
-            
+
         // Simulating time
         let timeStr = "Hoy, 08:00 AM";
 
@@ -107,8 +107,8 @@ function renderUsers(list = users) {
             <td class="py-3 px-6">
                 <div class="flex items-center gap-3">
                     <div class="w-9 h-9 rounded-full bg-[#ebe6df] flex items-center justify-center text-[11px] font-bold text-[#6b625b] shrink-0 overflow-hidden">
-                        ${u.id === 1 ? '<img src="https://i.pravatar.cc/150?u=sarah" class="w-full h-full object-cover">' 
-                        : (u.id === 3 ? '<img src="https://i.pravatar.cc/150?u=david" class="w-full h-full object-cover">' : initials)}
+                        ${u.id === 1 ? '<img src="https://i.pravatar.cc/150?u=sarah" class="w-full h-full object-cover">'
+                : (u.id === 3 ? '<img src="https://i.pravatar.cc/150?u=david" class="w-full h-full object-cover">' : initials)}
                     </div>
                     <div class="min-w-0">
                         <p class="font-serif text-[14px] font-bold text-[#2d2a26] leading-tight truncate">${u.name}</p>
@@ -152,9 +152,11 @@ async function handleAddUser(e) {
     errorBox.classList.add('hidden');
 
     const name = document.getElementById('user-name').value.trim();
+    const apellido = document.getElementById('user-apellido').value.trim();
     const email = document.getElementById('user-email').value.trim();
     const pass = document.getElementById('user-password').value;
     const role = document.getElementById('user-role').value;
+    const fecha_registro = new Date().toISOString();
 
     if (!name || !email || !pass || !role) {
         errorBox.textContent = "Todos los campos son obligatorios.";
@@ -164,11 +166,11 @@ async function handleAddUser(e) {
 
     try {
         const { data, error } = await _supabase.from('usuario').insert([
-            { nombre: name, email: email, contraseña: pass, rol: role }
+            { nombre: name, apellido: apellido, email: email, contraseña: pass, rol: role, fecha_registro: fecha_registro }
         ]).select();
-        
+
         if (error) throw error;
-        
+
         closeModal();
         await fetchUsers(); // Refresh the list
     } catch (err) {

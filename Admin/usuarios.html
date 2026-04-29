@@ -7,34 +7,44 @@
     <title>BistroFlow - Gestión de Usuarios</title>
     <script src="js/tailwind-config.js"></script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
     <link rel="stylesheet" href="css/usuarios.css" />
     <script src="js/main.js"></script>
     <style>
-        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
     </style>
 </head>
 
 <body class="bg-[#fdfbf7] text-[#2d2a26] font-sans antialiased flex h-screen overflow-hidden">
-    
+
     <div id="sidebar-container"></div>
-    
+
     <!-- Main Content Area -->
     <main class="flex-1 ml-0 md:ml-64 bg-[#fdfbf7] h-screen overflow-y-auto relative mt-[64px] md:mt-0 px-10 py-10">
-        
+
         <div class="max-w-[1200px] mx-auto space-y-8">
             <!-- Header Section -->
             <div class="flex justify-between items-start">
                 <div>
-                    <h2 class="font-serif text-[32px] font-bold text-[#2d2a26] mb-1 leading-none">Gestión de Usuarios</h2>
-                    <p class="font-sans text-[14px] text-[#6b625b]">Gestione el acceso, roles y permisos para su equipo.</p>
+                    <h2 class="font-serif text-[32px] font-bold text-[#2d2a26] mb-1 leading-none">Gestión de Usuarios
+                    </h2>
+                    <p class="font-sans text-[14px] text-[#6b625b]">Gestione el acceso, roles y permisos para su equipo.
+                    </p>
                 </div>
                 <div class="flex gap-4 mt-2">
-                    <button class="px-5 py-2 bg-white border border-[#e6e2de] rounded-md text-[13px] font-bold text-[#6b625b] hover:bg-[#fffcf8] transition-colors flex items-center gap-2 shadow-sm">
+                    <button
+                        class="px-5 py-2 bg-white border border-[#e6e2de] rounded-md text-[13px] font-bold text-[#6b625b] hover:bg-[#fffcf8] transition-colors flex items-center gap-2 shadow-sm">
                         <span class="material-symbols-outlined text-[17px]">filter_list</span> Filtrar
                     </button>
-                    <button id="btn-add-user" class="px-5 py-2 bg-[#b84a1e] text-white rounded-md text-[13px] font-bold shadow-sm hover:bg-[#a64018] transition-opacity flex items-center gap-2">
+                    <button id="btn-add-user"
+                        class="px-5 py-2 bg-[#b84a1e] text-white rounded-md text-[13px] font-bold shadow-sm hover:bg-[#a64018] transition-opacity flex items-center gap-2">
                         <span class="material-symbols-outlined text-[18px]">person_add</span> Agregar Usuario
                     </button>
                 </div>
@@ -43,51 +53,65 @@
             <!-- Stats/Overview Cards -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- Card 1 -->
-                <div class="bg-white p-5 rounded-[12px] border border-[#e6e2de] shadow-[0_2px_12px_rgba(45,42,38,0.02)] relative overflow-hidden flex flex-col justify-between min-h-[110px]">
+                <div
+                    class="bg-white p-5 rounded-[12px] border border-[#e6e2de] shadow-[0_2px_12px_rgba(45,42,38,0.02)] relative overflow-hidden flex flex-col justify-between min-h-[110px]">
                     <div class="absolute -right-2 top-3 text-[#f0ebe1] opacity-70">
                         <span class="material-symbols-outlined text-6xl">groups</span>
                     </div>
-                    <p class="text-[10px] font-bold text-[#6b625b] tracking-wider uppercase z-10">Total Usuarios Activos</p>
+                    <p class="text-[10px] font-bold text-[#6b625b] tracking-wider uppercase z-10">Total Usuarios Activos
+                    </p>
                     <div class="mt-1 z-10">
-                        <p id="stat-total" class="font-sans text-[28px] font-medium text-[#2d2a26] leading-none mb-1">24</p>
+                        <p id="stat-total" class="font-sans text-[28px] font-medium text-[#2d2a26] leading-none mb-1">24
+                        </p>
                         <p class="text-[11px] text-[#6b625b] font-medium flex items-center gap-1">
-                            <span class="material-symbols-outlined text-[13px] text-[#556926]">trending_up</span> +2 este mes
+                            <span class="material-symbols-outlined text-[13px] text-[#556926]">trending_up</span> +2
+                            este mes
                         </p>
                     </div>
                 </div>
                 <!-- Card 2 -->
-                <div class="bg-white p-5 rounded-[12px] border border-[#e6e2de] shadow-[0_2px_12px_rgba(45,42,38,0.02)] flex flex-col justify-between min-h-[110px]">
+                <div
+                    class="bg-white p-5 rounded-[12px] border border-[#e6e2de] shadow-[0_2px_12px_rgba(45,42,38,0.02)] flex flex-col justify-between min-h-[110px]">
                     <p class="text-[10px] font-bold text-[#6b625b] tracking-wider uppercase">Camareros</p>
                     <div class="mt-1">
-                        <p id="stat-meseros" class="font-sans text-[28px] font-medium text-[#2d2a26] leading-none mb-1">16</p>
+                        <p id="stat-meseros" class="font-sans text-[28px] font-medium text-[#2d2a26] leading-none mb-1">
+                            16</p>
                         <p class="text-[11px] text-[#6b625b] font-medium">En turno ahora mismo: 8</p>
                     </div>
                 </div>
                 <!-- Card 3 -->
-                <div class="bg-white p-5 rounded-[12px] border border-[#e6e2de] shadow-[0_2px_12px_rgba(45,42,38,0.02)] flex flex-col justify-between min-h-[110px]">
+                <div
+                    class="bg-white p-5 rounded-[12px] border border-[#e6e2de] shadow-[0_2px_12px_rgba(45,42,38,0.02)] flex flex-col justify-between min-h-[110px]">
                     <p class="text-[10px] font-bold text-[#6b625b] tracking-wider uppercase">Cajeros / Anfitriones</p>
                     <div class="mt-1">
-                        <p id="stat-cajeros" class="font-sans text-[28px] font-medium text-[#2d2a26] leading-none mb-1">8</p>
+                        <p id="stat-cajeros" class="font-sans text-[28px] font-medium text-[#2d2a26] leading-none mb-1">
+                            8</p>
                         <p class="text-[11px] text-[#6b625b] font-medium">En turno ahora mismo: 3</p>
                     </div>
                 </div>
             </div>
 
             <!-- Main Table Container -->
-            <div class="bg-white rounded-[12px] border border-[#e6e2de] shadow-[0_2px_12px_rgba(45,42,38,0.02)] overflow-hidden">
+            <div
+                class="bg-white rounded-[12px] border border-[#e6e2de] shadow-[0_2px_12px_rgba(45,42,38,0.02)] overflow-hidden">
                 <!-- Search & Filters -->
                 <div class="p-4 flex justify-between items-center bg-white border-b border-[#e6e2de]">
                     <div class="relative w-72">
-                        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#8c827a] text-[18px]">search</span>
-                        <input id="search-user" class="w-full pl-10 pr-4 py-1.5 bg-[#fdfbf7] border border-[#e6e2de] rounded-md focus:outline-none focus:border-[#b84a1e] transition-colors text-[13px] text-[#2d2a26] placeholder:text-[#8c827a]" placeholder="Buscar usuarios..." type="text" />
+                        <span
+                            class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#8c827a] text-[18px]">search</span>
+                        <input id="search-user"
+                            class="w-full pl-10 pr-4 py-1.5 bg-[#fdfbf7] border border-[#e6e2de] rounded-md focus:outline-none focus:border-[#b84a1e] transition-colors text-[13px] text-[#2d2a26] placeholder:text-[#8c827a]"
+                            placeholder="Buscar usuarios..." type="text" />
                     </div>
                     <div class="flex items-center gap-2 text-[12px] text-[#6b625b] font-bold">
                         Rol:
-                        <select class="border border-[#e6e2de] rounded-md py-1.5 pl-3 pr-8 focus:outline-none bg-white cursor-pointer appearance-none text-[13px] font-medium">
+                        <select
+                            class="border border-[#e6e2de] rounded-md py-1.5 pl-3 pr-8 focus:outline-none bg-white cursor-pointer appearance-none text-[13px] font-medium">
                             <option>Todos los Roles</option>
-                            <option>Camarero</option>
+                            <option>Cliente</option>
+                            <option>Administrador</option>
+                            <option>Mesero</option>
                             <option>Cajero</option>
-                            <option>Gerente</option>
                         </select>
                     </div>
                 </div>
@@ -96,11 +120,18 @@
                     <table class="w-full text-left border-collapse min-w-max">
                         <thead>
                             <tr class="bg-[#fcfaf8] border-b border-[#e6e2de]">
-                                <th class="py-3 px-6 text-[10px] font-bold text-[#8c827a] tracking-wider uppercase w-2/5">Nombre y Contacto</th>
-                                <th class="py-3 px-6 text-[10px] font-bold text-[#8c827a] tracking-wider uppercase">Rol</th>
-                                <th class="py-3 px-6 text-[10px] font-bold text-[#8c827a] tracking-wider uppercase">Estado</th>
-                                <th class="py-3 px-6 text-[10px] font-bold text-[#8c827a] tracking-wider uppercase">Último Turno</th>
-                                <th class="py-3 px-6 text-[10px] font-bold text-[#8c827a] tracking-wider uppercase text-right">Acciones</th>
+                                <th
+                                    class="py-3 px-6 text-[10px] font-bold text-[#8c827a] tracking-wider uppercase w-2/5">
+                                    Nombre y Contacto</th>
+                                <th class="py-3 px-6 text-[10px] font-bold text-[#8c827a] tracking-wider uppercase">Rol
+                                </th>
+                                <th class="py-3 px-6 text-[10px] font-bold text-[#8c827a] tracking-wider uppercase">
+                                    Estado</th>
+                                <th class="py-3 px-6 text-[10px] font-bold text-[#8c827a] tracking-wider uppercase">
+                                    Último Turno</th>
+                                <th
+                                    class="py-3 px-6 text-[10px] font-bold text-[#8c827a] tracking-wider uppercase text-right">
+                                    Acciones</th>
                             </tr>
                         </thead>
                         <tbody id="users-tbody" class="divide-y divide-[#f0ebe1] bg-white">
@@ -108,26 +139,33 @@
                         </tbody>
                     </table>
                 </div>
-                
+
                 <!-- Pagination -->
-                <div class="p-4 border-t border-[#e6e2de] flex justify-between items-center text-[12px] text-[#6b625b] bg-white">
+                <div
+                    class="p-4 border-t border-[#e6e2de] flex justify-between items-center text-[12px] text-[#6b625b] bg-white">
                     <span id="entries-info">Mostrando 1 a 3 de 24 entradas</span>
                     <div class="flex gap-1.5" id="pagination-controls">
-                        <button class="w-7 h-7 rounded border border-[#e6e2de] flex items-center justify-center hover:bg-[#fcfaf8] transition text-[#8c827a]">&lsaquo;</button>
-                        <button class="w-7 h-7 rounded bg-[#b84a1e] text-white flex items-center justify-center font-bold shadow-sm">1</button>
-                        <button class="w-7 h-7 rounded border border-[#e6e2de] flex items-center justify-center hover:bg-[#fcfaf8] transition">2</button>
-                        <button class="w-7 h-7 rounded border border-[#e6e2de] flex items-center justify-center hover:bg-[#fcfaf8] transition">3</button>
+                        <button
+                            class="w-7 h-7 rounded border border-[#e6e2de] flex items-center justify-center hover:bg-[#fcfaf8] transition text-[#8c827a]">&lsaquo;</button>
+                        <button
+                            class="w-7 h-7 rounded bg-[#b84a1e] text-white flex items-center justify-center font-bold shadow-sm">1</button>
+                        <button
+                            class="w-7 h-7 rounded border border-[#e6e2de] flex items-center justify-center hover:bg-[#fcfaf8] transition">2</button>
+                        <button
+                            class="w-7 h-7 rounded border border-[#e6e2de] flex items-center justify-center hover:bg-[#fcfaf8] transition">3</button>
                         <span class="w-7 h-7 flex items-center justify-center">...</span>
-                        <button class="w-7 h-7 rounded border border-[#e6e2de] flex items-center justify-center hover:bg-[#fcfaf8] transition text-[#8c827a]">&rsaquo;</button>
+                        <button
+                            class="w-7 h-7 rounded border border-[#e6e2de] flex items-center justify-center hover:bg-[#fcfaf8] transition text-[#8c827a]">&rsaquo;</button>
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </main>
 
     <!-- Modal left exactly unchanged functionally -->
-    <div id="user-modal" class="fixed inset-0 bg-black/40 hidden z-50 flex items-center justify-center backdrop-blur-sm p-4">
+    <div id="user-modal"
+        class="fixed inset-0 bg-black/40 hidden z-50 flex items-center justify-center backdrop-blur-sm p-4">
         <div class="bg-white rounded-xl shadow-xl w-full max-w-md flex flex-col overflow-hidden">
             <div class="p-5 border-b border-[#e6e2de] flex justify-between items-center">
                 <h3 class="font-serif text-[18px] font-bold text-[#2d2a26]">Alta de Empleado</h3>
@@ -135,39 +173,54 @@
                     <span class="material-symbols-outlined">close</span>
                 </button>
             </div>
-            
-            <form id="user-form" class="p-6 flex flex-col gap-4">
-                <div id="form-error" class="hidden bg-red-50 text-red-600 text-[13px] p-3 rounded-md border border-red-200"></div>
 
-                <div>
-                    <label class="block text-[12px] font-bold text-[#2d2a26] mb-1">Nombre Completo</label>
-                    <input type="text" id="user-name" required class="w-full bg-[#fdfbf7] border border-[#e6e2de] rounded-md py-2 px-3 focus:outline-none transition-colors text-[13px]">
+            <form id="user-form" class="p-6 flex flex-col gap-4">
+                <div id="form-error"
+                    class="hidden bg-red-50 text-red-600 text-[13px] p-3 rounded-md border border-red-200"></div>
+
+                <div class="grid sm:grid-cols-2 gap-gutter">
+
+                    <div class="flex flex-col space-y-xs">
+                        <label class="block text-[12px] font-bold text-[#2d2a26] mb-1">Nombre</label>
+                        <input type="text" id="user-name" required
+                            class="w-full bg-[#fdfbf7] border border-[#e6e2de] rounded-md py-2 px-3 focus:outline-none transition-colors text-[13px]">
+                    </div>
+                    <div class="flex flex-col space-y-xs">
+                        <label class="block text-[12px] font-bold text-[#2d2a26] mb-1">Apellido</label>
+                        <input type="text" id="user-apellido" required
+                            class="w-full bg-[#fdfbf7] border border-[#e6e2de] rounded-md py-2 px-3 focus:outline-none transition-colors text-[13px]">
+                    </div>
+
                 </div>
 
                 <div>
                     <label class="block text-[12px] font-bold text-[#2d2a26] mb-1">Correo Electrónico</label>
-                    <input type="email" id="user-email" required class="w-full bg-[#fdfbf7] border border-[#e6e2de] rounded-md py-2 px-3 focus:outline-none transition-colors text-[13px]">
+                    <input type="email" id="user-email" required
+                        class="w-full bg-[#fdfbf7] border border-[#e6e2de] rounded-md py-2 px-3 focus:outline-none transition-colors text-[13px]">
                 </div>
 
                 <div>
                     <label class="block text-[12px] font-bold text-[#2d2a26] mb-1">Contraseña Temporal</label>
-                    <input type="password" id="user-password" required minlength="6" class="w-full bg-[#fdfbf7] border border-[#e6e2de] rounded-md py-2 px-3 focus:outline-none transition-colors text-[13px]">
+                    <input type="password" id="user-password" required minlength="6"
+                        class="w-full bg-[#fdfbf7] border border-[#e6e2de] rounded-md py-2 px-3 focus:outline-none transition-colors text-[13px]">
                 </div>
 
                 <div>
                     <label class="block text-[12px] font-bold text-[#2d2a26] mb-1">Rol</label>
-                    <select id="user-role" required class="w-full bg-[#fdfbf7] border border-[#e6e2de] rounded-md py-2 px-3 focus:outline-none transition-colors text-[13px]">
+                    <select id="user-role" required
+                        class="w-full bg-[#fdfbf7] border border-[#e6e2de] rounded-md py-2 px-3 focus:outline-none transition-colors text-[13px]">
                         <option value="">Seleccione un rol...</option>
-                        <option value="Gerente">Gerente</option>
+                        <option value="Mesero">Mesero</option>
                         <option value="Cajero">Cajero</option>
-                        <option value="Camarero">Camarero</option>
                     </select>
                 </div>
             </form>
 
             <div class="p-5 border-t border-[#e6e2de] flex justify-end gap-3 bg-[#fdfbf7]">
-                <button type="button" id="cancel-user-modal" class="px-4 py-2 text-[13px] font-bold text-[#6b625b] hover:bg-[#e6e2de] rounded-md transition-colors">Cancelar</button>
-                <button type="submit" form="user-form" class="px-4 py-2 bg-[#b84a1e] text-white rounded-md text-[13px] font-bold shadow-sm hover:opacity-90 transition-opacity">Registrar</button>
+                <button type="button" id="cancel-user-modal"
+                    class="px-4 py-2 text-[13px] font-bold text-[#6b625b] hover:bg-[#e6e2de] rounded-md transition-colors">Cancelar</button>
+                <button type="submit" form="user-form"
+                    class="px-4 py-2 bg-[#b84a1e] text-white rounded-md text-[13px] font-bold shadow-sm hover:opacity-90 transition-opacity">Registrar</button>
             </div>
         </div>
     </div>
@@ -175,4 +228,5 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/usuarios.js"></script>
 </body>
+
 </html>
