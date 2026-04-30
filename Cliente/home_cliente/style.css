@@ -1,0 +1,8 @@
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.bg-pattern {
+    background-image: radial-gradient(#dec0b5 0.5px, transparent 0.5px);
+    background-size: 24px 24px;
+}
