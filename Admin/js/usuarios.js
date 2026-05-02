@@ -7,6 +7,10 @@ if (typeof supabase !== 'undefined') {
 
 let users = [];
 
+// Pagination & Filter State
+let currentPage = 1;
+const itemsPerPage = 8;
+
 document.addEventListener('DOMContentLoaded', () => {
     fetchUsers();
     setupEventListeners();
@@ -36,21 +40,35 @@ async function fetchUsers() {
             registeredAt: u.created_at || '2024-01-01',
             status: u.estado || u.status || 'Activo'
         }));
-
-        renderUsers();
+        // Call applyFiltersAndRender instead of renderUsers directly
+        applyFiltersAndRender();
     } catch (err) {
         console.error("Error fetching users:", err);
+        const tbody = document.getElementById('users-tbody');
+        if (tbody) {
+            tbody.innerHTML = `<tr><td colspan="5" class="text-red-500 py-4 font-bold">Error de conexión: ${err.message || JSON.stringify(err)}</td></tr>`;
+        }
     }
 }
 
 function setupEventListeners() {
-    // Search filter
+    // Search & Filter
     const searchInput = document.getElementById('search-user');
-    searchInput.addEventListener('input', (e) => {
-        const term = e.target.value.toLowerCase();
-        const filtered = users.filter(u => (u.name && u.name.toLowerCase().includes(term)) || (u.email && u.email.toLowerCase().includes(term)));
-        renderUsers(filtered);
-    });
+    const roleSelect = document.getElementById('filter-role');
+
+    if (searchInput) {
+        searchInput.addEventListener('input', () => {
+            currentPage = 1; // Reset to first page on search
+            applyFiltersAndRender();
+        });
+    }
+
+    if (roleSelect) {
+        roleSelect.addEventListener('change', () => {
+            currentPage = 1; // Reset to first page on filter change
+            applyFiltersAndRender();
+        });
+    }
 
     // Modal controls
     const btnAdd = document.getElementById('btn-add-user');
@@ -84,7 +102,8 @@ function renderUsers(list = users) {
     }
 
     list.forEach(u => {
-        const initials = u.name ? u.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() : 'U';
+        const safeName = u.name ? String(u.name) : '';
+        const initials = safeName ? safeName.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() : 'U';
 
         // Pill logic matching the image exactly
         let rolePillSrc = '';
@@ -111,7 +130,7 @@ function renderUsers(list = users) {
                 : (u.id === 3 ? '<img src="https://i.pravatar.cc/150?u=david" class="w-full h-full object-cover">' : initials)}
                     </div>
                     <div class="min-w-0">
-                        <p class="font-serif text-[14px] font-bold text-[#2d2a26] leading-tight truncate">${u.name}</p>
+                        <p class="font-serif text-[14px] font-bold text-[#2d2a26] leading-tight truncate">${safeName}</p>
                         <p class="font-sans text-[11px] text-[#8c827a] truncate mt-0.5">${u.email}</p>
                     </div>
                 </div>
@@ -134,6 +153,119 @@ function renderUsers(list = users) {
         `;
         tbody.appendChild(tr);
     });
+}
+
+function applyFiltersAndRender() {
+    try {
+        const searchInput = document.getElementById('search-user');
+        const roleSelect = document.getElementById('filter-role');
+        
+        const term = searchInput ? searchInput.value.toLowerCase() : '';
+        const role = roleSelect ? roleSelect.value : 'Todos los Roles';
+        
+        let filtered = users.filter(u => {
+            const matchesSearch = !term || 
+                (u.name && String(u.name).toLowerCase().includes(term)) || 
+                (u.email && String(u.email).toLowerCase().includes(term));
+            const matchesRole = role === 'Todos los Roles' || u.role === role;
+            return matchesSearch && matchesRole;
+        });
+
+        const totalItems = filtered.length;
+        const totalPages = Math.ceil(totalItems / itemsPerPage) || 1;
+        
+        if (currentPage > totalPages) currentPage = totalPages;
+        if (currentPage < 1) currentPage = 1;
+
+        const startIdx = (currentPage - 1) * itemsPerPage;
+        const endIdx = startIdx + itemsPerPage;
+        
+        const paginated = filtered.slice(startIdx, endIdx);
+
+        renderUsers(paginated);
+        updatePaginationControls(totalItems, startIdx, Math.min(endIdx, totalItems), totalPages);
+    } catch (err) {
+        console.error("Error in applyFiltersAndRender:", err);
+        const tbody = document.getElementById('users-tbody');
+        if (tbody) tbody.innerHTML = `<tr><td colspan="5" class="text-red-500 py-4">Error filtering: ${err.message}</td></tr>`;
+    }
+}
+
+function updatePaginationControls(totalItems, startIdx, endIdx, totalPages) {
+    const entriesInfo = document.getElementById('entries-info');
+    const paginationControls = document.getElementById('pagination-controls');
+    
+    if (entriesInfo) {
+        if (totalItems === 0) {
+            entriesInfo.textContent = 'Mostrando 0 a 0 de 0 entradas';
+        } else {
+            entriesInfo.textContent = `Mostrando ${startIdx + 1} a ${endIdx} de ${totalItems} entradas`;
+        }
+    }
+    
+    if (paginationControls) {
+        paginationControls.innerHTML = '';
+        
+        // Prev button
+        const prevBtn = document.createElement('button');
+        prevBtn.className = `w-7 h-7 rounded border border-[#e6e2de] flex items-center justify-center transition ${currentPage === 1 ? 'text-[#d6d0cb] cursor-not-allowed' : 'text-[#8c827a] hover:bg-[#fcfaf8] cursor-pointer'}`;
+        prevBtn.innerHTML = '&lsaquo;';
+        prevBtn.disabled = currentPage === 1;
+        prevBtn.addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                applyFiltersAndRender();
+            }
+        });
+        paginationControls.appendChild(prevBtn);
+        
+        // Page numbers
+        for (let i = 1; i <= totalPages; i++) {
+            // Simplified logic to show all pages or dots if too many, but for now we'll just show up to 5 around current
+            if (totalPages > 5) {
+                if (i !== 1 && i !== totalPages && Math.abs(i - currentPage) > 1) {
+                    if (i === 2 && currentPage > 3) {
+                        const dots = document.createElement('span');
+                        dots.className = 'w-7 h-7 flex items-center justify-center text-[#8c827a]';
+                        dots.innerHTML = '...';
+                        paginationControls.appendChild(dots);
+                    } else if (i === totalPages - 1 && currentPage < totalPages - 2) {
+                        const dots = document.createElement('span');
+                        dots.className = 'w-7 h-7 flex items-center justify-center text-[#8c827a]';
+                        dots.innerHTML = '...';
+                        paginationControls.appendChild(dots);
+                    }
+                    continue;
+                }
+            }
+
+            const pageBtn = document.createElement('button');
+            if (i === currentPage) {
+                pageBtn.className = 'w-7 h-7 rounded bg-[#b84a1e] text-white flex items-center justify-center font-bold shadow-sm';
+            } else {
+                pageBtn.className = 'w-7 h-7 rounded border border-[#e6e2de] flex items-center justify-center hover:bg-[#fcfaf8] transition text-[#6b625b]';
+            }
+            pageBtn.textContent = i;
+            pageBtn.addEventListener('click', () => {
+                currentPage = i;
+                applyFiltersAndRender();
+            });
+            paginationControls.appendChild(pageBtn);
+        }
+        
+        // Next button
+        const nextBtn = document.createElement('button');
+        nextBtn.className = `w-7 h-7 rounded border border-[#e6e2de] flex items-center justify-center transition ${currentPage === totalPages ? 'text-[#d6d0cb] cursor-not-allowed' : 'text-[#8c827a] hover:bg-[#fcfaf8] cursor-pointer'}`;
+        nextBtn.innerHTML = '&rsaquo;';
+        nextBtn.disabled = currentPage === totalPages;
+        nextBtn.addEventListener('click', () => {
+            if (currentPage < totalPages) {
+                currentPage++;
+                applyFiltersAndRender();
+            }
+        });
+        paginationControls.appendChild(nextBtn);
+    }
 }
 
 function openModal() {
