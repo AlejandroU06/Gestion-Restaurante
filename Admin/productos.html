@@ -59,44 +59,38 @@
                     <span
                         class="font-sans font-bold text-[#6b625b] uppercase tracking-wider text-[10px] mr-1">Filtros:</span>
 
-                    <div class="relative shadow-sm rounded-md border border-[#e6e2de]">
+                    <div class="relative shadow-sm rounded-md border border-[#e6e2de] bg-white">
                         <select id="filter-category"
-                            class="pl-3 pr-8 py-1.5 bg-white rounded-md focus:outline-none text-[#2d2a26] text-[13px] font-medium appearance-none min-w-[170px]">
+                            class="pl-3 pr-8 py-1.5 bg-transparent rounded-md focus:outline-none text-[#2d2a26] text-[13px] font-medium min-w-[170px] w-full cursor-pointer">
                             <option value="all">Todas las categorías</option>
                         </select>
-                        <span
-                            class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-[#8c827a] text-[16px] pointer-events-none">expand_more</span>
                     </div>
 
-                    <div class="relative shadow-sm rounded-md border border-[#e6e2de]">
+                    <div class="relative shadow-sm rounded-md border border-[#e6e2de] bg-white">
                         <select id="filter-status"
-                            class="pl-3 pr-8 py-1.5 bg-white rounded-md focus:outline-none text-[#2d2a26] text-[13px] font-medium appearance-none min-w-[150px]">
+                            class="pl-3 pr-8 py-1.5 bg-transparent rounded-md focus:outline-none text-[#2d2a26] text-[13px] font-medium min-w-[150px] w-full cursor-pointer">
                             <option value="all">Todos los estados</option>
                             <option value="activo">Activo</option>
                             <option value="borrador">Borrador</option>
                             <option value="agotado">Agotado</option>
                         </select>
-                        <span
-                            class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-[#8c827a] text-[16px] pointer-events-none">expand_more</span>
                     </div>
 
-                    <div class="relative shadow-sm rounded-md border border-[#e6e2de]">
+                    <div class="relative shadow-sm rounded-md border border-[#e6e2de] bg-white">
                         <select id="filter-price"
-                            class="pl-3 pr-8 py-1.5 bg-white rounded-md focus:outline-none text-[#2d2a26] text-[13px] font-medium appearance-none min-w-[180px]">
+                            class="pl-3 pr-8 py-1.5 bg-transparent rounded-md focus:outline-none text-[#2d2a26] text-[13px] font-medium min-w-[180px] w-full cursor-pointer">
                             <option value="default">Precio: de menor a mayor</option>
                             <option value="desc">Precio: de mayor a menor</option>
                         </select>
-                        <span
-                            class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-[#8c827a] text-[16px] pointer-events-none">expand_more</span>
                     </div>
                 </div>
 
                 <div class="flex shadow-sm rounded-md bg-white border border-[#e6e2de] overflow-hidden">
-                    <button class="w-9 h-8 flex items-center justify-center bg-[#fdf0e6] text-[#b84a1e]">
+                    <button id="btn-view-grid" class="w-9 h-8 flex items-center justify-center bg-[#fdf0e6] text-[#b84a1e] transition-colors">
                         <span class="material-symbols-outlined text-[16px]">grid_view</span>
                     </button>
-                    <button
-                        class="w-9 h-8 flex items-center justify-center text-[#8c827a] hover:bg-[#fdfbf7] border-l border-[#e6e2de]">
+                    <button id="btn-view-list"
+                        class="w-9 h-8 flex items-center justify-center text-[#8c827a] hover:bg-[#fdfbf7] border-l border-[#e6e2de] transition-colors">
                         <span class="material-symbols-outlined text-[16px]">view_list</span>
                     </button>
                 </div>

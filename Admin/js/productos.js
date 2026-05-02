@@ -7,6 +7,7 @@ if (typeof supabase !== 'undefined') {
 
 let products = [];
 let categories = [];
+let currentViewMode = 'grid';
 
 document.addEventListener('DOMContentLoaded', () => {
     fetchData();
@@ -102,6 +103,27 @@ function setupEventListeners() {
     if (statusSelect) statusSelect.addEventListener('change', handleFilters);
     if (priceSelect) priceSelect.addEventListener('change', handleFilters);
 
+    const btnGrid = document.getElementById('btn-view-grid');
+    const btnList = document.getElementById('btn-view-list');
+
+    if(btnGrid) {
+        btnGrid.addEventListener('click', () => {
+            currentViewMode = 'grid';
+            btnGrid.className = "w-9 h-8 flex items-center justify-center bg-[#fdf0e6] text-[#b84a1e] transition-colors";
+            btnList.className = "w-9 h-8 flex items-center justify-center text-[#8c827a] hover:bg-[#fdfbf7] border-l border-[#e6e2de] transition-colors";
+            renderProducts();
+        });
+    }
+
+    if(btnList) {
+        btnList.addEventListener('click', () => {
+            currentViewMode = 'list';
+            btnList.className = "w-9 h-8 flex items-center justify-center bg-[#fdf0e6] text-[#b84a1e] border-l border-[#e6e2de] transition-colors";
+            btnGrid.className = "w-9 h-8 flex items-center justify-center text-[#8c827a] hover:bg-[#fdfbf7] transition-colors";
+            renderProducts();
+        });
+    }
+
     const btnAdd = document.getElementById('btn-add-product');
     const btnClose = document.getElementById('close-modal');
     const btnCancel = document.getElementById('cancel-modal');
@@ -126,8 +148,15 @@ function renderProducts(pl = products) {
     grid.innerHTML = '';
 
     if (pl.length === 0) {
+        grid.className = "pb-12";
         grid.innerHTML = '<p class="col-span-full text-center text-[#8c827a] py-10 font-bold">No se encontraron productos.</p>';
         return;
+    }
+
+    if (currentViewMode === 'grid') {
+        grid.className = "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pb-12";
+    } else {
+        grid.className = "flex flex-col gap-4 pb-12";
     }
 
     pl.forEach(p => {
@@ -138,34 +167,66 @@ function renderProducts(pl = products) {
         const priceHtml = p.price > 0 ? `$${p.price.toFixed(2)}` : '--';
 
         const div = document.createElement('div');
-        div.className = "bg-white rounded-[14px] overflow-hidden flex flex-col shadow-[0_2px_12px_rgba(45,42,38,0.04)] border border-[#f0ebe1] group transition-all duration-300 hover:shadow-[0_8px_24px_rgba(192,86,33,0.08)] hover:-translate-y-1";
-        div.innerHTML = `
-            <div class="relative h-[180px] w-full overflow-hidden">
-                ${imageHtml}
-                <div class="absolute top-3 right-3 flex gap-1 z-10">
-                    ${getBadgeHtml(p.status)}
-                </div>
-            </div>
-            <div class="p-5 flex-1 flex flex-col bg-white">
-                <div class="flex justify-between items-start gap-2 mb-2">
-                    <h3 class="font-serif text-[17px] font-bold text-[#2d2a26] leading-tight">${p.name}</h3>
-                    <span class="font-sans text-[14px] font-bold text-[#c05621] shrink-0 pt-0.5 shadow-sm">${priceHtml}</span>
-                </div>
-                <p class="font-sans text-[13px] text-[#6b625b] line-clamp-2 leading-[1.6] flex-1">${p.desc}</p>
-                
-                <div class="mt-4 flex justify-between items-center pt-4 border-t border-dashed border-[#e6e2de]">
-                    <span class="font-sans text-[11px] font-bold text-[#2d2a26]">${p.category}</span>
-                    <div class="flex gap-1">
-                        <button onclick="editProduct(${p.id})" class="p-1.5 text-[#8c827a] hover:text-[#c05621] hover:bg-[#fffcf8] rounded-md transition-colors" title="Editar">
-                            <span class="material-symbols-outlined text-[18px]">edit</span>
-                        </button>
-                        <button onclick="deleteProduct(${p.id})" class="p-1.5 text-[#8c827a] hover:text-[#dc2626] hover:bg-[#fef2f2] rounded-md transition-colors" title="Eliminar">
-                            <span class="material-symbols-outlined text-[18px]">delete</span>
-                        </button>
+
+        if (currentViewMode === 'grid') {
+            div.className = "bg-white rounded-[14px] overflow-hidden flex flex-col shadow-[0_2px_12px_rgba(45,42,38,0.04)] border border-[#f0ebe1] group transition-all duration-300 hover:shadow-[0_8px_24px_rgba(192,86,33,0.08)] hover:-translate-y-1";
+            div.innerHTML = `
+                <div class="relative h-[180px] w-full overflow-hidden shrink-0">
+                    ${imageHtml}
+                    <div class="absolute top-3 right-3 flex gap-1 z-10">
+                        ${getBadgeHtml(p.status)}
                     </div>
                 </div>
-            </div>
-        `;
+                <div class="p-5 flex-1 flex flex-col bg-white">
+                    <div class="flex justify-between items-start gap-2 mb-2">
+                        <h3 class="font-serif text-[17px] font-bold text-[#2d2a26] leading-tight">${p.name}</h3>
+                        <span class="font-sans text-[14px] font-bold text-[#c05621] shrink-0 pt-0.5 shadow-sm">${priceHtml}</span>
+                    </div>
+                    <p class="font-sans text-[13px] text-[#6b625b] line-clamp-2 leading-[1.6] flex-1">${p.desc}</p>
+                    
+                    <div class="mt-4 flex justify-between items-center pt-4 border-t border-dashed border-[#e6e2de]">
+                        <span class="font-sans text-[11px] font-bold text-[#2d2a26]">${p.category}</span>
+                        <div class="flex gap-1">
+                            <button onclick="editProduct(${p.id})" class="p-1.5 text-[#8c827a] hover:text-[#c05621] hover:bg-[#fffcf8] rounded-md transition-colors" title="Editar">
+                                <span class="material-symbols-outlined text-[18px]">edit</span>
+                            </button>
+                            <button onclick="deleteProduct(${p.id})" class="p-1.5 text-[#8c827a] hover:text-[#dc2626] hover:bg-[#fef2f2] rounded-md transition-colors" title="Eliminar">
+                                <span class="material-symbols-outlined text-[18px]">delete</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else {
+            div.className = "bg-white rounded-[14px] overflow-hidden flex shadow-[0_2px_12px_rgba(45,42,38,0.04)] border border-[#f0ebe1] group transition-all duration-300 hover:shadow-[0_8px_24px_rgba(192,86,33,0.08)]";
+            div.innerHTML = `
+                <div class="relative h-[120px] w-[160px] shrink-0 overflow-hidden">
+                    ${imageHtml}
+                </div>
+                <div class="p-5 flex-1 flex items-center justify-between gap-6 bg-white">
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center gap-3 mb-1">
+                            <h3 class="font-serif text-[17px] font-bold text-[#2d2a26] leading-tight truncate">${p.name}</h3>
+                            ${getBadgeHtml(p.status)}
+                        </div>
+                        <p class="font-sans text-[13px] text-[#6b625b] line-clamp-2 leading-[1.6] max-w-xl">${p.desc}</p>
+                        <span class="inline-block mt-2 font-sans text-[11px] font-bold text-[#8c827a]">${p.category}</span>
+                    </div>
+                    
+                    <div class="flex flex-col items-end gap-3 shrink-0">
+                        <span class="font-sans text-[16px] font-bold text-[#c05621] shadow-sm">${priceHtml}</span>
+                        <div class="flex gap-1">
+                            <button onclick="editProduct(${p.id})" class="p-1.5 text-[#8c827a] hover:text-[#c05621] hover:bg-[#fffcf8] rounded-md transition-colors" title="Editar">
+                                <span class="material-symbols-outlined text-[18px]">edit</span>
+                            </button>
+                            <button onclick="deleteProduct(${p.id})" class="p-1.5 text-[#8c827a] hover:text-[#dc2626] hover:bg-[#fef2f2] rounded-md transition-colors" title="Eliminar">
+                                <span class="material-symbols-outlined text-[18px]">delete</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
         grid.appendChild(div);
     });
 }
