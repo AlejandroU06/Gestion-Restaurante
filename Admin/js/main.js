@@ -1,14 +1,37 @@
 class LayoutManager {
     constructor() {
         this.sidebarHTML = `
-            <nav class="hidden md:flex flex-col h-screen w-64 border-r border-[#e6e2de] bg-white py-6 fixed left-0 top-0 z-40">
+            <!-- Mobile Backdrop -->
+            <div id="mobile-backdrop" class="fixed inset-0 bg-black/40 z-40 hidden md:hidden transition-opacity opacity-0"></div>
+            
+            <!-- Mobile Header -->
+            <div class="md:hidden flex items-center justify-between bg-white h-16 px-4 border-b border-[#e6e2de] fixed top-0 left-0 right-0 z-30">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-full overflow-hidden bg-[#8c3022] flex items-center justify-center text-white shadow-sm">
+                        <span class="material-symbols-outlined font-bold text-[18px]">restaurant</span>
+                    </div>
+                    <h1 class="font-serif text-[18px] font-bold text-[#2d2a26] leading-tight">BistroFlow</h1>
+                </div>
+                <button id="mobile-menu-btn" class="p-2 text-[#6b625b] hover:bg-[#f5f0e6] rounded-lg transition-colors focus:outline-none">
+                    <span class="material-symbols-outlined text-[24px]">menu</span>
+                </button>
+            </div>
+
+            <!-- Sidebar Drawer -->
+            <nav id="main-sidebar" class="flex flex-col h-screen w-64 border-r border-[#e6e2de] bg-white py-6 fixed left-0 top-0 z-50 transform -translate-x-full md:translate-x-0 transition-transform duration-300">
+                <div class="absolute top-4 right-4 md:hidden">
+                    <button id="close-sidebar-btn" class="p-1.5 text-[#8c827a] hover:bg-[#f5f0e6] rounded-md transition-colors">
+                        <span class="material-symbols-outlined text-[20px]">close</span>
+                    </button>
+                </div>
+                
                 <div class="px-6 mb-7 flex items-center gap-3">
                     <div class="w-11 h-11 rounded-full overflow-hidden shrink-0 bg-[#8c3022] flex items-center justify-center text-white shadow-sm">
                         <span class="material-symbols-outlined font-bold text-[22px]">restaurant</span>
                     </div>
                     <div>
                         <h1 class="font-serif text-[17px] font-bold text-[#2d2a26] leading-tight">Gestión de Bistro</h1>
-                        <p class="font-sans text-[11px] font-bold text-[#6b625b] mt-0.5">Portal de Administrador</p>
+                        <p class="font-sans text-[11px] font-bold text-[#6b625b] mt-0.5">Portal Administrador</p>
                     </div>
                 </div>
                 
@@ -93,14 +116,28 @@ class LayoutManager {
 
     setupMobileMenu() {
         const mobileBtn = document.getElementById('mobile-menu-btn');
-        const nav = document.querySelector('nav');
+        const closeBtn = document.getElementById('close-sidebar-btn');
+        const backdrop = document.getElementById('mobile-backdrop');
+        const sidebar = document.getElementById('main-sidebar');
         
-        if (mobileBtn && nav) {
-            mobileBtn.addEventListener('click', () => {
-                nav.classList.toggle('hidden');
-                nav.classList.toggle('flex');
-            });
-        }
+        const openSidebar = () => {
+            backdrop.classList.remove('hidden');
+            // small delay to allow display block to apply before opacity transition
+            setTimeout(() => backdrop.classList.remove('opacity-0'), 10);
+            sidebar.classList.remove('-translate-x-full');
+            document.body.style.overflow = 'hidden'; // prevent background scrolling
+        };
+
+        const closeSidebar = () => {
+            sidebar.classList.add('-translate-x-full');
+            backdrop.classList.add('opacity-0');
+            setTimeout(() => backdrop.classList.add('hidden'), 300); // wait for transition
+            document.body.style.overflow = '';
+        };
+
+        if (mobileBtn) mobileBtn.addEventListener('click', openSidebar);
+        if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+        if (backdrop) backdrop.addEventListener('click', closeSidebar);
     }
 }
 

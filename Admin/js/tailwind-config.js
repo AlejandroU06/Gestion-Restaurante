@@ -1,5 +1,16 @@
 tailwind.config = {
     darkMode: "class",
+    safelist: [
+        '-translate-x-full',
+        'md:translate-x-0',
+        'transition-transform',
+        'duration-300',
+        'z-30',
+        'z-40',
+        'z-50',
+        'opacity-0',
+        'bg-black/40'
+    ],
     theme: {
         extend: {
             colors: {

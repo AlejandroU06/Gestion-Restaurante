@@ -27,19 +27,19 @@
     <div id="sidebar-container"></div>
 
     <!-- Main Content Area -->
-    <main class="flex-1 ml-0 md:ml-64 bg-[#fdfbf7] h-screen overflow-y-auto relative mt-[64px] md:mt-0 px-10 py-10">
+    <main class="flex-1 ml-0 md:ml-64 bg-[#fdfbf7] h-screen overflow-y-auto relative mt-[64px] md:mt-0 px-4 md:px-10 py-6 md:py-10">
 
         <div class="max-w-[1400px] mx-auto space-y-6">
             <!-- Page Header -->
-            <div class="flex justify-between items-end mb-8 border-b border-[#e6e2de] pb-6">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 border-b border-[#e6e2de] pb-6 gap-4">
                 <div>
-                    <h2 class="font-serif text-[32px] font-bold text-[#2d2a26] mb-1 leading-none">Gestión de Productos
+                    <h2 class="font-serif text-[28px] md:text-[32px] font-bold text-[#2d2a26] mb-1 leading-none">Gestión de Productos
                     </h2>
                     <p class="font-sans text-[14px] text-[#6b625b]">Administre sus elementos del menú, precios y
                         disponibilidad.</p>
                 </div>
-                <div class="flex items-center gap-4">
-                    <div class="relative w-72 bg-white rounded-md border border-[#e6e2de] shadow-sm">
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto">
+                    <div class="relative w-full sm:w-72 bg-white rounded-md border border-[#e6e2de] shadow-sm">
                         <span
                             class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#8c827a] text-[18px]">search</span>
                         <input id="search-product"
@@ -54,8 +54,8 @@
             </div>
 
             <!-- Filters Area -->
-            <div class="flex justify-between items-center py-2 mb-6">
-                <div class="flex items-center gap-4 text-[13px]">
+            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center py-2 mb-6 gap-4">
+                <div class="flex flex-wrap items-center gap-4 text-[13px] w-full lg:w-auto">
                     <span
                         class="font-sans font-bold text-[#6b625b] uppercase tracking-wider text-[10px] mr-1">Filtros:</span>
 
