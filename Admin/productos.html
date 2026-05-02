@@ -7,35 +7,47 @@
     <title>BistroFlow - Gestión de Productos</title>
     <script src="js/tailwind-config.js"></script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
     <link rel="stylesheet" href="css/productos.css" />
     <script src="js/main.js"></script>
     <style>
-        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
     </style>
 </head>
 
 <body class="bg-background text-on-background font-sans antialiased flex h-screen overflow-hidden">
-    
+
     <div id="sidebar-container"></div>
-    
+
     <!-- Main Content Area -->
     <main class="flex-1 ml-0 md:ml-64 bg-[#fdfbf7] h-screen overflow-y-auto relative mt-[64px] md:mt-0 px-10 py-10">
-        
+
         <div class="max-w-[1400px] mx-auto space-y-6">
             <!-- Page Header -->
             <div class="flex justify-between items-end mb-8 border-b border-[#e6e2de] pb-6">
                 <div>
-                    <h2 class="font-serif text-[32px] font-bold text-[#2d2a26] mb-1 leading-none">Gestión de Productos</h2>
-                    <p class="font-sans text-[14px] text-[#6b625b]">Administre sus elementos del menú, precios y disponibilidad.</p>
+                    <h2 class="font-serif text-[32px] font-bold text-[#2d2a26] mb-1 leading-none">Gestión de Productos
+                    </h2>
+                    <p class="font-sans text-[14px] text-[#6b625b]">Administre sus elementos del menú, precios y
+                        disponibilidad.</p>
                 </div>
                 <div class="flex items-center gap-4">
                     <div class="relative w-72 bg-white rounded-md border border-[#e6e2de] shadow-sm">
-                        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#8c827a] text-[18px]">search</span>
-                        <input id="search-product" class="w-full pl-10 pr-4 py-2 bg-transparent focus:outline-none text-[13px] text-[#2d2a26] placeholder:text-[#8c827a]" placeholder="Buscar productos..." type="text" />
+                        <span
+                            class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#8c827a] text-[18px]">search</span>
+                        <input id="search-product"
+                            class="w-full pl-10 pr-4 py-2 bg-transparent focus:outline-none text-[13px] text-[#2d2a26] placeholder:text-[#8c827a]"
+                            placeholder="Buscar productos..." type="text" />
                     </div>
-                    <button id="btn-add-product" class="px-5 py-2 bg-[#b84a1e] text-white rounded-md text-[13px] font-bold shadow-sm hover:bg-[#a64018] transition-opacity flex items-center gap-2">
+                    <button id="btn-add-product"
+                        class="px-5 py-2 bg-[#b84a1e] text-white rounded-md text-[13px] font-bold shadow-sm hover:bg-[#a64018] transition-opacity flex items-center gap-2">
                         <span class="material-symbols-outlined text-[18px] font-bold">add</span> Agregar Producto
                     </button>
                 </div>
@@ -44,35 +56,38 @@
             <!-- Filters Area -->
             <div class="flex justify-between items-center py-2 mb-6">
                 <div class="flex items-center gap-4 text-[13px]">
-                    <span class="font-sans font-bold text-[#6b625b] uppercase tracking-wider text-[10px] mr-1">Filtros:</span>
-                    
+                    <span
+                        class="font-sans font-bold text-[#6b625b] uppercase tracking-wider text-[10px] mr-1">Filtros:</span>
+
                     <div class="relative shadow-sm rounded-md border border-[#e6e2de]">
-                        <select id="filter-category" class="pl-3 pr-8 py-1.5 bg-white rounded-md focus:outline-none text-[#2d2a26] text-[13px] font-medium appearance-none min-w-[170px]">
+                        <select id="filter-category"
+                            class="pl-3 pr-8 py-1.5 bg-white rounded-md focus:outline-none text-[#2d2a26] text-[13px] font-medium appearance-none min-w-[170px]">
                             <option value="all">Todas las categorías</option>
-                            <option value="Entrantes">Entrantes</option>
-                            <option value="Platos Principales">Platos Principales</option>
-                            <option value="Postres">Postres</option>
-                            <option value="Bebidas">Bebidas</option>
                         </select>
-                        <span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-[#8c827a] text-[16px] pointer-events-none">expand_more</span>
+                        <span
+                            class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-[#8c827a] text-[16px] pointer-events-none">expand_more</span>
                     </div>
 
                     <div class="relative shadow-sm rounded-md border border-[#e6e2de]">
-                        <select id="filter-status" class="pl-3 pr-8 py-1.5 bg-white rounded-md focus:outline-none text-[#2d2a26] text-[13px] font-medium appearance-none min-w-[150px]">
+                        <select id="filter-status"
+                            class="pl-3 pr-8 py-1.5 bg-white rounded-md focus:outline-none text-[#2d2a26] text-[13px] font-medium appearance-none min-w-[150px]">
                             <option value="all">Todos los estados</option>
                             <option value="activo">Activo</option>
                             <option value="borrador">Borrador</option>
                             <option value="agotado">Agotado</option>
                         </select>
-                        <span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-[#8c827a] text-[16px] pointer-events-none">expand_more</span>
+                        <span
+                            class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-[#8c827a] text-[16px] pointer-events-none">expand_more</span>
                     </div>
 
                     <div class="relative shadow-sm rounded-md border border-[#e6e2de]">
-                        <select id="filter-price" class="pl-3 pr-8 py-1.5 bg-white rounded-md focus:outline-none text-[#2d2a26] text-[13px] font-medium appearance-none min-w-[180px]">
+                        <select id="filter-price"
+                            class="pl-3 pr-8 py-1.5 bg-white rounded-md focus:outline-none text-[#2d2a26] text-[13px] font-medium appearance-none min-w-[180px]">
                             <option value="default">Precio: de menor a mayor</option>
                             <option value="desc">Precio: de mayor a menor</option>
                         </select>
-                        <span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-[#8c827a] text-[16px] pointer-events-none">expand_more</span>
+                        <span
+                            class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-[#8c827a] text-[16px] pointer-events-none">expand_more</span>
                     </div>
                 </div>
 
@@ -80,7 +95,8 @@
                     <button class="w-9 h-8 flex items-center justify-center bg-[#fdf0e6] text-[#b84a1e]">
                         <span class="material-symbols-outlined text-[16px]">grid_view</span>
                     </button>
-                    <button class="w-9 h-8 flex items-center justify-center text-[#8c827a] hover:bg-[#fdfbf7] border-l border-[#e6e2de]">
+                    <button
+                        class="w-9 h-8 flex items-center justify-center text-[#8c827a] hover:bg-[#fdfbf7] border-l border-[#e6e2de]">
                         <span class="material-symbols-outlined text-[16px]">view_list</span>
                     </button>
                 </div>
@@ -95,7 +111,8 @@
     </main>
 
     <!-- Product Modal (Hidden) -->
-    <div id="product-modal" class="fixed inset-0 bg-black/40 hidden z-50 flex items-center justify-center backdrop-blur-sm p-4">
+    <div id="product-modal"
+        class="fixed inset-0 bg-black/40 hidden z-50 flex items-center justify-center backdrop-blur-sm p-4">
         <div class="bg-white rounded-2xl shadow-xl w-full max-w-lg flex flex-col overflow-hidden">
             <div class="p-6 border-b border-divider flex justify-between items-center">
                 <h3 id="modal-title" class="font-serif text-xl font-bold text-on-surface">Agregar Producto</h3>
@@ -103,27 +120,26 @@
                     <span class="material-symbols-outlined">close</span>
                 </button>
             </div>
-            
+
             <form id="product-form" class="p-6 flex flex-col gap-5 max-h-[70vh] overflow-y-auto">
                 <input type="hidden" id="product-id">
-                
+
                 <div>
                     <label class="block text-sm font-semibold text-on-surface mb-1.5">Nombre del Producto</label>
-                    <input type="text" id="product-name" required class="w-full bg-surface border border-outline rounded-lg py-2.5 px-3 focus:border-primary outline-none transition-colors">
+                    <input type="text" id="product-name" required
+                        class="w-full bg-surface border border-outline rounded-lg py-2.5 px-3 focus:border-primary outline-none transition-colors">
                 </div>
 
                 <div class="flex gap-4">
                     <div class="flex-1">
                         <label class="block text-sm font-semibold text-on-surface mb-1.5">Precio ($)</label>
-                        <input type="number" id="product-price" step="0.01" required class="w-full bg-surface border border-outline rounded-lg py-2.5 px-3 focus:border-primary outline-none transition-colors">
+                        <input type="number" id="product-price" step="0.01" required
+                            class="w-full bg-surface border border-outline rounded-lg py-2.5 px-3 focus:border-primary outline-none transition-colors">
                     </div>
                     <div class="flex-1">
                         <label class="block text-sm font-semibold text-on-surface mb-1.5">Categoría</label>
-                        <select id="product-category" required class="w-full bg-surface border border-outline rounded-lg py-2.5 px-3 focus:border-primary outline-none bg-white">
-                            <option value="Entrantes">Entrantes</option>
-                            <option value="Platos Principales">Platos Principales</option>
-                            <option value="Postres">Postres</option>
-                            <option value="Bebidas">Bebidas</option>
+                        <select id="product-category" required
+                            class="w-full bg-surface border border-outline rounded-lg py-2.5 px-3 focus:border-primary outline-none bg-white">
                         </select>
                     </div>
                 </div>
@@ -131,7 +147,8 @@
                 <div class="flex gap-4">
                     <div class="flex-1">
                         <label class="block text-sm font-semibold text-on-surface mb-1.5">Estado</label>
-                        <select id="product-status" required class="w-full bg-surface border border-outline rounded-lg py-2.5 px-3 focus:border-primary outline-none bg-white">
+                        <select id="product-status" required
+                            class="w-full bg-surface border border-outline rounded-lg py-2.5 px-3 focus:border-primary outline-none bg-white">
                             <option value="activo">Activo</option>
                             <option value="borrador">Borrador</option>
                             <option value="agotado">Agotado</option>
@@ -139,23 +156,29 @@
                     </div>
                     <div class="flex-1">
                         <label class="block text-sm font-semibold text-on-surface mb-1.5">URL de Imagen</label>
-                        <input type="url" id="product-image" placeholder="https://..." class="w-full bg-surface border border-outline rounded-lg py-2.5 px-3 focus:border-primary outline-none transition-colors">
+                        <input type="url" id="product-image" placeholder="https://..."
+                            class="w-full bg-surface border border-outline rounded-lg py-2.5 px-3 focus:border-primary outline-none transition-colors">
                     </div>
                 </div>
 
                 <div>
                     <label class="block text-sm font-semibold text-on-surface mb-1.5">Descripción</label>
-                    <textarea id="product-desc" required rows="3" class="w-full bg-surface border border-outline rounded-lg py-2.5 px-3 focus:border-primary outline-none transition-colors resize-none"></textarea>
+                    <textarea id="product-desc" required rows="3"
+                        class="w-full bg-surface border border-outline rounded-lg py-2.5 px-3 focus:border-primary outline-none transition-colors resize-none"></textarea>
                 </div>
             </form>
 
             <div class="p-5 border-t border-divider flex justify-end gap-3 bg-background">
-                <button type="button" id="cancel-modal" class="px-5 py-2 text-sm font-semibold text-on-surface-variant border border-transparent hover:border-outline rounded-xl hover:bg-surface-variant transition-colors">Cancelar</button>
-                <button type="submit" form="product-form" class="px-5 py-2 bg-primary text-on-primary rounded-xl text-sm font-semibold shadow-btn hover:opacity-90 transition-opacity">Guardar</button>
+                <button type="button" id="cancel-modal"
+                    class="px-5 py-2 text-sm font-semibold text-on-surface-variant border border-transparent hover:border-outline rounded-xl hover:bg-surface-variant transition-colors">Cancelar</button>
+                <button type="submit" form="product-form"
+                    class="px-5 py-2 bg-primary text-on-primary rounded-xl text-sm font-semibold shadow-btn hover:opacity-90 transition-opacity">Guardar</button>
             </div>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="js/productos.js"></script>
 </body>
+
 </html>

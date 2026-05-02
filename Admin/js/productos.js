@@ -1,46 +1,73 @@
-let products = [
-    {
-        id: 1,
-        name: "Risotto de Trufa",
-        price: 28.00,
-        category: "Platos Principales",
-        status: "activo",
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCiBFYJYEugkDTh74u1jB_l8-kpTJSEUTBvPRqtXahzV-J1Syi-U6PU4U_KhHlPMugaCBi8BN8eYCYQOF7__kj9Hx1EJYcV1qfiGwADJjUydlAg4UFT64o_cvmaMq9nSBGb2ckMOr_VXIgp21E_WNIhv3ibBqz6j24CV_oTameb5tG9GiTSga4q_eXEsRWyqwxoz-ICZpexPU6s969cBy8NVNTkTqa3V08GeeLiW3zMeTQuI-RCQuMA5xK45Tj9Aw4yxIU1o3LeuQM",
-        desc: "Arroz Arborio, setas silvestres, aceite de trufa…"
-    },
-    {
-        id: 2,
-        name: "Tartar de Ternera",
-        price: 22.00,
-        category: "Entrantes",
-        status: "activo",
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAUmGHXajtxKElrFfxJ0m1V9SesrTgMXeqPUHVPMMj6HKGgvKuxvrieSwcaYUuDffoGw2zsS0cR7fdjrF0DYOhnJMQCGIba0JlzXy7b1f10OemOis3lC9LsjlBoudmIp2QDBNmDOnzc5kFHSdo1EYAPrbUmDYgT8ODPtwE0As8ae4Km2g6pL_o5ncWP_sd4KT5hhPWFiXTuHb7MH5m_06-fatw8WKX8L_rWXfd_LOLjE8ga_9Igze9FvM7SWijwV6R2EzXSnFx4UDA",
-        desc: "Carne de ternera de primera cortada a mano, alcaparras…"
-    },
-    {
-        id: 3,
-        name: "Ensalada de Temporada",
-        price: 0,
-        category: "Entrantes",
-        status: "borrador",
-        image: "",
-        desc: "Lista final de ingredientes y precios pendientes para el…"
-    },
-    {
-        id: 4,
-        name: "Bistro Sunset",
-        price: 16.00,
-        category: "Bebidas",
-        status: "agotado",
-        image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80&w=300&h=200",
-        desc: "Ginebra, puré de naranja sanguina, licor de flor de…"
-    }
-];
+const SUPABASE_URL = 'https://mfylvijpbibacmpfwynv.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1meWx2aWpwYmliYWNtcGZ3eW52Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcyODk2ODgsImV4cCI6MjA5Mjg2NTY4OH0.KqXfisr_OATVcnwnPBcJFNR9jFm3MUDLQOYKC1puHNI';
+let _supabase;
+if (typeof supabase !== 'undefined') {
+    _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+}
+
+let products = [];
+let categories = [];
 
 document.addEventListener('DOMContentLoaded', () => {
-    renderProducts();
+    fetchData();
     setupEventListeners();
 });
+
+async function fetchData() {
+    if (!_supabase) return;
+    try {
+        const { data: catData, error: catError } = await _supabase.from('categoria_producto').select('*');
+        if (catError) throw catError;
+        categories = catData || [];
+
+        const { data: prodData, error: prodError } = await _supabase.from('producto').select('*');
+        if (prodError) throw prodError;
+
+        products = (prodData || []).map(p => {
+            const cat = categories.find(c => c.id === p.id_categoria);
+            return {
+                id: p.id,
+                name: p.nombre,
+                price: parseFloat(p.precio) || 0,
+                categoryId: p.id_categoria,
+                category: cat ? cat.nombre : 'Sin Categoría',
+                status: p.estado || "activo",
+                image: p.url_imagen || '',
+                desc: p.descripcion || ''
+            };
+        });
+
+        populateCategoryFilters();
+        renderProducts();
+    } catch (err) {
+        console.error("Error fetching data:", err);
+    }
+}
+
+function populateCategoryFilters() {
+    const filterCat = document.getElementById('filter-category');
+    const formCat = document.getElementById('product-category');
+
+    if (filterCat) {
+        filterCat.innerHTML = '<option value="all">Todas las categorías</option>';
+        categories.forEach(c => {
+            const option = document.createElement('option');
+            option.value = c.id;
+            option.textContent = c.nombre;
+            filterCat.appendChild(option);
+        });
+    }
+
+    if (formCat) {
+        formCat.innerHTML = '<option value="">Selecciona una categoría...</option>';
+        categories.forEach(c => {
+            const option = document.createElement('option');
+            option.value = c.id;
+            option.textContent = c.nombre;
+            formCat.appendChild(option);
+        });
+    }
+}
 
 function setupEventListeners() {
     const searchInput = document.getElementById('search-product');
@@ -50,13 +77,13 @@ function setupEventListeners() {
 
     const handleFilters = () => {
         const query = searchInput.value.toLowerCase();
-        const cat = categorySelect.value;
+        const catIdStr = categorySelect.value;
         const state = statusSelect ? statusSelect.value : 'all';
         const priceOrder = priceSelect.value;
 
         let filtered = products.filter(p => {
             const matchName = p.name.toLowerCase().includes(query);
-            const matchCat = cat === 'all' || p.category === cat;
+            const matchCat = catIdStr === 'all' || p.categoryId.toString() === catIdStr;
             const matchStatus = state === 'all' || p.status === state;
             return matchName && matchCat && matchStatus;
         });
@@ -70,40 +97,41 @@ function setupEventListeners() {
         renderProducts(filtered);
     };
 
-    searchInput.addEventListener('input', handleFilters);
-    categorySelect.addEventListener('change', handleFilters);
-    if(statusSelect) statusSelect.addEventListener('change', handleFilters);
-    priceSelect.addEventListener('change', handleFilters);
+    if (searchInput) searchInput.addEventListener('input', handleFilters);
+    if (categorySelect) categorySelect.addEventListener('change', handleFilters);
+    if (statusSelect) statusSelect.addEventListener('change', handleFilters);
+    if (priceSelect) priceSelect.addEventListener('change', handleFilters);
 
     const btnAdd = document.getElementById('btn-add-product');
     const btnClose = document.getElementById('close-modal');
     const btnCancel = document.getElementById('cancel-modal');
     const form = document.getElementById('product-form');
 
-    btnAdd.addEventListener('click', () => openModal());
-    btnClose.addEventListener('click', closeModal);
-    btnCancel.addEventListener('click', closeModal);
-    
-    form.addEventListener('submit', handleFormSubmit);
+    if (btnAdd) btnAdd.addEventListener('click', () => openModal());
+    if (btnClose) btnClose.addEventListener('click', closeModal);
+    if (btnCancel) btnCancel.addEventListener('click', closeModal);
+    if (form) form.addEventListener('submit', handleFormSubmit);
 }
 
 function getBadgeHtml(status) {
-    if(status === 'activo') return '<span class="px-2 py-0.5 bg-[#d36b36]/80 text-white rounded text-[10px] font-bold uppercase tracking-wider backdrop-blur-sm shadow-sm">Activo</span>';
-    if(status === 'agotado') return '<span class="px-2 py-0.5 bg-[#fca5a5]/80 text-[#991b1b] rounded text-[10px] font-bold uppercase tracking-wider backdrop-blur-sm shadow-sm">Agotado</span>';
+    if (status === 'activo') return '<span class="px-2 py-0.5 bg-[#d36b36]/80 text-white rounded text-[10px] font-bold uppercase tracking-wider backdrop-blur-sm shadow-sm">Activo</span>';
+    if (status === 'agotado') return '<span class="px-2 py-0.5 bg-[#fca5a5]/80 text-[#991b1b] rounded text-[10px] font-bold uppercase tracking-wider backdrop-blur-sm shadow-sm">Agotado</span>';
     return '<span class="px-2 py-0.5 bg-[#e5dfd8]/90 text-[#5c544c] rounded text-[10px] font-bold uppercase tracking-wider backdrop-blur-sm shadow-sm">Borrador</span>';
 }
 
 function renderProducts(pl = products) {
     const grid = document.getElementById('products-grid');
+    if (!grid) return;
+
     grid.innerHTML = '';
-    
-    if(pl.length === 0) {
-        grid.innerHTML = '<p class="col-span-full text-center text-on-surface-variant py-10 font-bold">No se encontraron productos.</p>';
+
+    if (pl.length === 0) {
+        grid.innerHTML = '<p class="col-span-full text-center text-[#8c827a] py-10 font-bold">No se encontraron productos.</p>';
         return;
     }
 
     pl.forEach(p => {
-        const imageHtml = p.image 
+        const imageHtml = p.image
             ? `<img alt="${p.name}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="${p.image}"/>`
             : `<div class="w-full h-full bg-[#f4f2ee] flex items-center justify-center text-[#c2bbb3] border-b border-[#e6e2de]"><span class="material-symbols-outlined text-4xl">image</span></div>`;
 
@@ -146,15 +174,16 @@ function openModal(editId = null) {
     const modal = document.getElementById('product-modal');
     const title = document.getElementById('modal-title');
     const form = document.getElementById('product-form');
-    
+
     if (editId !== null) {
         title.textContent = 'Editar Producto';
         const p = products.find(x => x.id === editId);
-        if(p) {
+        if (p) {
             document.getElementById('product-id').value = p.id;
             document.getElementById('product-name').value = p.name;
             document.getElementById('product-price').value = p.price;
-            document.getElementById('product-category').value = p.category;
+            document.getElementById('product-category').value = p.categoryId;
+            document.getElementById('product-status').value = p.status;
             document.getElementById('product-image').value = p.image;
             document.getElementById('product-desc').value = p.desc;
         }
@@ -163,55 +192,65 @@ function openModal(editId = null) {
         form.reset();
         document.getElementById('product-id').value = '';
     }
-    
+
     modal.classList.remove('hidden');
 }
 
 function closeModal() {
     const modal = document.getElementById('product-modal');
-    modal.classList.add('hidden');
+    if (modal) modal.classList.add('hidden');
 }
 
-function handleFormSubmit(e) {
+async function handleFormSubmit(e) {
     e.preventDefault();
     const idVal = document.getElementById('product-id').value;
     const name = document.getElementById('product-name').value;
     const price = parseFloat(document.getElementById('product-price').value);
-    const category = document.getElementById('product-category').value;
+    const categoryId = document.getElementById('product-category').value;
+    const status = document.getElementById('product-status').value;
     const image = document.getElementById('product-image').value;
     const desc = document.getElementById('product-desc').value;
+    const payload = {
+        nombre: name,
+        precio: price,
+        id_categoria: parseInt(categoryId),
+        estado: status,
+        url_imagen: image,
+        descripcion: desc
+    };
 
-    if (idVal) {
-        // Edit 
-        const p = products.find(x => x.id === parseInt(idVal));
-        if (p) {
-            p.name = name;
-            p.price = price;
-            p.category = category;
-            p.image = image;
-            p.desc = desc;
+    try {
+        if (idVal) {
+            // Edit
+            const { error } = await _supabase.from('producto').update(payload).eq('id', idVal);
+            if (error) throw error;
+        } else {
+            // Add
+            const { error } = await _supabase.from('producto').insert([payload]);
+            if (error) throw error;
         }
-    } else {
-        // Add
-        const newId = products.length > 0 ? Math.max(...products.map(x => x.id)) + 1 : 1;
-        products.push({ id: newId, name, price, category, image, desc });
-    }
 
-    closeModal();
-    // Trigger re-render considering current filters
-    const searchInput = document.getElementById('search-product');
-    searchInput.dispatchEvent(new Event('input')); 
+        closeModal();
+        await fetchData(); // Refresh data from backend
+    } catch (err) {
+        console.error("Error saving product:", err);
+        alert("Ocurrió un error al guardar el producto.");
+    }
 }
 
 function editProduct(id) {
     openModal(id);
 }
 
-function deleteProduct(id) {
+async function deleteProduct(id) {
     if (confirm("¿Estás seguro de que deseas eliminar este producto? Esta acción no se puede deshacer.")) {
-        products = products.filter(x => x.id !== id);
-        // Trigger re-render considering current filters
-        const searchInput = document.getElementById('search-product');
-        searchInput.dispatchEvent(new Event('input')); 
+        try {
+            const { error } = await _supabase.from('producto').delete().eq('id', id);
+            if (error) throw error;
+            await fetchData(); // Refresh data
+        } catch (err) {
+            console.error("Error deleting product:", err);
+            alert("Ocurrió un error al eliminar el producto.");
+        }
     }
 }
