@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>BistroFlow - Gestión de Categorías</title>
+    <script src="js/tailwind-config.js"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="css/categorias.css" />
+    <script src="js/main.js"></script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-background font-sans antialiased flex h-screen overflow-hidden">
+
+    <div id="sidebar-container"></div>
+
+    <!-- Main Content Area -->
+    <main
+        class="flex-1 ml-0 md:ml-64 bg-[#fdfbf7] h-screen overflow-y-auto relative mt-[64px] md:mt-0 px-4 md:px-10 py-6 md:py-10">
+
+        <div class="max-w-[1200px] mx-auto space-y-8">
+            <!-- Header Section -->
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div>
+                    <h2 class="font-serif text-[28px] md:text-[32px] font-bold text-[#2d2a26] mb-1 leading-none">Gestión
+                        de Categorías</h2>
+                    <p class="font-sans text-[14px] text-[#6b625b]">Administra las secciones de tu menú para una mejor
+                        organización.</p>
+                </div>
+                <div class="flex gap-4 mt-2">
+                    <button
+                        class="px-5 py-2 bg-white border border-[#e6e2de] rounded-md text-[13px] font-bold text-[#6b625b] hover:bg-[#fffcf8] transition-colors flex items-center gap-2 shadow-sm">
+                        <span class="material-symbols-outlined text-[17px]">filter_list</span> Filtrar
+                    </button>
+                    <button
+                        class="px-5 py-2 bg-[#b84a1e] text-white rounded-md text-[13px] font-bold shadow-sm hover:bg-[#a64018] transition-opacity flex items-center gap-2">
+                        <span class="material-symbols-outlined text-[18px]">add</span> Agregar Categoría
+                    </button>
+                </div>
+            </div>
+
+            <!-- Bento Grid Content -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Category Card: Entradas -->
+                <div
+                    class="bg-white border border-[#e6e2de] rounded-xl shadow-[0_2px_12px_rgba(45,42,38,0.02)] overflow-hidden flex flex-col group relative">
+                    <div class="h-32 relative overflow-hidden">
+                        <img alt="Entradas"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAx0UliZXkjZVh0ajVPZwuNBb0ayD7iZ57YfOyK3yJG-HNmGD-Vm0nkRm300iy0WkMVZWK1EA1eYB0xnN90olvIFLv0tu5i8IG2u5MHR-oFhStY_2vgENunGwz7N9xI79pnAuuex2b-HyTm0ka9r4vTjVFmSKM9zjdW178dMCGp2R50ew-HY2EBidE3jK5DeP5XvQLPKWTJuSGCs8MuH1Oa1s4gpswmHEe5ESRKrgNnsNyo1YYct1jtPjmz1DK-vibv3TgeBvxoG3w" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-3 left-4 right-4 flex justify-between items-end">
+                            <h3 class="font-serif text-xl font-bold text-white">Entradas</h3>
+                            <span
+                                class="bg-white/20 backdrop-blur-md text-white text-[11px] font-bold px-2 py-1 rounded">12
+                                Items</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <p class="font-sans text-[14px] text-[#6b625b] mb-4 line-clamp-2">Platillos ligeros para
+                            comenzar la experiencia culinaria. Incluye sopas, ensaladas y tapas.</p>
+                        <div class="flex justify-between items-center pt-4 border-t border-[#f0ebe1]">
+                            <span
+                                class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#edf2e0] text-[#556926] text-[11px] font-bold rounded-full">
+                                <span class="w-1.5 h-1.5 rounded-full bg-[#556926]"></span>
+                                Activo
+                            </span>
+                            <div class="flex gap-2">
+                                <button class="text-[#8c827a] hover:text-[#b34000] transition-colors p-1"
+                                    title="Editar">
+                                    <span class="material-symbols-outlined text-[20px]">edit</span>
+                                </button>
+                                <button class="text-[#8c827a] hover:text-red-600 transition-colors p-1"
+                                    title="Eliminar">
+                                    <span class="material-symbols-outlined text-[20px]">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category Card: Platos Principales -->
+                <div
+                    class="bg-white border border-[#e6e2de] rounded-xl shadow-[0_2px_12px_rgba(45,42,38,0.02)] overflow-hidden flex flex-col group relative">
+                    <div class="h-32 relative overflow-hidden">
+                        <img alt="Platos Principales"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMkgie2K-bQ2DEGwfpJ9Rw_PRrSsdLlvrXEnF7WqF8lMtmMqaJPcyNA4MsYBPQo1tcLU9-d5KY2OESl9uIPZlrGGeyddSJw21Ufu5bsK1zWMjBNesQsKPnDyTMzvkdOrJPlOo8mOZka8J1aUnMUGXIH6W0DIs_jh4nFDh6QZHvifqpp2tlDxFddYgtm5xF-e8Vj0ttyfz7Q9Ouk3ENQ8oRXu5K-UWk3e135f0KeJG4bHwGmKW0EfrpX1Zp5-PV5Z50A9qOJu3c7fk" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-3 left-4 right-4 flex justify-between items-end">
+                            <h3 class="font-serif text-xl font-bold text-white">Platos Principales</h3>
+                            <span
+                                class="bg-white/20 backdrop-blur-md text-white text-[11px] font-bold px-2 py-1 rounded">24
+                                Items</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <p class="font-sans text-[14px] text-[#6b625b] mb-4 line-clamp-2">El corazón de nuestro menú.
+                            Carnes, pescados y opciones vegetarianas preparadas al momento.</p>
+                        <div class="flex justify-between items-center pt-4 border-t border-[#f0ebe1]">
+                            <span
+                                class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#edf2e0] text-[#556926] text-[11px] font-bold rounded-full">
+                                <span class="w-1.5 h-1.5 rounded-full bg-[#556926]"></span>
+                                Activo
+                            </span>
+                            <div class="flex gap-2">
+                                <button class="text-[#8c827a] hover:text-[#b34000] transition-colors p-1"
+                                    title="Editar">
+                                    <span class="material-symbols-outlined text-[20px]">edit</span>
+                                </button>
+                                <button class="text-[#8c827a] hover:text-red-600 transition-colors p-1"
+                                    title="Eliminar">
+                                    <span class="material-symbols-outlined text-[20px]">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category Card: Postres -->
+                <div
+                    class="bg-white border border-[#e6e2de] rounded-xl shadow-[0_2px_12px_rgba(45,42,38,0.02)] overflow-hidden flex flex-col group relative">
+                    <div class="h-32 relative overflow-hidden">
+                        <img alt="Postres"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVAHATzUa4cSMNAsttzN8PcW1755CZeAV2EtKnOluNfwq62q-6EfwNXCjmWQ2pX8jSEUS1v7dm_d5w6kLZfqAiyecG-WrJIDP97ki5UKTfL9QxuDVVlF_-nxfUJBDUxUf-NHXY4g9eSjZ8fWeuSBBpUhkZ5WpVh4IlfrFqXAlun5bLBpcgdI4powgAfKjjn5zVcacv5nuWHHpSW97WyEgnSpOf8oeMTSVKSnYYp35wtnG9i2HsorxcL8GFarnePkHn_gjGQIEZPVE" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-3 left-4 right-4 flex justify-between items-end">
+                            <h3 class="font-serif text-xl font-bold text-white">Postres</h3>
+                            <span
+                                class="bg-white/20 backdrop-blur-md text-white text-[11px] font-bold px-2 py-1 rounded">8
+                                Items</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <p class="font-sans text-[14px] text-[#6b625b] mb-4 line-clamp-2">El dulce final. Creaciones
+                            artesanales de repostería para cerrar con broche de oro.</p>
+                        <div class="flex justify-between items-center pt-4 border-t border-[#f0ebe1]">
+                            <span
+                                class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#edf2e0] text-[#556926] text-[11px] font-bold rounded-full">
+                                <span class="w-1.5 h-1.5 rounded-full bg-[#556926]"></span>
+                                Activo
+                            </span>
+                            <div class="flex gap-2">
+                                <button class="text-[#8c827a] hover:text-[#b34000] transition-colors p-1"
+                                    title="Editar">
+                                    <span class="material-symbols-outlined text-[20px]">edit</span>
+                                </button>
+                                <button class="text-[#8c827a] hover:text-red-600 transition-colors p-1"
+                                    title="Eliminar">
+                                    <span class="material-symbols-outlined text-[20px]">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add New Placeholder Card -->
+                <button
+                    class="bg-[#fdfbf7] border-2 border-dashed border-[#e6e2de] rounded-xl flex flex-col items-center justify-center p-8 min-h-[280px] hover:bg-white hover:border-[#b34000]/50 transition-colors group cursor-pointer">
+                    <div
+                        class="w-12 h-12 rounded-full bg-[#b34000]/10 flex items-center justify-center mb-4 group-hover:bg-[#b34000]/20 transition-colors">
+                        <span class="material-symbols-outlined text-[#b34000] text-[24px]">add</span>
+                    </div>
+                    <span
+                        class="font-serif text-xl font-bold text-[#2d2a26] group-hover:text-[#b34000] transition-colors">Nueva
+                        Categoría</span>
+                    <span class="font-sans text-[14px] text-[#6b625b] mt-2 text-center">Haz clic para añadir una nueva
+                        sección al menú</span>
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="js/categorias.js"></script>
+</body>
+
+</html>
