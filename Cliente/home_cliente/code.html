@@ -28,7 +28,7 @@
                         "primary-container": "#c05621",
                         "outline": "#8a7268",
                         "on-surface": "#1e1b17",
-                        "background": "#fff8f3",
+                        "background": "#FAF9F6",
                         "on-primary-fixed": "#360f00",
                         "tertiary": "#5d5e55",
                         "surface-dim": "#e0d9d3",
@@ -109,6 +109,7 @@
             },
         }
     </script>
+    <script src="../auth-helper.js"></script>
 </head>
 
 <body
@@ -127,11 +128,14 @@
                     href="#">Reservas</a>
                 <a class="text-stone-600 dark:text-stone-400 hover:text-[#C05621] font-serif transition-colors"
                     href="#">Perfil</a>
+                <button id="logout-button"
+                    class="text-stone-400 hover:text-error font-serif transition-colors text-sm">Salir</button>
             </nav>
         </div>
         <div class="flex items-center gap-6">
             <div class="text-right hidden sm:block">
-                <p class="text-sm font-bold text-stone-800">Bienvenido, <span id="user-name" class="text-primary">Invitado</span></p>
+                <p class="text-sm font-bold text-stone-800">Bienvenido, <span id="user-name"
+                        class="text-primary">Invitado</span></p>
             </div>
             <div class="flex items-center gap-2">
                 <div class="relative">
@@ -194,10 +198,10 @@
                             Ordenar Ahora
                             <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
                         </a>
-                        <button
+                        <a href="../reservas_cliente/code.html"
                             class="bg-white/10 backdrop-blur-md hover:bg-white/20 border border-white/30 px-xl py-md rounded-lg font-label-md text-white transition-all">
                             Reservar Mesa
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -208,7 +212,7 @@
                 <h2 class="font-headline-lg text-headline-lg mb-lg text-on-surface">Explora por Categoría</h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-gutter">
                     <!-- Entradas -->
-                    <div
+                    <div id="category-1"
                         class="group cursor-pointer bg-[#FDFCF0] p-lg rounded-xl border border-outline-variant hover:border-primary transition-all hover:shadow-xl flex flex-col items-center text-center">
                         <div
                             class="w-16 h-16 rounded-full bg-orange-50 flex items-center justify-center mb-md group-hover:bg-primary-container transition-colors">
@@ -219,7 +223,7 @@
                         <p class="font-label-sm text-stone-500 mt-2">Para comenzar el viaje</p>
                     </div>
                     <!-- Platos Fuertes -->
-                    <div
+                    <div id="category-2"
                         class="group cursor-pointer bg-[#FDFCF0] p-lg rounded-xl border border-outline-variant hover:border-primary transition-all hover:shadow-xl flex flex-col items-center text-center">
                         <div
                             class="w-16 h-16 rounded-full bg-orange-50 flex items-center justify-center mb-md group-hover:bg-primary-container transition-colors">
@@ -230,7 +234,7 @@
                         <p class="font-label-sm text-stone-500 mt-2">Nuestras especialidades</p>
                     </div>
                     <!-- Bebidas -->
-                    <div
+                    <div id="category-4"
                         class="group cursor-pointer bg-[#FDFCF0] p-lg rounded-xl border border-outline-variant hover:border-primary transition-all hover:shadow-xl flex flex-col items-center text-center">
                         <div
                             class="w-16 h-16 rounded-full bg-orange-50 flex items-center justify-center mb-md group-hover:bg-primary-container transition-colors">
@@ -241,7 +245,7 @@
                         <p class="font-label-sm text-stone-500 mt-2">Mixología y selección</p>
                     </div>
                     <!-- Postres -->
-                    <div
+                    <div id="category-3"
                         class="group cursor-pointer bg-[#FDFCF0] p-lg rounded-xl border border-outline-variant hover:border-primary transition-all hover:shadow-xl flex flex-col items-center text-center">
                         <div
                             class="w-16 h-16 rounded-full bg-orange-50 flex items-center justify-center mb-md group-hover:bg-primary-container transition-colors">
@@ -262,7 +266,8 @@
                         <span class="text-primary font-label-sm uppercase tracking-widest">Selección del Chef</span>
                         <h2 class="font-headline-lg text-headline-lg text-on-surface mt-2">Recomendados</h2>
                     </div>
-                    <a class="text-primary font-label-md hover:underline flex items-center gap-1" href="../menu_cliente/code.html">
+                    <a class="text-primary font-label-md hover:underline flex items-center gap-1"
+                        href="../menu_cliente/code.html">
                         Ver todo el menú
                         <span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
                     </a>
@@ -280,8 +285,12 @@
                         </div>
                         <div class="p-lg">
                             <h4 class="font-headline-md text-headline-md mb-2">Costillar Glaseado</h4>
-                            <p class="text-stone-500 font-body-md mb-lg">Cocción lenta por 12 horas en reducción de vino tinto.</p>
-                            <button data-name="Costillar Glaseado" data-price="24.50" data-image="https://lh3.googleusercontent.com/aida-public/AB6AXuBkDOc3X35nc9hwNrYwbUKfIazXgsjpiVjT_QmT3ea9awAPndlIt2AQcdax68K7a_dGcBrIeFQi6uWNlbyC5NVgWmhxrr7I5xMuZXP3X5IFfuFVcX9CAdpssgZ091MiH-v4Vpo24CHaECcApJv_yUr3yqr77g4l62m5IIZGOqdBG9rZUI9V8U7wbIExpMLoXiAjPNkYlwviEapZHVkaLbFO9IywqqRXb--pEWsVqO2QIPcu3mcFavn8p8QATqOQ1_dV-EOWl2PJz1U" class="add-to-cart w-full py-md border border-primary-container text-primary font-label-md rounded-lg hover:bg-primary-container hover:text-white transition-colors">Agregar al Pedido</button>
+                            <p class="text-stone-500 font-body-md mb-lg">Cocción lenta por 12 horas en reducción de vino
+                                tinto.</p>
+                            <button data-name="Costillar Glaseado" data-price="24.50"
+                                data-image="https://lh3.googleusercontent.com/aida-public/AB6AXuBkDOc3X35nc9hwNrYwbUKfIazXgsjpiVjT_QmT3ea9awAPndlIt2AQcdax68K7a_dGcBrIeFQi6uWNlbyC5NVgWmhxrr7I5xMuZXP3X5IFfuFVcX9CAdpssgZ091MiH-v4Vpo24CHaECcApJv_yUr3yqr77g4l62m5IIZGOqdBG9rZUI9V8U7wbIExpMLoXiAjPNkYlwviEapZHVkaLbFO9IywqqRXb--pEWsVqO2QIPcu3mcFavn8p8QATqOQ1_dV-EOWl2PJz1U"
+                                class="add-to-cart w-full py-md border border-primary-container text-primary font-label-md rounded-lg hover:bg-primary-container hover:text-white transition-colors">Agregar
+                                al Pedido</button>
                         </div>
                     </div>
                     <!-- Dish 2 -->
@@ -297,7 +306,10 @@
                         <div class="p-lg">
                             <h4 class="font-headline-md text-headline-md mb-2">Linguine Pomodoro</h4>
                             <p class="text-stone-500 font-body-md mb-lg">Pasta fresca con tomates cherry orgánicos.</p>
-                            <button data-name="Linguine Pomodoro" data-price="18.00" data-image="https://lh3.googleusercontent.com/aida-public/AB6AXuAC_aoTwzqwVsXIuJKOO6fmviOQnlgldYY9zC-EmbYeXxdve5yNW0U1k3v9CqCJ7f80G2CFS4dg0hcKGBuqXbHU17b88p5BNuiEZo6Z2WmJ_kEaDQ8YFElTvI6tV46n7WWKgDtfewylNzgXlSTD0PKvxrJW8ZuvsYEpZB2-sOhvK8beajCMouZbNkVUYqoHlBNLNHuZz4gWyh-S1HWVFKsOZ-NroluLL3dJjV33KhKKJqzFxbNtEU98_DS-HIKPCDbqNt8INoi9Bj8" class="add-to-cart w-full py-md border border-primary-container text-primary font-label-md rounded-lg hover:bg-primary-container hover:text-white transition-colors">Agregar al Pedido</button>
+                            <button data-name="Linguine Pomodoro" data-price="18.00"
+                                data-image="https://lh3.googleusercontent.com/aida-public/AB6AXuAC_aoTwzqwVsXIuJKOO6fmviOQnlgldYY9zC-EmbYeXxdve5yNW0U1k3v9CqCJ7f80G2CFS4dg0hcKGBuqXbHU17b88p5BNuiEZo6Z2WmJ_kEaDQ8YFElTvI6tV46n7WWKgDtfewylNzgXlSTD0PKvxrJW8ZuvsYEpZB2-sOhvK8beajCMouZbNkVUYqoHlBNLNHuZz4gWyh-S1HWVFKsOZ-NroluLL3dJjV33KhKKJqzFxbNtEU98_DS-HIKPCDbqNt8INoi9Bj8"
+                                class="add-to-cart w-full py-md border border-primary-container text-primary font-label-md rounded-lg hover:bg-primary-container hover:text-white transition-colors">Agregar
+                                al Pedido</button>
                         </div>
                     </div>
                     <!-- Dish 3 -->
@@ -312,8 +324,12 @@
                         </div>
                         <div class="p-lg">
                             <h4 class="font-headline-md text-headline-md mb-2">Tostada de Aguacate</h4>
-                            <p class="text-stone-500 font-body-md mb-lg">Pan de masa madre, aguacate hass y huevo poché.</p>
-                            <button data-name="Tostada de Aguacate" data-price="14.00" data-image="https://lh3.googleusercontent.com/aida-public/AB6AXuDQjXkkl_QeTSBWi4GvP5eeO_yWkp0fiwfLpBKxLKt1nqjBwt9ypEl-xQUGeGNTPcvunk1beybU3ZQfEtl0V0WlSHgWWXQ01nhvm5OQ1TDbU2qI0imnDHCM5zzg2uxGoBDoYiaOwIiIxHVwtscGSZa1DnVlvUQHW1YIfU2BvAw4SGE6UA_wWygiIwXmSWh-iFDPyRM8zR_cUUBXFarv2zBtCM2_0KVlRXctjVTlK5rBomQ58D8lsTEABhZXKTaI25WYiLCj-ByHWhM" class="add-to-cart w-full py-md border border-primary-container text-primary font-label-md rounded-lg hover:bg-primary-container hover:text-white transition-colors">Agregar al Pedido</button>
+                            <p class="text-stone-500 font-body-md mb-lg">Pan de masa madre, aguacate hass y huevo poché.
+                            </p>
+                            <button data-name="Tostada de Aguacate" data-price="14.00"
+                                data-image="https://lh3.googleusercontent.com/aida-public/AB6AXuDQjXkkl_QeTSBWi4GvP5eeO_yWkp0fiwfLpBKxLKt1nqjBwt9ypEl-xQUGeGNTPcvunk1beybU3ZQfEtl0V0WlSHgWWXQ01nhvm5OQ1TDbU2qI0imnDHCM5zzg2uxGoBDoYiaOwIiIxHVwtscGSZa1DnVlvUQHW1YIfU2BvAw4SGE6UA_wWygiIwXmSWh-iFDPyRM8zR_cUUBXFarv2zBtCM2_0KVlRXctjVTlK5rBomQ58D8lsTEABhZXKTaI25WYiLCj-ByHWhM"
+                                class="add-to-cart w-full py-md border border-primary-container text-primary font-label-md rounded-lg hover:bg-primary-container hover:text-white transition-colors">Agregar
+                                al Pedido</button>
                         </div>
                     </div>
                 </div>
@@ -331,45 +347,63 @@
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-xl">
                     <!-- Dish 4 -->
-                    <div class="group bg-[#FDFCF0] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="group bg-[#FDFCF0] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                         <div class="relative h-64 overflow-hidden">
-                            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1000&auto=format&fit=crop" />
+                            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1000&auto=format&fit=crop" />
                             <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full">
                                 <span class="text-primary font-bold">$12.50</span>
                             </div>
                         </div>
                         <div class="p-lg">
                             <h4 class="font-headline-md text-headline-md mb-2">Bowl Energético</h4>
-                            <p class="text-stone-500 font-body-md mb-lg">Quinoa, vegetales frescos y aderezo cítrico.</p>
-                            <button data-name="Bowl Energético" data-price="12.50" data-image="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1000&auto=format&fit=crop" class="add-to-cart w-full py-md border border-primary-container text-primary font-label-md rounded-lg hover:bg-primary-container hover:text-white transition-colors">Agregar al Pedido</button>
+                            <p class="text-stone-500 font-body-md mb-lg">Quinoa, vegetales frescos y aderezo cítrico.
+                            </p>
+                            <button data-name="Bowl Energético" data-price="12.50"
+                                data-image="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1000&auto=format&fit=crop"
+                                class="add-to-cart w-full py-md border border-primary-container text-primary font-label-md rounded-lg hover:bg-primary-container hover:text-white transition-colors">Agregar
+                                al Pedido</button>
                         </div>
                     </div>
                     <!-- Dish 5 -->
-                    <div class="group bg-[#FDFCF0] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="group bg-[#FDFCF0] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                         <div class="relative h-64 overflow-hidden">
-                            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=1000&auto=format&fit=crop" />
+                            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=1000&auto=format&fit=crop" />
                             <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full">
                                 <span class="text-primary font-bold">$15.00</span>
                             </div>
                         </div>
                         <div class="p-lg">
                             <h4 class="font-headline-md text-headline-md mb-2">Pizza Artesanal</h4>
-                            <p class="text-stone-500 font-body-md mb-lg">Masa madre, mozzarella di bufala y albahaca.</p>
-                            <button data-name="Pizza Artesanal" data-price="15.00" data-image="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=1000&auto=format&fit=crop" class="add-to-cart w-full py-md border border-primary-container text-primary font-label-md rounded-lg hover:bg-primary-container hover:text-white transition-colors">Agregar al Pedido</button>
+                            <p class="text-stone-500 font-body-md mb-lg">Masa madre, mozzarella di bufala y albahaca.
+                            </p>
+                            <button data-name="Pizza Artesanal" data-price="15.00"
+                                data-image="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=1000&auto=format&fit=crop"
+                                class="add-to-cart w-full py-md border border-primary-container text-primary font-label-md rounded-lg hover:bg-primary-container hover:text-white transition-colors">Agregar
+                                al Pedido</button>
                         </div>
                     </div>
                     <!-- Dish 6 -->
-                    <div class="group bg-[#FDFCF0] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="group bg-[#FDFCF0] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                         <div class="relative h-64 overflow-hidden">
-                            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=1000&auto=format&fit=crop" />
+                            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=1000&auto=format&fit=crop" />
                             <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full">
                                 <span class="text-primary font-bold">$10.00</span>
                             </div>
                         </div>
                         <div class="p-lg">
                             <h4 class="font-headline-md text-headline-md mb-2">Tacos de Canasta</h4>
-                            <p class="text-stone-500 font-body-md mb-lg">Selección de guisos tradicionales mexicanos.</p>
-                            <button data-name="Tacos de Canasta" data-price="10.00" data-image="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=1000&auto=format&fit=crop" class="add-to-cart w-full py-md border border-primary-container text-primary font-label-md rounded-lg hover:bg-primary-container hover:text-white transition-colors">Agregar al Pedido</button>
+                            <p class="text-stone-500 font-body-md mb-lg">Selección de guisos tradicionales mexicanos.
+                            </p>
+                            <button data-name="Tacos de Canasta" data-price="10.00"
+                                data-image="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=1000&auto=format&fit=crop"
+                                class="add-to-cart w-full py-md border border-primary-container text-primary font-label-md rounded-lg hover:bg-primary-container hover:text-white transition-colors">Agregar
+                                al Pedido</button>
                         </div>
                     </div>
                 </div>
@@ -387,23 +421,31 @@
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-xl">
                     <!-- Dish 7 -->
-                    <div class="group bg-[#FDFCF0] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="group bg-[#FDFCF0] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                         <div class="relative h-64 overflow-hidden">
-                            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1000&auto=format&fit=crop" />
+                            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1000&auto=format&fit=crop" />
                             <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full">
                                 <span class="text-primary font-bold">$22.00</span>
                             </div>
                         </div>
                         <div class="p-lg">
                             <h4 class="font-headline-md text-headline-md mb-2">Salmón al Eneldo</h4>
-                            <p class="text-stone-500 font-body-md mb-lg">Fresco salmón a la plancha con salsa de eneldo.</p>
-                            <button data-name="Salmón al Eneldo" data-price="22.00" data-image="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1000&auto=format&fit=crop" class="add-to-cart w-full py-md border border-primary-container text-primary font-label-md rounded-lg hover:bg-primary-container hover:text-white transition-colors">Agregar al Pedido</button>
+                            <p class="text-stone-500 font-body-md mb-lg">Fresco salmón a la plancha con salsa de eneldo.
+                            </p>
+                            <button data-name="Salmón al Eneldo" data-price="22.00"
+                                data-image="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1000&auto=format&fit=crop"
+                                class="add-to-cart w-full py-md border border-primary-container text-primary font-label-md rounded-lg hover:bg-primary-container hover:text-white transition-colors">Agregar
+                                al Pedido</button>
                         </div>
                     </div>
                     <!-- Dish 8 -->
-                    <div class="group bg-[#FDFCF0] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="group bg-[#FDFCF0] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                         <div class="relative h-64 overflow-hidden">
-                            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=1000&auto=format&fit=crop" />
+                            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                src="https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=1000&auto=format&fit=crop" />
                             <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full">
                                 <span class="text-primary font-bold">$8.50</span>
                             </div>
@@ -411,27 +453,55 @@
                         <div class="p-lg">
                             <h4 class="font-headline-md text-headline-md mb-2">Dona Gourmet</h4>
                             <p class="text-stone-500 font-body-md mb-lg">Glaseado de chocolate belga y frutos rojos.</p>
-                            <button data-name="Dona Gourmet" data-price="8.50" data-image="https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=1000&auto=format&fit=crop" class="add-to-cart w-full py-md border border-primary-container text-primary font-label-md rounded-lg hover:bg-primary-container hover:text-white transition-colors">Agregar al Pedido</button>
+                            <button data-name="Dona Gourmet" data-price="8.50"
+                                data-image="https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=1000&auto=format&fit=crop"
+                                class="add-to-cart w-full py-md border border-primary-container text-primary font-label-md rounded-lg hover:bg-primary-container hover:text-white transition-colors">Agregar
+                                al Pedido</button>
                         </div>
                     </div>
                     <!-- Dish 9 -->
-                    <div class="group bg-[#FDFCF0] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                        class="group bg-[#FDFCF0] rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
                         <div class="relative h-64 overflow-hidden">
-                            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1000&auto=format&fit=crop" />
+                            <img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1000&auto=format&fit=crop" />
                             <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full">
                                 <span class="text-primary font-bold">$6.00</span>
                             </div>
                         </div>
                         <div class="p-lg">
                             <h4 class="font-headline-md text-headline-md mb-2">Limonada de Coco</h4>
-                            <p class="text-stone-500 font-body-md mb-lg">Refrescante mezcla tropical con leche de coco.</p>
-                            <button data-name="Limonada de Coco" data-price="6.00" data-image="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1000&auto=format&fit=crop" class="add-to-cart w-full py-md border border-primary-container text-primary font-label-md rounded-lg hover:bg-primary-container hover:text-white transition-colors">Agregar al Pedido</button>
+                            <p class="text-stone-500 font-body-md mb-lg">Refrescante mezcla tropical con leche de coco.
+                            </p>
+                            <button data-name="Limonada de Coco" data-price="6.00"
+                                data-image="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1000&auto=format&fit=crop"
+                                class="add-to-cart w-full py-md border border-primary-container text-primary font-label-md rounded-lg hover:bg-primary-container hover:text-white transition-colors">Agregar
+                                al Pedido</button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+    <!-- Footer Summary (Floating Mobile Bar) -->
+    <div id="mobile-cart-bar" class="lg:hidden fixed bottom-6 left-6 right-6 z-50 hidden">
+        <div class="bg-stone-900 text-white rounded-2xl p-4 shadow-2xl flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                    <span class="material-symbols-outlined">shopping_basket</span>
+                </div>
+                <div>
+                    <p class="text-xs text-stone-400 font-label-sm uppercase tracking-wider">Tu Pedido</p>
+                    <p class="font-bold"><span id="mobile-cart-count">0</span> Artículos • <span
+                            id="mobile-cart-total">$0.00</span></p>
+                </div>
+            </div>
+            <button id="mobile-view-cart"
+                class="bg-white text-stone-900 px-6 py-2 rounded-xl font-bold transition-all active:scale-95 hover:bg-stone-100">
+                Ver Pedido
+            </button>
+        </div>
+    </div>
     <!-- Footer -->
     <footer
         class="bg-stone-100 dark:bg-stone-950 w-full py-12 px-8 flex flex-col md:flex-row justify-between items-center gap-4 border-t border-stone-200 dark:border-stone-800">

@@ -17,17 +17,33 @@ function updateCart() {
 
 function updateBadge() {
     const count = cart.reduce((acc, item) => acc + item.quantity, 0);
+    const total = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+
+    // Desktop Badge
     if (count > 0) {
         cartBadge.textContent = count;
         cartBadge.classList.remove('hidden');
     } else {
         cartBadge.classList.add('hidden');
     }
+
+    // Mobile Bar
+    const mobileBar = document.getElementById('mobile-cart-bar');
+    const mobileCount = document.getElementById('mobile-cart-count');
+    const mobileTotal = document.getElementById('mobile-cart-total');
+
+    if (mobileBar && count > 0) {
+        mobileBar.classList.remove('hidden');
+        if (mobileCount) mobileCount.textContent = count;
+        if (mobileTotal) mobileTotal.textContent = `$${total.toFixed(2)}`;
+    } else if (mobileBar) {
+        mobileBar.classList.add('hidden');
+    }
 }
 
 function renderCart() {
     if (!cartItemsContainer) return;
-    
+
     cartItemsContainer.innerHTML = '';
     let total = 0;
 
@@ -64,7 +80,7 @@ function renderCart() {
     cartTotalDisplay.textContent = `$${total.toFixed(2)}`;
 }
 
-window.changeQuantity = function(index, delta) {
+window.changeQuantity = function (index, delta) {
     cart[index].quantity += delta;
     if (cart[index].quantity <= 0) {
         cart.splice(index, 1);
@@ -80,7 +96,7 @@ function addToCart(name, price, image) {
         cart.push({ name, price: parseFloat(price), image, quantity: 1 });
     }
     updateCart();
-    
+
     showCartPreview();
 }
 
@@ -130,6 +146,11 @@ if (clearCartButton) {
     });
 }
 
+const mobileViewCartBtn = document.getElementById('mobile-view-cart');
+if (mobileViewCartBtn) {
+    mobileViewCartBtn.addEventListener('click', showCartPreview);
+}
+
 document.body.addEventListener('click', (e) => {
     const button = e.target.closest('.add-to-cart');
     if (button) {
@@ -141,12 +162,12 @@ document.body.addEventListener('click', (e) => {
 // Initialize
 updateCart();
 
-// User Greeting Logic
-const userNameElement = document.getElementById('user-name');
-const userData = JSON.parse(localStorage.getItem('user'));
-
-if (userData && userData.nombre) {
-    if (userNameElement) {
-        userNameElement.textContent = userData.nombre;
-    }
-}
+// Navigation to Menu with Filters
+document.querySelectorAll('[id^="category-"]').forEach(card => {
+    card.addEventListener('click', () => {
+        const catId = card.id.split('-')[1];
+        if (catId) {
+            window.location.href = `../menu_cliente/code.html?category=${catId}`;
+        }
+    });
+});
