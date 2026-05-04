@@ -170,64 +170,70 @@
                 <form class="space-y-lg">
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-gutter">
                         <!-- First Name -->
-                        <div class="flex flex-col space-y-xs">
-                            <label class="font-label-md text-label-md text-on-surface-variant"
+                        <div class="flex flex-col space-y-2">
+                            <label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider"
                                 for="first-name">Nombre</label>
-                            <input
-                                class="w-full py-sm px-0 border-b-2 border-outline-variant bg-transparent focus:border-primary focus:ring-0 transition-colors placeholder:text-surface-dim font-body-md"
-                                id="first-name" placeholder="Ej. Ana" type="text" />
+                            <div class="relative">
+                                <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">person</span>
+                                <input
+                                    class="w-full bg-surface-container rounded-DEFAULT border-none pl-12 pr-4 py-4 font-body-md text-body-md text-on-surface focus:ring-2 focus:ring-primary focus:bg-surface-container-highest transition-all outline-none placeholder:text-outline"
+                                    id="first-name" placeholder="Ej. Ana" type="text" required />
+                            </div>
+                            <p id="first-name-error" class="text-error text-label-sm mt-1 hidden"></p>
                         </div>
                         <!-- Last Name -->
-                        <div class="flex flex-col space-y-xs">
-                            <label class="font-label-md text-label-md text-on-surface-variant"
+                        <div class="flex flex-col space-y-2">
+                            <label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider"
                                 for="last-name">Apellido</label>
-                            <input
-                                class="w-full py-sm px-0 border-b-2 border-outline-variant bg-transparent focus:border-primary focus:ring-0 transition-colors placeholder:text-surface-dim font-body-md"
-                                id="last-name" placeholder="Ej. García" type="text" />
+                            <div class="relative">
+                                <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">person</span>
+                                <input
+                                    class="w-full bg-surface-container rounded-DEFAULT border-none pl-12 pr-4 py-4 font-body-md text-body-md text-on-surface focus:ring-2 focus:ring-primary focus:bg-surface-container-highest transition-all outline-none placeholder:text-outline"
+                                    id="last-name" placeholder="Ej. García" type="text" required />
+                            </div>
+                            <p id="last-name-error" class="text-error text-label-sm mt-1 hidden"></p>
                         </div>
                     </div>
-                    <!-- Email Address -->
-                    <div class="flex flex-col space-y-xs">
-                        <label class="font-label-md text-label-md text-on-surface-variant" for="email">Correo
+                    <div class="flex flex-col space-y-2">
+                        <label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider" for="email">Correo
                             Electrónico</label>
                         <div class="relative">
+                            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">mail</span>
                             <input
-                                class="w-full py-sm px-0 border-b-2 border-outline-variant bg-transparent focus:border-primary focus:ring-0 transition-colors placeholder:text-surface-dim font-body-md pl-8"
-                                id="email" placeholder="nombre@ejemplo.com" type="email" />
-                            <span
-                                class="material-symbols-outlined absolute left-0 top-1/2 -translate-y-1/2 text-outline text-[20px]">mail</span>
+                                class="w-full bg-surface-container rounded-DEFAULT border-none pl-12 pr-4 py-4 font-body-md text-body-md text-on-surface focus:ring-2 focus:ring-primary focus:bg-surface-container-highest transition-all outline-none placeholder:text-outline"
+                                id="email" placeholder="nombre@ejemplo.com" type="email" required />
                         </div>
+                        <p id="email-error" class="text-error text-label-sm mt-1 hidden"></p>
                     </div>
-                    <!-- Phone Number -->
-                    <div class="flex flex-col space-y-xs">
-                        <label class="font-label-md text-label-md text-on-surface-variant" for="phone">Teléfono</label>
+                    <div class="flex flex-col space-y-2">
+                        <label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider" for="phone">Teléfono</label>
                         <div class="relative">
+                            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">call</span>
                             <input
-                                class="w-full py-sm px-0 border-b-2 border-outline-variant bg-transparent focus:border-primary focus:ring-0 transition-colors placeholder:text-surface-dim font-body-md pl-8"
-                                id="phone" placeholder="+34 000 000 000" type="tel" />
-                            <span
-                                class="material-symbols-outlined absolute left-0 top-1/2 -translate-y-1/2 text-outline text-[20px]">call</span>
+                                class="w-full bg-surface-container rounded-DEFAULT border-none pl-12 pr-4 py-4 font-body-md text-body-md text-on-surface focus:ring-2 focus:ring-primary focus:bg-surface-container-highest transition-all outline-none placeholder:text-outline"
+                                id="phone" placeholder="+34 000 000 000" type="tel" required />
                         </div>
+                        <p id="phone-error" class="text-error text-label-sm mt-1 hidden"></p>
                     </div>
-                    <!-- Password -->
-                    <div class="flex flex-col space-y-xs">
-                        <label class="font-label-md text-label-md text-on-surface-variant"
+                    <div class="flex flex-col space-y-2">
+                        <label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider"
                             for="password">Contraseña</label>
                         <div class="relative">
+                            <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">lock</span>
                             <input
-                                class="w-full py-sm px-0 border-b-2 border-outline-variant bg-transparent focus:border-primary focus:ring-0 transition-colors placeholder:text-surface-dim font-body-md pl-8"
+                                class="w-full bg-surface-container rounded-DEFAULT border-none pl-12 pr-4 py-4 font-body-md text-body-md text-on-surface focus:ring-2 focus:ring-primary focus:bg-surface-container-highest transition-all outline-none placeholder:text-outline"
                                 id="password" placeholder="••••••••" type="password" required />
-                            <span
-                                class="material-symbols-outlined absolute left-0 top-1/2 -translate-y-1/2 text-outline text-[20px]">lock</span>
                         </div>
+                        <p id="password-error" class="text-error text-label-sm mt-1 hidden"></p>
                     </div>
-                    <!-- Submit Button -->
+                    <p id="general-error" class="text-error text-label-sm text-center hidden"></p>
                     <div class="pt-md">
-                        <button
-                            class="w-full bg-primary-container text-on-primary-container font-label-md text-label-md py-md rounded-lg shadow-sm hover:brightness-110 active:scale-95 transition-all flex justify-center items-center gap-sm"
+                        <button id="register-btn"
+                            class="w-full bg-primary text-on-primary font-label-md text-label-md py-4 rounded-lg shadow-sm hover:brightness-110 active:scale-95 transition-all flex justify-center items-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                             type="submit">
-                            Registrarse
-                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                            <span id="btn-text">Registrarse</span>
+                            <span id="btn-icon" class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                            <span id="btn-spinner" class="material-symbols-outlined text-[20px] animate-spin hidden">progress_activity</span>
                         </button>
                     </div>
                 </form>
@@ -292,17 +298,72 @@
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1meWx2aWpwYmliYWNtcGZ3eW52Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcyODk2ODgsImV4cCI6MjA5Mjg2NTY4OH0.KqXfisr_OATVcnwnPBcJFNR9jFm3MUDLQOYKC1puHNI';
         const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
+        const registerBtn = document.getElementById('register-btn');
+        const btnText = document.getElementById('btn-text');
+        const btnIcon = document.getElementById('btn-icon');
+        const btnSpinner = document.getElementById('btn-spinner');
+        
+        const errors = {
+            firstName: document.getElementById('first-name-error'),
+            lastName: document.getElementById('last-name-error'),
+            email: document.getElementById('email-error'),
+            phone: document.getElementById('phone-error'),
+            password: document.getElementById('password-error'),
+            general: document.getElementById('general-error')
+        };
+
+        function clearErrors() {
+            Object.values(errors).forEach(el => {
+                if (el) {
+                    el.textContent = '';
+                    el.classList.add('hidden');
+                }
+            });
+        }
+
+        function setLoader(loading) {
+            registerBtn.disabled = loading;
+            if (loading) {
+                btnText.textContent = 'Creando cuenta...';
+                btnIcon.classList.add('hidden');
+                btnSpinner.classList.remove('hidden');
+            } else {
+                btnText.textContent = 'Registrarse';
+                btnIcon.classList.remove('hidden');
+                btnSpinner.classList.add('hidden');
+            }
+        }
+
         document.querySelector('form').addEventListener('submit', async (e) => {
             e.preventDefault();
+            clearErrors();
+            setLoader(true);
 
             const firstName = document.getElementById('first-name').value;
             const lastName = document.getElementById('last-name').value;
             const email = document.getElementById('email').value;
             const phone = document.getElementById('phone').value;
             const password = document.getElementById('password').value;
+            
             const fecha = new Date();
             const localISO = new Date(fecha.getTime() - (fecha.getTimezoneOffset() * 60000)).toISOString().slice(0, -1);
+            
             try {
+                // Verificar si el correo ya existe
+                const { data: existingUser, error: checkError } = await _supabase
+                    .from('usuario')
+                    .select('email')
+                    .eq('email', email)
+                    .maybeSingle();
+
+                if (checkError) throw checkError;
+                if (existingUser) {
+                    errors.email.textContent = 'Este correo ya está registrado';
+                    errors.email.classList.remove('hidden');
+                    setLoader(false);
+                    return;
+                }
+
                 const { data, error } = await _supabase
                     .from('usuario')
                     .insert([
@@ -319,11 +380,16 @@
 
                 if (error) throw error;
 
-                alert('¡Registro exitoso!');
+                // Redirigir al login con un parámetro de éxito (opcional, por ahora solo redirigimos)
                 window.location.href = 'login.html';
             } catch (error) {
                 console.error('Error:', error.message);
-                alert('Error al registrar: ' + error.message);
+                errors.general.textContent = 'Error al registrar: ' + error.message;
+                if (error.message.includes('fetch')) {
+                    errors.general.textContent = 'Error de conexión. Verifique su internet.';
+                }
+                errors.general.classList.remove('hidden');
+                setLoader(false);
             }
         });
     </script>
