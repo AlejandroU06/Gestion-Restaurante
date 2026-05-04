@@ -1,422 +1,147 @@
 <!DOCTYPE html>
-
-<html class="light" lang="es">
+<html lang="es">
 
 <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Menú | Bistro Moderno</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú - BistroFlow</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
-    <script id="tailwind-config">
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script>
         tailwind.config = {
-            darkMode: "class",
             theme: {
                 extend: {
-                    "colors": {
-                        "surface-dim": "#e0d9d3",
-                        "inverse-on-surface": "#f7efe9",
-                        "tertiary": "#5d5e55",
-                        "surface-container-low": "#faf2ec",
-                        "surface": "#fff8f3",
-                        "on-primary-fixed-variant": "#7d2d00",
-                        "on-primary-container": "#fffeff",
-                        "on-background": "#1e1b17",
-                        "primary": "#9f3e07",
-                        "surface-container-lowest": "#ffffff",
-                        "primary-container": "#c05621",
-                        "secondary-container": "#d8e6a6",
-                        "on-tertiary-fixed-variant": "#46473f",
-                        "on-tertiary-fixed": "#1b1c15",
-                        "error-container": "#ffdad6",
-                        "on-secondary-fixed": "#171e00",
-                        "on-tertiary-container": "#fffeff",
-                        "background": "#fff8f3",
-                        "on-tertiary": "#ffffff",
-                        "tertiary-container": "#76766d",
-                        "inverse-primary": "#ffb596",
-                        "surface-variant": "#e8e1db",
-                        "primary-fixed-dim": "#ffb596",
-                        "on-secondary": "#ffffff",
-                        "on-error": "#ffffff",
-                        "inverse-surface": "#33302c",
-                        "outline-variant": "#dec0b5",
-                        "on-surface-variant": "#57423a",
-                        "on-primary-fixed": "#360f00",
-                        "surface-container-highest": "#e8e1db",
-                        "surface-container-high": "#eee7e1",
-                        "on-error-container": "#93000a",
-                        "tertiary-fixed-dim": "#c7c7bc",
-                        "surface-tint": "#a14009",
-                        "outline": "#8a7268",
-                        "secondary-fixed": "#dbe9a9",
-                        "tertiary-fixed": "#e4e3d7",
-                        "primary-fixed": "#ffdbcd",
-                        "on-surface": "#1e1b17",
-                        "secondary": "#586330",
-                        "secondary-fixed-dim": "#bfcd8f",
-                        "surface-bright": "#fff8f3",
-                        "on-secondary-container": "#5c6834",
-                        "surface-container": "#f4ede6",
-                        "error": "#ba1a1a",
-                        "on-secondary-fixed-variant": "#404b1b",
-                        "on-primary": "#ffffff"
+                    colors: {
+                        primary: '#C05621',
+                        'primary-container': '#9C421A',
+                        background: '#FAF9F6',
+                        surface: '#FDFCF0',
+                        'on-surface': '#2D3748',
+                        'stone-500': '#718096'
                     },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    "spacing": {
-                        "md": "16px",
-                        "unit": "4px",
-                        "xl": "40px",
-                        "margin": "32px",
-                        "sm": "8px",
-                        "lg": "24px",
-                        "gutter": "24px",
-                        "xs": "4px"
-                    },
-                    "fontFamily": {
-                        "headline-md": ["Noto Serif"],
-                        "body-lg": ["Plus Jakarta Sans"],
-                        "label-sm": ["Plus Jakarta Sans"],
-                        "headline-lg": ["Noto Serif"],
-                        "headline-display": ["Noto Serif"],
-                        "label-md": ["Plus Jakarta Sans"],
-                        "body-md": ["Plus Jakarta Sans"]
-                    },
-                    "fontSize": {
-                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
-                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
-                        "label-sm": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700" }],
-                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
-                        "headline-display": ["48px", { "lineHeight": "1.2", "fontWeight": "700" }],
-                        "label-md": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }],
-                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }]
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Noto Serif', 'serif']
                     }
-                },
-            },
+                }
+            }
         }
     </script>
     <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        .bg-pattern {
+            background-color: #FAF9F6;
+            background-image: radial-gradient(#C0562110 1px, transparent 1px);
+            background-size: 32px 32px;
         }
 
-        .scrolling-touch {
-            -webkit-overflow-scrolling: touch;
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .font-headline {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
         }
     </style>
+    <script src="../auth-helper.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 
-<body class="bg-background font-body-md text-on-surface">
-    <!-- TopAppBar -->
-    <nav
-        class="fixed top-0 left-0 right-0 z-50 bg-stone-50/90 dark:bg-stone-900/90 backdrop-blur-md border-b border-stone-200/60 dark:border-stone-800 shadow-sm">
-        <div class="flex justify-between items-center w-full px-6 py-4 max-w-screen-2xl mx-auto">
-            <div class="flex items-center gap-8">
-                <span
-                    class="text-2xl font-bold tracking-tight text-orange-800 dark:text-orange-500 font-serif">BistroFlow</span>
-                <!-- Desktop Nav Navigation -->
-                <div class="hidden md:flex items-center gap-6">
-                    <a class="text-stone-600 dark:text-stone-400 font-serif antialiased hover:bg-orange-50 transition-colors duration-200 px-3 py-2 rounded-lg"
-                        href="../home_cliente/code.html">Inicio</a>
-                    <a class="text-stone-600 dark:text-stone-400 font-serif antialiased hover:bg-orange-50 transition-colors duration-200 px-3 py-2 rounded-lg"
-                        href="#">Mis Pedidos</a>
-                    <a class="text-stone-600 dark:text-stone-400 font-serif antialiased hover:bg-orange-50 transition-colors duration-200 px-3 py-2 rounded-lg"
-                        href="#">Favoritos</a>
-                </div>
+<body class="bg-background font-sans text-stone-900">
+    <!-- Header -->
+    <header class="sticky top-0 z-40 w-full bg-white/80 backdrop-blur-md border-b border-stone-200 px-6 py-4">
+        <div class="max-w-screen-2xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-12">
+                <a href="../home_cliente/code.html" class="flex items-center gap-2 group">
+                    <div
+                        class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center rotate-3 group-hover:rotate-6 transition-transform">
+                        <span class="material-symbols-outlined text-white"
+                            style="font-variation-settings: 'FILL' 1">restaurant</span>
+                    </div>
+                    <span class="font-serif font-bold text-2xl tracking-tight text-stone-900">BistroFlow</span>
+                </a>
+                <nav class="hidden md:flex gap-8">
+                    <a href="../home_cliente/code.html"
+                        class="text-stone-500 hover:text-primary font-serif transition-colors">Inicio</a>
+                </nav>
             </div>
-            <div class="flex items-center gap-4">
-                <div
-                    class="hidden lg:flex items-center bg-surface-container rounded-full px-4 py-1.5 border border-outline-variant/30">
-                    <span class="material-symbols-outlined text-outline mr-2 text-sm">search</span>
-                    <input class="bg-transparent border-none focus:ring-0 text-sm w-48 font-body-md"
-                        placeholder="Buscar en el menú..." type="text" />
+            <div class="flex items-center gap-6">
+                <p class="text-sm font-bold text-stone-800">Hola, <span id="user-name"
+                        class="text-primary">Invitado</span></p>
+                <div class="relative">
+                    <button id="cart-button"
+                        class="material-symbols-outlined p-2 text-stone-600 hover:bg-stone-100 rounded-full">shopping_cart</button>
+                    <span id="cart-badge"
+                        class="absolute top-0 right-0 bg-primary text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full hidden">0</span>
+
+                    <!-- Cart Preview Dropdown -->
+                    <div id="cart-preview"
+                        class="absolute top-full right-0 mt-2 w-80 bg-white rounded-xl shadow-2xl border border-stone-100 hidden z-50 overflow-hidden">
+                        <div class="p-4 border-b border-stone-100 flex justify-between items-center bg-stone-50/50">
+                            <h3 class="font-bold text-sm">Tu Pedido</h3>
+                            <button id="close-cart"
+                                class="material-symbols-outlined text-stone-400 hover:text-stone-600 text-sm">close</button>
+                        </div>
+                        <div id="cart-items" class="max-h-96 overflow-y-auto p-4 space-y-4"></div>
+                        <div class="p-4 bg-stone-50 border-t border-stone-100 space-y-3">
+                            <div class="flex justify-between items-center font-bold">
+                                <span class="text-stone-500 text-sm">Total</span>
+                                <span id="cart-total" class="text-primary">$0.00</span>
+                            </div>
+                            <button
+                                class="w-full bg-primary hover:bg-primary-container text-white py-2.5 rounded-lg font-bold transition-colors">Confirmar
+                                Pedido</button>
+                            <button id="clear-cart"
+                                class="w-full text-stone-400 hover:text-red-500 text-xs font-semibold">Vaciar
+                                carrito</button>
+                        </div>
+                    </div>
                 </div>
-                <button
-                    class="relative p-2 text-stone-600 hover:bg-orange-50 rounded-full transition-all active:scale-95 duration-150">
-                    <span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
-                    <span
-                        class="absolute top-1 right-1 w-4 h-4 bg-primary text-white text-[10px] flex items-center justify-center rounded-full">2</span>
-                </button>
-                <button
-                    class="p-2 text-stone-600 hover:bg-orange-50 rounded-full transition-all active:scale-95 duration-150">
-                    <span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+                <button id="logout-button"
+                    class="flex items-center gap-2 bg-stone-100 hover:bg-stone-200 text-stone-700 px-4 py-2 rounded-lg font-semibold transition-all">
+                    <span class="material-symbols-outlined text-sm">logout</span> Salir
                 </button>
             </div>
         </div>
-    </nav>
-    <!-- Main Content Canvas -->
-    <main class="mt-24 pb-20 max-w-screen-2xl mx-auto px-6">
-        <!-- Filter Section -->
-        <section class="mb-12">
-            <div class="flex items-center justify-between mb-8 overflow-x-auto pb-4 scrolling-touch no-scrollbar gap-4">
-                <div class="flex gap-3">
-                    <button
-                        class="px-6 py-2.5 rounded-full bg-primary-container text-white font-label-md flex items-center gap-2 shadow-sm transition-all hover:brightness-110 active:scale-95">
-                        <span class="material-symbols-outlined text-sm">restaurant_menu</span>
-                        Menú Completo
-                    </button>
-                    <button
-                        class="px-6 py-2.5 rounded-full bg-surface-container-low text-stone-600 border border-outline-variant/20 font-label-md hover:bg-stone-100 transition-all active:scale-95">Entradas</button>
-                    <button
-                        class="px-6 py-2.5 rounded-full bg-surface-container-low text-stone-600 border border-outline-variant/20 font-label-md hover:bg-stone-100 transition-all active:scale-95">Platos
-                        Fuertes</button>
-                    <button
-                        class="px-6 py-2.5 rounded-full bg-surface-container-low text-stone-600 border border-outline-variant/20 font-label-md hover:bg-stone-100 transition-all active:scale-95">Bebidas</button>
-                    <button
-                        class="px-6 py-2.5 rounded-full bg-surface-container-low text-stone-600 border border-outline-variant/20 font-label-md hover:bg-stone-100 transition-all active:scale-95">Postres</button>
+    </header>
+
+    <main class="min-h-screen bg-pattern pt-8 pb-20">
+        <div class="max-w-screen-2xl mx-auto px-6">
+            <!-- Filter Section -->
+            <section class="mb-12">
+                <div id="categories-container" class="flex items-center overflow-x-auto pb-4 no-scrollbar gap-4">
+                    <div class="flex gap-3">
+                        <!-- Categorías dinámicas aquí -->
+                        <div class="animate-pulse flex gap-3">
+                            <div class="h-10 w-32 bg-stone-200 rounded-full"></div>
+                            <div class="h-10 w-32 bg-stone-200 rounded-full"></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="flex gap-3 border-l border-stone-200 pl-4">
-                    <button
-                        class="px-6 py-2.5 rounded-full bg-secondary-container/30 text-on-secondary-container font-label-md flex items-center gap-2 border border-secondary-container transition-all hover:bg-secondary-container/50 active:scale-95">
-                        <span class="material-symbols-outlined text-sm"
-                            style="font-variation-settings: 'FILL' 1;">eco</span>
-                        Vegano
-                    </button>
-                    <button
-                        class="px-6 py-2.5 rounded-full bg-surface-container-low text-stone-600 border border-outline-variant/20 font-label-md flex items-center gap-2 hover:bg-stone-100 transition-all active:scale-95">
-                        <span class="material-symbols-outlined text-sm">bookmark</span>
-                        Mis Favoritos
-                    </button>
-                </div>
+            </section>
+
+            <div class="mb-10">
+                <h2 id="category-title" class="font-serif font-bold text-5xl text-on-surface">Menú Completo</h2>
+                <p class="text-stone-500 mt-3 text-lg">Explora nuestra selección artesanal preparada al momento.</p>
             </div>
-            <!-- Dynamic Title -->
-            <div class="border-l-4 border-primary pl-6 mb-10">
-                <h1 class="font-headline-display text-on-surface">Nuestra Selección de Menú</h1>
-                <p class="font-body-lg text-stone-500 mt-2 max-w-2xl">Explora creaciones artesanales preparadas con
-                    ingredientes locales y técnicas clásicas, diseñadas para elevar tu experiencia gastronómica.</p>
-            </div>
-        </section>
-        <!-- Product Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            <!-- Product Card 1 -->
-            <div
-                class="group bg-surface-container-low rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(45,42,38,0.05)] hover:shadow-[0_12px_40px_rgba(45,42,38,0.12)] transition-all duration-300 border border-stone-100/50 flex flex-col">
-                <div class="relative h-64 overflow-hidden">
-                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        data-alt="A gourmet salmon salad plate with vibrant greens, avocado slices, and perfectly seared salmon. The setting is a bright, sunlit bistro with warm minimalist decor and cream-colored accents. The lighting is high-key and soft, emphasizing the fresh textures of the vegetables and the rich orange hue of the salmon."
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGS6E0D6mqjnLaEy7dINXF0TxyHelPSkr4ZEbbRSAmHlTBetaVImNIVw4LjKZNtzies0WBhWdacoXNHGqyPgNh0OYewC0yhFC8bzAsBYumDi25iymlGYQSBiO9MyviGwsVBseUlSxD-WDi4jB9OmKDu9I8aSD3R9dI-dGROS8JDAdIhTO7qWLLxsWtCITKhZS3scKFOgk3WHOgaUVo0tXX2twfVt_SGkRqjYhvVJlUhxS1tCGzDjoVnTZsPiliTLZecM45Z7EwQKc" />
-                    <div class="absolute top-4 left-4 flex gap-2">
-                        <span
-                            class="px-3 py-1 bg-secondary-container text-on-secondary-container text-xs font-bold rounded-full backdrop-blur-sm bg-opacity-90">Favorito</span>
-                    </div>
-                    <div
-                        class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                    </div>
-                </div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <div class="flex justify-between items-start mb-2">
-                        <h3 class="font-headline-md text-on-surface group-hover:text-primary transition-colors">Salmón
-                            de la Casa</h3>
-                        <span class="font-headline-md text-primary">$24.50</span>
-                    </div>
-                    <p class="text-stone-500 font-body-md text-sm mb-6 flex-grow leading-relaxed">Salmón noruego sellado
-                        al vacío, acompañado de una cama de espárragos frescos y reducción de cítricos.</p>
-                    <div class="flex items-center gap-3 mt-auto">
-                        <button
-                            class="flex-grow bg-primary text-white font-label-md py-3 px-4 rounded-lg flex items-center justify-center gap-2 hover:bg-primary-container transition-colors active:scale-[0.98]">
-                            <span class="material-symbols-outlined text-lg">add_shopping_cart</span>
-                            Agregar al Pedido
-                        </button>
-                        <button
-                            class="p-3 border border-outline-variant/30 rounded-lg text-stone-400 hover:text-primary hover:border-primary transition-all">
-                            <span class="material-symbols-outlined text-lg">favorite</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <!-- Product Card 2 -->
-            <div
-                class="group bg-surface-container-low rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(45,42,38,0.05)] hover:shadow-[0_12px_40px_rgba(45,42,38,0.12)] transition-all duration-300 border border-stone-100/50 flex flex-col">
-                <div class="relative h-64 overflow-hidden">
-                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        data-alt="A beautiful bowl of Mediterranean hummus and fresh vegetables arranged artistically. The scene is shot in a sophisticated dining room with soft, warm overhead lighting. The color palette features organic tones of cream, olive green, and terracotta, reflecting a professional yet inviting atmosphere."
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcXYf_8DjKofW4dOE0tmQfa5sH1sfsVSZQIcy3dyi3c5yqpfp9bfbOyv8gP0RSi09JvSLfWKCm7UHazpnEJhFFs4ywFWPexcWHjr311Q9AR9qjGd1Cy7fw9V1k5g8M1BV7vDc_XSuFaCKXK9b83fyHOVdWKrPSX_XuPfrvHgQThHJJSTE6HlfEWrMElHsbAj5BHkIK845gjlbS1xAc2XBBKZE1hkbP23iOIl2MP5SsJLSTr2TcfQEIoZRr-AHf9DM9MuZ-kqz7ocs" />
-                    <div class="absolute top-4 left-4 flex gap-2">
-                        <span
-                            class="px-3 py-1 bg-secondary-container/90 text-on-secondary-container text-xs font-bold rounded-full backdrop-blur-sm">Vegano</span>
-                    </div>
-                </div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <div class="flex justify-between items-start mb-2">
-                        <h3 class="font-headline-md text-on-surface group-hover:text-primary transition-colors">Bowl
-                            Mediterráneo</h3>
-                        <span class="font-headline-md text-primary">$18.00</span>
-                    </div>
-                    <p class="text-stone-500 font-body-md text-sm mb-6 flex-grow leading-relaxed">Mezcla orgánica de
-                        quinoa, garbanzos crujientes, aguacate y aderezo tahini artesanal.</p>
-                    <div class="flex items-center gap-3 mt-auto">
-                        <button
-                            class="flex-grow bg-primary text-white font-label-md py-3 px-4 rounded-lg flex items-center justify-center gap-2 hover:bg-primary-container transition-colors active:scale-[0.98]">
-                            <span class="material-symbols-outlined text-lg">add_shopping_cart</span>
-                            Agregar al Pedido
-                        </button>
-                        <button
-                            class="p-3 border border-outline-variant/30 rounded-lg text-stone-400 hover:text-primary hover:border-primary transition-all">
-                            <span class="material-symbols-outlined text-lg">favorite</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <!-- Product Card 3 -->
-            <div
-                class="group bg-surface-container-low rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(45,42,38,0.05)] hover:shadow-[0_12px_40px_rgba(45,42,38,0.12)] transition-all duration-300 border border-stone-100/50 flex flex-col">
-                <div class="relative h-64 overflow-hidden">
-                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        data-alt="Premium Wagyu beef sliders served on a dark slate plate with a side of truffle fries. The background is a moody, dimly lit high-end bistro bar with golden accents. The lighting focuses on the glossy buns and the perfectly medium-rare center of the beef, creating a luxurious and appetizing visual."
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1013AzDTNx2Oz89bis0V_w6BC15F1dTa1ojg1sUfTfipOfFN0mk_7DCG4Zz63ighaNLnwPUh2COo42ZcFTAPPxZbOMFEiSrszg_2GvT_aACqy80RR9ZGJhCCLTF6-5ykdIujZ9B7tkpW7n4ClG3g6gVA0jekwmTISlhHKYtPSyz05HBxOn_dN65eIxS8X6zXQ6NErD5mCtgoFRK-HtHkbfMWVnumf4r7-rOPwENBe-f7xw2RwzfN_xcphTUnwV0IiDiGn3aWrPhM" />
-                </div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <div class="flex justify-between items-start mb-2">
-                        <h3 class="font-headline-md text-on-surface group-hover:text-primary transition-colors">Sliders
-                            de Wagyu</h3>
-                        <span class="font-headline-md text-primary">$22.00</span>
-                    </div>
-                    <p class="text-stone-500 font-body-md text-sm mb-6 flex-grow leading-relaxed">Mini hamburguesas de
-                        carne Wagyu A5, cebolla caramelizada al vino tinto y queso gruyère.</p>
-                    <div class="flex items-center gap-3 mt-auto">
-                        <button
-                            class="flex-grow bg-primary text-white font-label-md py-3 px-4 rounded-lg flex items-center justify-center gap-2 hover:bg-primary-container transition-colors active:scale-[0.98]">
-                            <span class="material-symbols-outlined text-lg">add_shopping_cart</span>
-                            Agregar al Pedido
-                        </button>
-                        <button
-                            class="p-3 border border-outline-variant/30 rounded-lg text-stone-400 hover:text-primary hover:border-primary transition-all">
-                            <span class="material-symbols-outlined text-lg">favorite</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <!-- Product Card 4 -->
-            <div
-                class="group bg-surface-container-low rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(45,42,38,0.05)] hover:shadow-[0_12px_40px_rgba(45,42,38,0.12)] transition-all duration-300 border border-stone-100/50 flex flex-col">
-                <div class="relative h-64 overflow-hidden">
-                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        data-alt="A decadent chocolate fondant with a molten center, dusted with powdered sugar and garnished with a single fresh raspberry. The setting is a minimalist, elegant dining table with a cream tablecloth and soft ambient shadows. The overall aesthetic is warm and sophisticated, highlighting the rich texture of the dessert."
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIUtAG_EPQniH9XK5bXBGDEV3YCwE-qsK47lBTfRe1r40Rb6DUDiDMTfUevJredoDuNuYQByv_XL-mzS8L3irNS5NcCrC66Ru46sNikq80LyPVKBWD9-jVsgnxVx147K_2eSzficSs2OFpQZHtNcfk_079a7Gemo-XGDuDSH-K0lfG5c_VytYjwCLRKyjN9QlsggHEcrKVRHTAVL6BiohKQXsLxrXgI9LTiP75KVz1HlGDOoX4nM5lSNyvEVJeYp9EiEbnjzf8QOQ" />
-                    <div class="absolute top-4 left-4 flex gap-2">
-                        <span
-                            class="px-3 py-1 bg-stone-900/80 text-white text-xs font-bold rounded-full backdrop-blur-sm">Gourmet</span>
-                    </div>
-                </div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <div class="flex justify-between items-start mb-2">
-                        <h3 class="font-headline-md text-on-surface group-hover:text-primary transition-colors">Volcán
-                            de Cacao</h3>
-                        <span class="font-headline-md text-primary">$12.50</span>
-                    </div>
-                    <p class="text-stone-500 font-body-md text-sm mb-6 flex-grow leading-relaxed">Bizcocho de chocolate
-                        70% cacao con centro líquido, servido con helado de vainilla Bourbon.</p>
-                    <div class="flex items-center gap-3 mt-auto">
-                        <button
-                            class="flex-grow bg-primary text-white font-label-md py-3 px-4 rounded-lg flex items-center justify-center gap-2 hover:bg-primary-container transition-colors active:scale-[0.98]">
-                            <span class="material-symbols-outlined text-lg">add_shopping_cart</span>
-                            Agregar al Pedido
-                        </button>
-                        <button
-                            class="p-3 border border-outline-variant/30 rounded-lg text-stone-400 hover:text-primary hover:border-primary transition-all">
-                            <span class="material-symbols-outlined text-lg">favorite</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <!-- Product Card 5 -->
-            <div
-                class="group bg-surface-container-low rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(45,42,38,0.05)] hover:shadow-[0_12px_40px_rgba(45,42,38,0.12)] transition-all duration-300 border border-stone-100/50 flex flex-col">
-                <div class="relative h-64 overflow-hidden">
-                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        data-alt="A rustic ceramic bowl of roasted tomato and basil soup, with a swirl of cream and fresh herbs on top. The background is a clean, minimalist wooden table in a brightly lit kitchen space. The lighting is natural and bright, creating a calm and inviting atmosphere with soft earthy tones."
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaQYO3HGRuiZ32gaUJtBDIvgjZjMD9LS1k8BMpbc1eGyCR0z87ZGVEZmxkzkU3tmQDR3FHpcyCVeqJOQvHSBIl7lbAnoFXo0ddklIBDz_t0_e48sxY-CQKFgg6rtX3CM27JacfqWWTQymjmHhIVihanJcmjsTaHX2mIUJKRzeTOJUsPM53mVhFGXFvzKMtj8l9Xg4XgCL-Svm7iv8qSnZfxFpSg8Hse21dtsDhUi1ZQx91__NKPIytDQxEL0_o3N_VzrBQhyYeOTw" />
-                    <div class="absolute top-4 left-4 flex gap-2">
-                        <span
-                            class="px-3 py-1 bg-secondary-container/90 text-on-secondary-container text-xs font-bold rounded-full backdrop-blur-sm">Vegano</span>
-                    </div>
-                </div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <div class="flex justify-between items-start mb-2">
-                        <h3 class="font-headline-md text-on-surface group-hover:text-primary transition-colors">Crema
-                            del Huerto</h3>
-                        <span class="font-headline-md text-primary">$14.00</span>
-                    </div>
-                    <p class="text-stone-500 font-body-md text-sm mb-6 flex-grow leading-relaxed">Tomates asados a la
-                        leña, albahaca fresca y un toque de crema de coco orgánica.</p>
-                    <div class="flex items-center gap-3 mt-auto">
-                        <button
-                            class="flex-grow bg-primary text-white font-label-md py-3 px-4 rounded-lg flex items-center justify-center gap-2 hover:bg-primary-container transition-colors active:scale-[0.98]">
-                            <span class="material-symbols-outlined text-lg">add_shopping_cart</span>
-                            Agregar al Pedido
-                        </button>
-                        <button
-                            class="p-3 border border-outline-variant/30 rounded-lg text-stone-400 hover:text-primary hover:border-primary transition-all">
-                            <span class="material-symbols-outlined text-lg">favorite</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <!-- Product Card 6 -->
-            <div
-                class="group bg-surface-container-low rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(45,42,38,0.05)] hover:shadow-[0_12px_40px_rgba(45,42,38,0.12)] transition-all duration-300 border border-stone-100/50 flex flex-col">
-                <div class="relative h-64 overflow-hidden">
-                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        data-alt="An artisan craft cocktail in a crystal glass, garnished with a dried orange slice and a sprig of rosemary. The cocktail has a warm amber color, reflecting the lighting of a sophisticated, high-end bar environment. The background features blurred wooden textures and subtle golden highlights."
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGjFoxTZXTT7dzm7CFrMjszyvB5sNFFscf2t7qg5sqn2DthQ62kZjtJa8Gto8uVUGNtOcUMR0bRbl0-Ri620C7Hc3cg2wshneaBxLI4dRgIF94PbYz6-shU9OnwEDb7BLWziK7qiL--Vub_HsAvWzJ-s3qSc9CNDSJTQOvhmW_sJhVlSJtUpavGV1ZNZCePT-Z-PwttF3E1eKYYPpLqjpho2jbbsnsaxvAl0i3QWJnIb7bMmbnfY9sbaneLR0q1pQv4VSRVAhwTjk" />
-                    <div class="absolute top-4 left-4 flex gap-2">
-                        <span
-                            class="px-3 py-1 bg-primary-container text-white text-xs font-bold rounded-full backdrop-blur-sm">Artesanal</span>
-                    </div>
-                </div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <div class="flex justify-between items-start mb-2">
-                        <h3 class="font-headline-md text-on-surface group-hover:text-primary transition-colors">Clover
-                            Moderno</h3>
-                        <span class="font-headline-md text-primary">$16.00</span>
-                    </div>
-                    <p class="text-stone-500 font-body-md text-sm mb-6 flex-grow leading-relaxed">Ginebra infusionada
-                        con frutos rojos, sirope de lavanda y clara de huevo pasteurizada.</p>
-                    <div class="flex items-center gap-3 mt-auto">
-                        <button
-                            class="flex-grow bg-primary text-white font-label-md py-3 px-4 rounded-lg flex items-center justify-center gap-2 hover:bg-primary-container transition-colors active:scale-[0.98]">
-                            <span class="material-symbols-outlined text-lg">add_shopping_cart</span>
-                            Agregar al Pedido
-                        </button>
-                        <button
-                            class="p-3 border border-outline-variant/30 rounded-lg text-stone-400 hover:text-primary hover:border-primary transition-all">
-                            <span class="material-symbols-outlined text-lg">favorite</span>
-                        </button>
-                    </div>
+
+            <!-- Product Grid -->
+            <div id="products-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- Productos dinámicos aquí -->
+                <div class="col-span-full text-center py-20 text-stone-400">
+                    <span class="material-symbols-outlined text-4xl animate-spin mb-4">progress_activity</span>
                 </div>
             </div>
         </div>
     </main>
-    <!-- Footer Summary (Floating Mobile Bar) -->
-    <div class="lg:hidden fixed bottom-6 left-6 right-6 z-50">
-        <div class="bg-stone-900 text-white rounded-2xl p-4 shadow-2xl flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
-                    <span class="material-symbols-outlined">shopping_basket</span>
-                </div>
-                <div>
-                    <p class="text-xs text-stone-400 font-label-sm">TU PEDIDO</p>
-                    <p class="font-bold">2 Artículos • $42.50</p>
-                </div>
-            </div>
-            <button class="bg-white text-stone-900 px-6 py-2 rounded-xl font-bold transition-all active:scale-95">
-                Ver Pedido
-            </button>
-        </div>
-    </div>
+
+    <script src="script.js" defer></script>
 </body>
 
 </html>

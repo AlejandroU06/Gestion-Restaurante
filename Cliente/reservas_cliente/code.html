@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Reserva de Mesas | BistroFlow</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#fff8f3",
+                        "surface": "#fff8f3",
+                        "on-error": "#ffffff",
+                        "outline-variant": "#dec0b5",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#e0d9d3",
+                        "tertiary-container": "#76766d",
+                        "background": "#fff8f3",
+                        "on-secondary-fixed-variant": "#404b1b",
+                        "primary-container": "#c05621",
+                        "primary": "#9f3e07",
+                        "on-surface": "#1e1b17",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#d8e6a6",
+                        "on-secondary-fixed": "#171e00",
+                        "secondary-fixed-dim": "#bfcd8f",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#46473f",
+                        "on-primary-container": "#fffeff",
+                        "inverse-primary": "#ffb596",
+                        "on-secondary-container": "#5c6834",
+                        "on-primary-fixed": "#360f00",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#f4ede6",
+                        "secondary": "#586330",
+                        "on-surface-variant": "#57423a",
+                        "surface-container-low": "#faf2ec",
+                        "surface-container-high": "#eee7e1",
+                        "on-tertiary-container": "#fffeff",
+                        "tertiary-fixed-dim": "#c7c7bc",
+                        "tertiary-fixed": "#e4e3d7",
+                        "tertiary": "#5d5e55",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#ffb596",
+                        "surface-container-highest": "#e8e1db",
+                        "on-tertiary-fixed": "#1b1c15",
+                        "surface-variant": "#e8e1db",
+                        "primary-fixed": "#ffdbcd",
+                        "on-background": "#1e1b17",
+                        "inverse-on-surface": "#f7efe9",
+                        "inverse-surface": "#33302c",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-tint": "#a14009",
+                        "on-secondary": "#ffffff",
+                        "outline": "#8a7268",
+                        "secondary-fixed": "#dbe9a9",
+                        "on-primary-fixed-variant": "#7d2d00"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "16px",
+                        "xl": "24px",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "md": "16px",
+                        "xl": "40px",
+                        "gutter": "24px",
+                        "unit": "4px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "margin": "32px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-md": ["Noto Serif"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Noto Serif"],
+                        "headline-display": ["Noto Serif"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "headline-display": ["48px", { "lineHeight": "1.2", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FAF9F6;
+            background-image: radial-gradient(#C0562110 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+
+<body class="font-body-md text-on-surface antialiased">
+    <!-- TopAppBar -->
+    <header
+        class="bg-[#FDFCF0] dark:bg-stone-950 flex justify-between items-center w-full px-8 py-3 sticky top-0 z-50 backdrop-blur-sm shadow-sm border-b border-stone-200 dark:border-stone-800">
+        <div class="flex items-center gap-8">
+            <span class="text-2xl font-bold text-[#C05621] font-serif">BistroFlow</span>
+            <nav class="hidden md:flex gap-6">
+                <a class="text-stone-600 dark:text-stone-400 hover:text-[#C05621] font-serif transition-colors"
+                    href="../home_cliente/code.html">Inicio</a>
+                <a class="text-stone-600 dark:text-stone-400 hover:text-[#C05621] font-serif transition-colors"
+                    href="../menu_cliente/code.html">Menú</a>
+                <a class="text-stone-600 dark:text-stone-400 hover:text-[#C05621] font-serif transition-colors"
+                    href="#">Mis Pedidos</a>
+                <a class="text-stone-600 dark:text-stone-400 hover:text-[#C05621] font-serif transition-colors"
+                    href="#">Reservas</a>
+                <a class="text-stone-600 dark:text-stone-400 hover:text-[#C05621] font-serif transition-colors"
+                    href="#">Perfil</a>
+                <button id="logout-button"
+                    class="text-stone-400 hover:text-error font-serif transition-colors text-sm">Salir</button>
+            </nav>
+        </div>
+        <div class="flex items-center gap-6">
+            <div class="text-right hidden sm:block">
+                <p class="text-sm font-bold text-stone-800">Bienvenido, <span id="user-name"
+                        class="text-primary">Invitado</span></p>
+            </div>
+            <div class="flex items-center gap-2">
+                <button class="material-symbols-outlined p-2 text-stone-600 hover:bg-stone-100 rounded-full"
+                    data-icon="notifications">notifications</button>
+            </div>
+        </div>
+    </header>
+    <main class="max-w-7xl mx-auto px-8 py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+            <!-- Principal Column -->
+            <div class="lg:col-span-8 space-y-8">
+                <section>
+                    <h1 class="text-headline-lg font-headline-lg text-stone-900 mb-2">Reserva tu Mesa</h1>
+                    <p class="text-body-lg text-stone-500">Asegura una experiencia culinaria inolvidable en BistroFlow.
+                    </p>
+                </section>
+                <!-- Date Selection -->
+                <div class="bg-white rounded-lg p-lg shadow-[0_4px_20px_rgba(45,42,38,0.05)] border border-stone-100">
+                    <div class="flex items-center gap-2 mb-md">
+                        <span class="material-symbols-outlined text-primary">calendar_today</span>
+                        <h2 class="font-headline-md text-stone-800">1. Selecciona el Día</h2>
+                    </div>
+                    <div
+                        class="grid grid-cols-7 gap-xs text-center border-b border-stone-100 pb-sm mb-sm font-label-md text-stone-400">
+                        <div>LU</div>
+                        <div>MA</div>
+                        <div>MI</div>
+                        <div>JU</div>
+                        <div>VI</div>
+                        <div>SA</div>
+                        <div>DO</div>
+                    </div>
+                    <div class="grid grid-cols-7 gap-2">
+                        <div class="p-3 text-stone-300">28</div>
+                        <div class="p-3 text-stone-300">29</div>
+                        <div class="p-3 text-stone-300">30</div>
+                        <button
+                            class="p-3 rounded-lg hover:bg-surface-container transition-colors text-stone-700">1</button>
+                        <button
+                            class="p-3 rounded-lg hover:bg-surface-container transition-colors text-stone-700">2</button>
+                        <button
+                            class="p-3 rounded-lg hover:bg-surface-container transition-colors text-stone-700">3</button>
+                        <button
+                            class="p-3 rounded-lg hover:bg-surface-container transition-colors text-stone-700">4</button>
+                        <button class="p-3 rounded-lg bg-primary text-white font-bold shadow-md">5</button>
+                        <button
+                            class="p-3 rounded-lg hover:bg-surface-container transition-colors text-stone-700">6</button>
+                        <button
+                            class="p-3 rounded-lg hover:bg-surface-container transition-colors text-stone-700">7</button>
+                        <button
+                            class="p-3 rounded-lg hover:bg-surface-container transition-colors text-stone-700">8</button>
+                        <button
+                            class="p-3 rounded-lg hover:bg-surface-container transition-colors text-stone-700">9</button>
+                        <button
+                            class="p-3 rounded-lg hover:bg-surface-container transition-colors text-stone-700">10</button>
+                        <button
+                            class="p-3 rounded-lg hover:bg-surface-container transition-colors text-stone-700">11</button>
+                    </div>
+                </div>
+                <!-- Time & Guests Selection -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+                    <div
+                        class="bg-white rounded-lg p-lg shadow-[0_4px_20px_rgba(45,42,38,0.05)] border border-stone-100">
+                        <div class="flex items-center gap-2 mb-md">
+                            <span class="material-symbols-outlined text-primary">schedule</span>
+                            <h2 class="font-headline-md text-stone-800">2. Hora</h2>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2">
+                            <button
+                                class="py-3 px-2 rounded-lg border border-primary bg-primary text-white font-bold text-sm">19:00</button>
+                            <button
+                                class="py-3 px-2 rounded-lg border border-stone-200 hover:border-primary transition-all text-sm text-stone-700">19:30</button>
+                            <button
+                                class="py-3 px-2 rounded-lg border border-stone-200 bg-stone-50 text-stone-400 text-sm cursor-not-allowed opacity-60">20:00</button>
+                            <button
+                                class="py-3 px-2 rounded-lg border border-stone-200 hover:border-primary transition-all text-sm text-stone-700">20:30</button>
+                            <button
+                                class="py-3 px-2 rounded-lg border border-stone-200 hover:border-primary transition-all text-sm text-stone-700">21:00</button>
+                            <button
+                                class="py-3 px-2 rounded-lg border border-stone-200 bg-stone-50 text-stone-400 text-sm cursor-not-allowed opacity-60">21:30</button>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white rounded-lg p-lg shadow-[0_4px_20px_rgba(45,42,38,0.05)] border border-stone-100">
+                        <div class="flex items-center gap-2 mb-md">
+                            <span class="material-symbols-outlined text-primary">group</span>
+                            <h2 class="font-headline-md text-stone-800">3. Comensales</h2>
+                        </div>
+                        <div class="flex items-center justify-between border border-stone-200 rounded-lg p-3">
+                            <button
+                                class="w-10 h-10 rounded-full border border-stone-200 flex items-center justify-center hover:bg-stone-50 transition-colors">
+                                <span class="material-symbols-outlined text-stone-600">remove</span>
+                            </button>
+                            <span class="text-headline-md font-headline-md text-stone-800">2</span>
+                            <button
+                                class="w-10 h-10 rounded-full border border-stone-200 flex items-center justify-center hover:bg-stone-50 transition-colors">
+                                <span class="material-symbols-outlined text-stone-600">add</span>
+                            </button>
+                        </div>
+                        <p class="text-xs text-stone-400 mt-4 italic">Para grupos de más de 10 personas, por favor
+                            contactar directamente.</p>
+                    </div>
+                </div>
+                <!-- Zone Selection -->
+                <div class="bg-white rounded-lg p-lg shadow-[0_4px_20px_rgba(45,42,38,0.05)] border border-stone-100">
+                    <div class="flex items-center gap-2 mb-md">
+                        <span class="material-symbols-outlined text-primary">location_on</span>
+                        <h2 class="font-headline-md text-stone-800">4. Preferencia de Zona</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+                        <div
+                            class="relative group cursor-pointer border-2 border-primary rounded-lg overflow-hidden shadow-md">
+                            <img class="w-full h-32 object-cover"
+                                data-alt="A lush and bright outdoor terrace of a sophisticated restaurant, featuring weathered wooden tables, comfortable beige wicker chairs, and abundant green plants under warm golden hour sunlight. The atmosphere is breezy and inviting, with a palette of natural earth tones and soft forest greens."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDinUsHOTYhc_bxPXFCh7Fs_bCZBzM7WyVLS6bLmdygOq58segXpSSCDhRzkx5tcPjjNBwwhnrhbLOxAQ71C6A6aL0vdoatlGX-lfgNybkN6XBg9Cty-xrJt1_BbFilnEOzNxn0TxmvEKA1H0LqPEGasRvSXzaJb8Hy1dQZr9-6QLgw-k4UJqBhN6_8ps29yzFumXLEx1eeMLy9MAJCmYVuYCz7ngJ7qtL14XREo4l1BqvF1Rpr4slx4avsEpDUZ04RDgV53PW8P2w" />
+                            <div class="p-3 bg-white">
+                                <span class="font-label-md text-stone-800 block">Terraza</span>
+                                <span class="text-xs text-primary font-bold">Seleccionado</span>
+                            </div>
+                            <div
+                                class="absolute top-2 right-2 bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-[16px]">check</span>
+                            </div>
+                        </div>
+                        <div
+                            class="relative group cursor-pointer border-2 border-transparent hover:border-primary/30 rounded-lg overflow-hidden transition-all">
+                            <img class="w-full h-32 object-cover"
+                                data-alt="The elegant main dining room of a modern bistro, featuring dark wood paneling, warm ambient lighting from minimalist brass chandeliers, and rows of impeccably set tables with white linens. The mood is sophisticated and cozy, with deep ochre and chocolate brown tones predominating the high-end interior space."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnf4J-KYhCTFmV3YJ9SA5aUjQkPTxT_oUDJrMJAIsjB8WzZ8MbXj36XwprFsReVgjm3dkyDFbCAyaNAlrDTo23cFoWOmHSMIoW1BRjYMsTL7UkramkAouPkpMqIbnEQd7xg5WGUB0no3mjCaJX1yIuAPyoASLj5YrITALuQjgrJl5VrumUTX_Jy_C3oIhvGAsFlb2QWfSVMOSFG5M9lqGB0LoBGY-_Wq7Pvi9IlUceKnmx6cmjINMBTfK-vpCvDBE-_u96xNPhpCw" />
+                            <div class="p-3 bg-white">
+                                <span class="font-label-md text-stone-800 block">Salón Principal</span>
+                                <span class="text-xs text-stone-400">Disponible</span>
+                            </div>
+                        </div>
+                        <div
+                            class="relative group cursor-pointer border-2 border-transparent hover:border-primary/30 rounded-lg overflow-hidden transition-all">
+                            <img class="w-full h-32 object-cover"
+                                data-alt="A peaceful and romantic restaurant seating area next to floor-to-ceiling windows overlooking a quiet city street at dusk. Soft candlelight reflects off the glass, illuminating small round marble tables and velvet-upholstered chairs. The lighting is low and intimate, creating a serene, upscale dining atmosphere."
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeE_nJ6mGhLLuzNSwCVECr7StpGI__PQFTBpZ35O_OUKprbYrPG0bdEZBVUyClpyuFeVeNrPRkCTgEtWQSZYwlNtDPM0tsCfxMtaBnFjksjLOIs7ayDjROkLYZa2CdLOALLBnsSyKnW1Zb9PE6zLDoVAOxYXV8DFLTl1IPHwYL7sffS-EqMfJ0l5JZKcxkZHSRn5OF5qMWjIPZqpPfCTqaAmcJOY_9DfwEr4LCsp_t5UdJWERykoFuCwKsvZayYZHcwDMO2MzUNW8" />
+                            <div class="p-3 bg-white">
+                                <span class="font-label-md text-stone-800 block">Ventana</span>
+                                <span class="text-xs text-stone-400">Disponible</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Personal Info Form -->
+                <div class="bg-white rounded-lg p-lg shadow-[0_4px_20px_rgba(45,42,38,0.05)] border border-stone-100">
+                    <div class="flex items-center gap-2 mb-md">
+                        <span class="material-symbols-outlined text-primary">person</span>
+                        <h2 class="font-headline-md text-stone-800">5. Información de Contacto</h2>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+                        <div class="space-y-1">
+                            <label class="font-label-md text-stone-600 ml-1">Nombre Completo</label>
+                            <input
+                                class="w-full border-b border-stone-200 border-t-0 border-x-0 bg-stone-50/50 p-3 focus:ring-0 focus:border-primary transition-colors font-body-md"
+                                type="text" value="Eleanor Vance" />
+                        </div>
+                        <div class="space-y-1">
+                            <label class="font-label-md text-stone-600 ml-1">Teléfono</label>
+                            <input
+                                class="w-full border-b border-stone-200 border-t-0 border-x-0 bg-stone-50/50 p-3 focus:ring-0 focus:border-primary transition-colors font-body-md"
+                                placeholder="+34 000 000 000" type="tel" />
+                        </div>
+                        <div class="md:col-span-2 space-y-1">
+                            <label class="font-label-md text-stone-600 ml-1">Notas especiales (Alergias,
+                                celebraciones...)</label>
+                            <textarea
+                                class="w-full border-b border-stone-200 border-t-0 border-x-0 bg-stone-50/50 p-3 focus:ring-0 focus:border-primary transition-colors font-body-md resize-none"
+                                placeholder="Indíquenos cualquier detalle relevante..." rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Sidebar Column -->
+            <aside class="lg:col-span-4 sticky top-28">
+                <div
+                    class="bg-[#FDFCF0] rounded-lg p-lg shadow-[0_12px_40px_rgba(45,42,38,0.12)] border border-[#dec0b5]/30">
+                    <h3 class="font-headline-md text-stone-900 border-b border-stone-200 pb-4 mb-6">Resumen de Reserva
+                    </h3>
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4">
+                            <div class="bg-primary/10 p-2 rounded-lg text-primary">
+                                <span class="material-symbols-outlined">event</span>
+                            </div>
+                            <div>
+                                <span
+                                    class="block text-xs font-label-md text-stone-400 uppercase tracking-wider">Fecha</span>
+                                <span class="block font-body-lg font-bold text-stone-800">Viernes, 5 de Mayo</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="bg-primary/10 p-2 rounded-lg text-primary">
+                                <span class="material-symbols-outlined">schedule</span>
+                            </div>
+                            <div>
+                                <span
+                                    class="block text-xs font-label-md text-stone-400 uppercase tracking-wider">Hora</span>
+                                <span class="block font-body-lg font-bold text-stone-800">19:00</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="bg-primary/10 p-2 rounded-lg text-primary">
+                                <span class="material-symbols-outlined">group</span>
+                            </div>
+                            <div>
+                                <span
+                                    class="block text-xs font-label-md text-stone-400 uppercase tracking-wider">Personas</span>
+                                <span class="block font-body-lg font-bold text-stone-800">2 comensales</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="bg-primary/10 p-2 rounded-lg text-primary">
+                                <span class="material-symbols-outlined">location_on</span>
+                            </div>
+                            <div>
+                                <span
+                                    class="block text-xs font-label-md text-stone-400 uppercase tracking-wider">Zona</span>
+                                <span class="block font-body-lg font-bold text-stone-800">Terraza</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="mt-8 pt-8 border-t border-stone-200">
+                        <button
+                            class="w-full bg-primary text-white py-4 rounded-lg font-bold text-lg shadow-lg hover:bg-primary-container hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+                            Confirmar Reserva
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </button>
+                        <p class="text-center text-xs text-stone-400 mt-4 leading-relaxed px-4">
+                            Al confirmar, aceptas nuestras condiciones de reserva y política de cancelación.
+                        </p>
+                    </div>
+                </div>
+                <!-- Secondary Visual Card -->
+                <div class="mt-gutter rounded-lg overflow-hidden relative h-48 shadow-lg group">
+                    <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        data-alt="A beautifully plated gourmet dish featuring seared scallops with vibrant edible flowers and microgreens, served on a minimalist ceramic plate in a high-end restaurant setting. The soft side-lighting highlights the textures of the food and the elegant, cream-colored surface beneath, embodying a clean and sophisticated fine-dining aesthetic."
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKiKEJX7wArMkpTasrp9lrt3UoYhn_QjPpY_1ofAbPBXx_miamYgyUrjVdc7UE7_JjknpnP1QNcm1cuno6yLj8B5zna8bAI_iGpByH5WhxSB9jFOoahTJj3Ky2T4VszgfwAhshaXX4DmmrvdSdW4XNuYdACfxAWe1vgLN72hnCG22Bg7uZEEa2WRviUYqf3y2VQijUzkf4T_fhoXUOKWsHoI_Ezmuj58QMAgUISNXQDMBVPDeDQrJxxuBiTF8H-1bq5ICZfD4skJ8" />
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-stone-900/80 to-transparent flex flex-col justify-end p-6">
+                        <h4 class="text-white font-headline-md leading-tight">Vive la experiencia BistroFlow</h4>
+                        <p class="text-stone-300 text-xs mt-2 italic">Ingredientes locales, pasión global.</p>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-stone-900 text-stone-400 py-12 mt-12">
+        <div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-4 gap-lg">
+            <div class="space-y-4">
+                <span class="text-headline-md font-headline-md text-white">BistroFlow</span>
+                <p class="text-sm leading-relaxed">Alta cocina y gestión eficiente en un solo lugar. Una experiencia
+                    diseñada para los paladares más exigentes.</p>
+            </div>
+            <div>
+                <h5 class="text-white font-label-md mb-6 uppercase tracking-widest">Navegación</h5>
+                <ul class="space-y-3 text-sm">
+                    <li><a class="hover:text-primary transition-colors" href="#">Carta</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="#">Nuestros Chefs</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="#">Eventos</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="#">Contacto</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="text-white font-label-md mb-6 uppercase tracking-widest">Legal</h5>
+                <ul class="space-y-3 text-sm">
+                    <li><a class="hover:text-primary transition-colors" href="#">Privacidad</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="#">Términos de Uso</a></li>
+                    <li><a class="hover:text-primary transition-colors" href="#">Política de Cookies</a></li>
+                </ul>
+            </div>
+            <div>
+                <h5 class="text-white font-label-md mb-6 uppercase tracking-widest">Síguenos</h5>
+                <div class="flex gap-4">
+                    <a class="w-10 h-10 rounded-full border border-stone-700 flex items-center justify-center hover:bg-primary hover:border-primary transition-all text-white"
+                        href="#">
+                        <span class="material-symbols-outlined text-lg">share</span>
+                    </a>
+                    <a class="w-10 h-10 rounded-full border border-stone-700 flex items-center justify-center hover:bg-primary hover:border-primary transition-all text-white"
+                        href="#">
+                        <span class="material-symbols-outlined text-lg">photo_camera</span>
+                    </a>
+                </div>
+                <p class="mt-6 text-xs">© 2024 BistroFlow Management Suite. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
