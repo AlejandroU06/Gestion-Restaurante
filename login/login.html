@@ -16,177 +16,10 @@
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
                 rel="stylesheet" />
         <!-- Tailwind CSS -->
+        <script src="js/tailwind-config.js"></script>
         <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-        <script id="tailwind-config">
-                tailwind.config = {
-                        darkMode: "class",
-                        theme: {
-                                extend: {
-                                        "colors": {
-                                                "background": "#fff8f3",
-                                                "primary": "#9f3e07",
-                                                "on-primary": "#ffffff",
-                                                "outline-variant": "#dec0b5",
-                                                "error-container": "#ffdad6",
-                                                "primary-fixed": "#ffdbcd",
-                                                "surface-container-high": "#eee7e1",
-                                                "outline": "#8a7268",
-                                                "on-secondary-fixed": "#171e00",
-                                                "error": "#ba1a1a",
-                                                "surface-container": "#f4ede6",
-                                                "on-tertiary-container": "#fffeff",
-                                                "surface-bright": "#fff8f3",
-                                                "on-primary-fixed-variant": "#7d2d00",
-                                                "tertiary": "#5d5e55",
-                                                "on-error-container": "#93000a",
-                                                "on-surface-variant": "#57423a",
-                                                "surface-container-low": "#faf2ec",
-                                                "surface-container-highest": "#e8e1db",
-                                                "on-surface": "#1e1b17",
-                                                "secondary-fixed": "#dbe9a9",
-                                                "on-error": "#ffffff",
-                                                "inverse-on-surface": "#f7efe9",
-                                                "secondary-fixed-dim": "#bfcd8f",
-                                                "on-primary-fixed": "#360f00",
-                                                "on-secondary-fixed-variant": "#404b1b",
-                                                "surface": "#fff8f3",
-                                                "tertiary-fixed-dim": "#c7c7bc",
-                                                "on-tertiary-fixed-variant": "#46473f",
-                                                "tertiary-container": "#76766d",
-                                                "secondary": "#586330",
-                                                "tertiary-fixed": "#e4e3d7",
-                                                "inverse-primary": "#ffb596",
-                                                "on-primary-container": "#fffeff",
-                                                "primary-container": "#c05621",
-                                                "on-secondary-container": "#5c6834",
-                                                "on-background": "#1e1b17",
-                                                "surface-variant": "#e8e1db",
-                                                "surface-dim": "#e0d9d3",
-                                                "secondary-container": "#d8e6a6",
-                                                "inverse-surface": "#33302c",
-                                                "on-tertiary": "#ffffff",
-                                                "primary-fixed-dim": "#ffb596",
-                                                "surface-tint": "#a14009",
-                                                "surface-container-lowest": "#ffffff",
-                                                "on-secondary": "#ffffff",
-                                                "on-tertiary-fixed": "#1b1c15"
-                                        },
-                                        "borderRadius": {
-                                                "DEFAULT": "0.25rem",
-                                                "lg": "0.5rem",
-                                                "xl": "0.75rem",
-                                                "full": "9999px"
-                                        },
-                                        "spacing": {
-                                                "xl": "40px",
-                                                "margin": "32px",
-                                                "unit": "4px",
-                                                "md": "16px",
-                                                "xs": "4px",
-                                                "gutter": "24px",
-                                                "sm": "8px",
-                                                "lg": "24px"
-                                        },
-                                        "fontFamily": {
-                                                "headline-lg": [
-                                                        "Noto Serif"
-                                                ],
-                                                "label-sm": [
-                                                        "Plus Jakarta Sans"
-                                                ],
-                                                "headline-md": [
-                                                        "Noto Serif"
-                                                ],
-                                                "body-md": [
-                                                        "Plus Jakarta Sans"
-                                                ],
-                                                "headline-display": [
-                                                        "Noto Serif"
-                                                ],
-                                                "label-md": [
-                                                        "Plus Jakarta Sans"
-                                                ],
-                                                "body-lg": [
-                                                        "Plus Jakarta Sans"
-                                                ]
-                                        },
-                                        "fontSize": {
-                                                "headline-lg": [
-                                                        "32px",
-                                                        {
-                                                                "lineHeight": "1.3",
-                                                                "fontWeight": "600"
-                                                        }
-                                                ],
-                                                "label-sm": [
-                                                        "12px",
-                                                        {
-                                                                "lineHeight": "1.2",
-                                                                "letterSpacing": "0.05em",
-                                                                "fontWeight": "700"
-                                                        }
-                                                ],
-                                                "headline-md": [
-                                                        "24px",
-                                                        {
-                                                                "lineHeight": "1.4",
-                                                                "fontWeight": "600"
-                                                        }
-                                                ],
-                                                "body-md": [
-                                                        "16px",
-                                                        {
-                                                                "lineHeight": "1.6",
-                                                                "fontWeight": "400"
-                                                        }
-                                                ],
-                                                "headline-display": [
-                                                        "48px",
-                                                        {
-                                                                "lineHeight": "1.2",
-                                                                "fontWeight": "700"
-                                                        }
-                                                ],
-                                                "label-md": [
-                                                        "14px",
-                                                        {
-                                                                "lineHeight": "1.2",
-                                                                "letterSpacing": "0.02em",
-                                                                "fontWeight": "600"
-                                                        }
-                                                ],
-                                                "body-lg": [
-                                                        "18px",
-                                                        {
-                                                                "lineHeight": "1.6",
-                                                                "fontWeight": "400"
-                                                        }
-                                                ]
-                                        }
-                                },
-                        }
-                }
-        </script>
-        <style>
-                .material-symbols-outlined {
-                        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-                }
-
-                /* Custom scrollbar for a cleaner look */
-                ::-webkit-scrollbar {
-                        width: 8px;
-                }
-
-                ::-webkit-scrollbar-track {
-                        background: transparent;
-                }
-
-                ::-webkit-scrollbar-thumb {
-                        background-color: #dec0b5;
-                        border-radius: 20px;
-                }
-        </style>
+        <link rel="stylesheet" href="css/login.css" />
 </head>
 
 <body
@@ -255,7 +88,8 @@
                                                 <p id="password-error" class="text-error text-label-sm mt-1 hidden"></p>
                                         </div>
                                         <!-- reCAPTCHA Widget -->
-                                        <div class="g-recaptcha" data-sitekey="6LexS9gsAAAAANQYk95wXV5gyWmRnljwd2infi9p"></div>
+                                        <div style="display: flex; justify-content: center;" class="g-recaptcha"
+                                                data-sitekey="6LexS9gsAAAAANQYk95wXV5gyWmRnljwd2infi9p"></div>
                                 </form>
 
                                 <!-- Separator -->
@@ -271,19 +105,22 @@
                                 <!-- Registration Link -->
                                 <div class="text-center mb-8">
                                         <p class="font-body-md text-body-md text-on-surface">
-                                                ¿No tienes una cuenta? <a href="registro.html" class="text-primary font-bold hover:underline">Regístrate</a>
+                                                ¿No tienes una cuenta? <a href="registro.html"
+                                                        class="text-primary font-bold hover:underline">Regístrate</a>
                                         </p>
                                 </div>
 
                                 <p id="general-error" class="text-error text-label-sm text-center hidden mb-4"></p>
-                                
+
                                 <!-- Login Button (Linked to form) -->
-                                <button id="login-btn" form="login-form" class="w-full bg-primary hover:bg-surface-tint text-on-primary font-label-md text-label-md py-4 px-6 rounded-lg transition-all duration-200 flex justify-center items-center gap-2 shadow-sm hover:shadow-[0_8px_20px_rgba(159,62,7,0.2)] hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+                                <button id="login-btn" form="login-form"
+                                        class="w-full bg-primary hover:bg-surface-tint text-on-primary font-label-md text-label-md py-4 px-6 rounded-lg transition-all duration-200 flex justify-center items-center gap-2 shadow-sm hover:shadow-[0_8px_20px_rgba(159,62,7,0.2)] hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0"
                                         type="submit">
                                         <span id="btn-text">Ingresar</span>
                                         <span id="btn-icon" class="material-symbols-outlined text-[20px]"
                                                 data-icon="arrow_forward">arrow_forward</span>
-                                        <span id="btn-spinner" class="material-symbols-outlined text-[20px] animate-spin hidden"
+                                        <span id="btn-spinner"
+                                                class="material-symbols-outlined text-[20px] animate-spin hidden"
                                                 data-icon="progress_activity">progress_activity</span>
                                 </button>
 
@@ -297,94 +134,7 @@
                 </section>
         </main>
         <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-        <script>
-                const SUPABASE_URL = 'https://mfylvijpbibacmpfwynv.supabase.co';
-                const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1meWx2aWpwYmliYWNtcGZ3eW52Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcyODk2ODgsImV4cCI6MjA5Mjg2NTY4OH0.KqXfisr_OATVcnwnPBcJFNR9jFm3MUDLQOYKC1puHNI';
-                const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-
-                const loginBtn = document.getElementById('login-btn');
-                const btnText = document.getElementById('btn-text');
-                const btnIcon = document.getElementById('btn-icon');
-                const btnSpinner = document.getElementById('btn-spinner');
-                const emailError = document.getElementById('email-error');
-                const passwordError = document.getElementById('password-error');
-                const generalError = document.getElementById('general-error');
-
-                function clearErrors() {
-                        [emailError, passwordError, generalError].forEach(el => {
-                                el.textContent = '';
-                                el.classList.add('hidden');
-                        });
-                }
-
-                function setLoader(loading) {
-                        loginBtn.disabled = loading;
-                        if (loading) {
-                                btnText.textContent = 'Iniciando sesión...';
-                                btnIcon.classList.add('hidden');
-                                btnSpinner.classList.remove('hidden');
-                        } else {
-                                btnText.textContent = 'Ingresar';
-                                btnIcon.classList.remove('hidden');
-                                btnSpinner.classList.add('hidden');
-                        }
-                }
-
-                document.getElementById('login-form').addEventListener('submit', async (e) => {
-                        e.preventDefault();
-                        clearErrors();
-
-                        // Validar reCAPTCHA
-                        const captchaResponse = grecaptcha.getResponse();
-                        if (!captchaResponse) {
-                                generalError.textContent = 'Por favor, completa el captcha "No soy un robot".';
-                                generalError.classList.remove('hidden');
-                                return;
-                        }
-
-                        setLoader(true);
-
-                        const email = document.getElementById('email').value;
-                        const password = document.getElementById('password').value;
-
-                        try {
-                                const { data, error } = await _supabase
-                                        .from('usuario')
-                                        .select('*')
-                                        .eq('email', email)
-                                        .eq('contraseña', password)
-                                        .maybeSingle();
-
-                                if (error) throw error;
-
-                                if (!data) {
-                                        generalError.textContent = 'Correo o contraseña incorrectos';
-                                        generalError.classList.remove('hidden');
-                                        setLoader(false);
-                                        return;
-                                }
-
-                                // Guardar sesión básica en localStorage
-                                localStorage.setItem('user', JSON.stringify(data));
-
-                                // Redirigir basado en rol
-                                if (data.rol === 'Administrativo' || data.role === 'Administrativo') {
-                                        window.location.href = '../Admin/dashboard.html';
-                                } else {
-                                        window.location.href = '../Cliente/home_cliente/code.html';
-                                }
-                        } catch (error) {
-                                console.error('Error:', error.message);
-                                generalError.textContent = 'Error de red o del servidor. Intente de nuevo.';
-                                if (error.message.includes('fetch')) {
-                                        generalError.textContent = 'No se pudo conectar con el servidor. Verifique su conexión.';
-                                }
-                                generalError.classList.remove('hidden');
-                                setLoader(false);
-                                if (typeof grecaptcha !== 'undefined') grecaptcha.reset();
-                        }
-                });
-        </script>
+        <script src="js/login.js"></script>
 </body>
 
 </html>
