@@ -17,6 +17,7 @@
                 rel="stylesheet" />
         <!-- Tailwind CSS -->
         <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
         <script id="tailwind-config">
                 tailwind.config = {
                         darkMode: "class",
@@ -253,6 +254,8 @@
                                                 </div>
                                                 <p id="password-error" class="text-error text-label-sm mt-1 hidden"></p>
                                         </div>
+                                        <!-- reCAPTCHA Widget -->
+                                        <div class="g-recaptcha" data-sitekey="6LexS9gsAAAAANQYk95wXV5gyWmRnljwd2infi9p"></div>
                                 </form>
 
                                 <!-- Separator -->
@@ -330,6 +333,15 @@
                 document.getElementById('login-form').addEventListener('submit', async (e) => {
                         e.preventDefault();
                         clearErrors();
+
+                        // Validar reCAPTCHA
+                        const captchaResponse = grecaptcha.getResponse();
+                        if (!captchaResponse) {
+                                generalError.textContent = 'Por favor, completa el captcha "No soy un robot".';
+                                generalError.classList.remove('hidden');
+                                return;
+                        }
+
                         setLoader(true);
 
                         const email = document.getElementById('email').value;
@@ -369,6 +381,7 @@
                                 }
                                 generalError.classList.remove('hidden');
                                 setLoader(false);
+                                if (typeof grecaptcha !== 'undefined') grecaptcha.reset();
                         }
                 });
         </script>
